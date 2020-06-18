@@ -1,19 +1,16 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+plugin 'cocoapods-binary'
+
+platform :ios, '13.5'
 
 target 'NorrisFacts' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  all_binary!
+  enable_bitcode_for_prebuilt_frameworks!
+  keep_source_code_for_prebuilt_frameworks!
 
-  # Pods for NorrisFacts
+  pod 'Moya', '~> 14.0'
 
   target 'NorrisFactsTests' do
     inherit! :search_paths
-    # Pods for testing
   end
-
-  target 'NorrisFactsUITests' do
-    # Pods for testing
-  end
-
 end
