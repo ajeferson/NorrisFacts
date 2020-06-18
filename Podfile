@@ -9,6 +9,7 @@ target 'NorrisFacts' do
   keep_source_code_for_prebuilt_frameworks!
 
   pod 'Moya', '~> 14.0'
+  pod 'RealmSwift', '~> 5.0'
 
   target 'NorrisFactsTests' do
     inherit! :search_paths
