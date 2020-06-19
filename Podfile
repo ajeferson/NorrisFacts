@@ -8,7 +8,7 @@ target 'NorrisFacts' do
   enable_bitcode_for_prebuilt_frameworks!
   keep_source_code_for_prebuilt_frameworks!
 
-  pod 'Moya', '~> 14.0'
+  pod 'Moya/RxSwift', '~> 14.0'
   pod 'RealmSwift', '~> 5.0'
 
   target 'NorrisFactsTests' do
