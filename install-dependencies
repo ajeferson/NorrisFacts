@@ -1,0 +1,8 @@
+# Install carthage dependencies
+carthage update --platform iOS
+
+# Remove extra Moya submodules
+cd Carthage/Build/iOS
+rm -rf ReactiveSwift.*
+rm -rf RxBlocking.*
+rm -rf ReactiveMoya.*
