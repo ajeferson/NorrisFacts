@@ -5,6 +5,8 @@ PODS:
   - Moya/RxSwift (14.0.0):
     - Moya/Core
     - RxSwift (~> 5.0)
+  - Nimble (8.0.7)
+  - Quick (2.2.0)
   - Realm (5.0.3):
     - Realm/Headers (= 5.0.3)
   - Realm/Headers (5.0.3)
@@ -14,12 +16,16 @@ PODS:
 
 DEPENDENCIES:
   - Moya/RxSwift (~> 14.0)
+  - Nimble (~> 8.0)
+  - Quick (~> 2.0)
   - RealmSwift (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
+    - Nimble
+    - Quick
     - Realm
     - RealmSwift
     - RxSwift
@@ -27,10 +33,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Nimble: a73af6ecd4c9106f434f3d55fc54570be3739e0b
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   Realm: bfca1699b61b0b17c3a69ae0e648314eae91fbdb
   RealmSwift: 493c9f089cd3893b3959007973c0e4f640906ba0
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 59eecc5cad937a42991eaa0fae694270ef539f83
+PODFILE CHECKSUM: 557b4f9e7262733ac8fcb9211175f984936eb2b9
 
 COCOAPODS: 1.9.1
