@@ -38,16 +38,6 @@
                ReferencedContainer = "container:NorrisFacts.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD14F8C0249B7CFD0029B50C"
-               BuildableName = "NorrisFactsUITests.xctest"
-               BlueprintName = "NorrisFactsUITests"
-               ReferencedContainer = "container:NorrisFacts.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
