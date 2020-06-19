@@ -13,12 +13,15 @@ PODS:
   - RealmSwift (5.0.3):
     - Realm (= 5.0.3)
   - RxSwift (5.1.1)
+  - RxTest (5.1.1):
+    - RxSwift (~> 5)
 
 DEPENDENCIES:
   - Moya/RxSwift (~> 14.0)
   - Nimble (~> 8.0)
   - Quick (~> 2.0)
   - RealmSwift (~> 5.0)
+  - RxTest (~> 5.0)
 
 SPEC REPOS:
   trunk:
@@ -29,6 +32,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - RxSwift
+    - RxTest
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
@@ -38,7 +42,8 @@ SPEC CHECKSUMS:
   Realm: bfca1699b61b0b17c3a69ae0e648314eae91fbdb
   RealmSwift: 493c9f089cd3893b3959007973c0e4f640906ba0
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
 
-PODFILE CHECKSUM: 557b4f9e7262733ac8fcb9211175f984936eb2b9
+PODFILE CHECKSUM: e532eb865ed46b76472d10c5bf75579041ac4e5a
 
 COCOAPODS: 1.9.1

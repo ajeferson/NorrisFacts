@@ -16,5 +16,6 @@ target 'NorrisFacts' do
 
     pod 'Quick', '~> 2.0'
     pod 'Nimble', '~> 8.0'
+    pod 'RxTest', '~> 5.0'
   end
 end
