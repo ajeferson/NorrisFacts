@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD05AC8F249DA069000F453B /* FactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC8E249DA069000F453B /* FactsAPI.swift */; };
+		BD05AC92249DA83C000F453B /* FactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC91249DA83C000F453B /* FactsProvider.swift */; };
+		BD05AC96249DB45A000F453B /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC95249DB45A000F453B /* Fact.swift */; };
+		BD05AC9D249DB9A9000F453B /* JSONDecoder+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC9C249DB9A9000F453B /* JSONDecoder+Common.swift */; };
 		BD0C4902249CF3A90090B7CD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C48FF249CF3A90090B7CD /* RxTest.framework */; platformFilter = ios; };
 		BD0C4903249CF3A90090B7CD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C4900249CF3A90090B7CD /* Quick.framework */; platformFilter = ios; };
 		BD0C4904249CF3A90090B7CD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C4901249CF3A90090B7CD /* Nimble.framework */; platformFilter = ios; };
@@ -37,6 +41,7 @@
 		BD355F03249CEB39008901D4 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355EFF249CEB39008901D4 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD355F0D249CEE01008901D4 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; };
 		BD355F0E249CEE01008901D4 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +96,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD05AC8E249DA069000F453B /* FactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsAPI.swift; sourceTree = "<group>"; };
+		BD05AC91249DA83C000F453B /* FactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsProvider.swift; sourceTree = "<group>"; };
+		BD05AC95249DB45A000F453B /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
+		BD05AC9C249DB9A9000F453B /* JSONDecoder+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Common.swift"; sourceTree = "<group>"; };
 		BD0C48FF249CF3A90090B7CD /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		BD0C4900249CF3A90090B7CD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		BD0C4901249CF3A90090B7CD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -116,6 +125,7 @@
 		BD355EFE249CEB38008901D4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		BD355EFF249CEB39008901D4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BD355F0C249CEE01008901D4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +164,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD05AC90249DA82C000F453B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BD05AC8E249DA069000F453B /* FactsAPI.swift */,
+				BD05AC91249DA83C000F453B /* FactsProvider.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BD05AC94249DB43E000F453B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BD05AC95249DB45A000F453B /* Fact.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		BD05AC9B249DB985000F453B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BD05AC9C249DB9A9000F453B /* JSONDecoder+Common.swift */,
+				BDE90508249DBF4E00B2AF28 /* URL+Common.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BD14F897249B7CFB0029B50C = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +214,9 @@
 		BD14F8A2249B7CFB0029B50C /* NorrisFacts */ = {
 			isa = PBXGroup;
 			children = (
+				BD05AC94249DB43E000F453B /* Entity */,
+				BD05AC90249DA82C000F453B /* API */,
+				BD05AC9B249DB985000F453B /* Extensions */,
 				BD14F8A3249B7CFB0029B50C /* AppDelegate.swift */,
 				BD14F8A5249B7CFB0029B50C /* SceneDelegate.swift */,
 				BD14F8A7249B7CFB0029B50C /* ContentView.swift */,
@@ -415,9 +454,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD05AC8F249DA069000F453B /* FactsAPI.swift in Sources */,
+				BD05AC96249DB45A000F453B /* Fact.swift in Sources */,
+				BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */,
 				BD14F8A4249B7CFB0029B50C /* AppDelegate.swift in Sources */,
 				BD14F8A6249B7CFB0029B50C /* SceneDelegate.swift in Sources */,
+				BD05AC92249DA83C000F453B /* FactsProvider.swift in Sources */,
 				BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */,
+				BD05AC9D249DB9A9000F453B /* JSONDecoder+Common.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
