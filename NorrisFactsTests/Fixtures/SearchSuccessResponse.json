@@ -1,0 +1,28 @@
+{
+    "total": 2,
+    "result": [
+        {
+            "categories": [
+                "history",
+                "career"
+            ],
+            "created_at": "2020-01-05 13:42:18.823766",
+            "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+            "id": "dwxnerd8qamdgrzsl9aakq",
+            "updated_at": "2020-01-05 13:42:18.823766",
+            "url": "https://api.chucknorris.io/jokes/dwxnerd8qamdgrzsl9aakq",
+            "value": "The term \"Cleveland Steamer\" got its name from Chuck Norris, when he took a dump while visiting the Rock and Roll Hall of fame and buried northern Ohio under a glacier of fecal matter."
+        },
+        {
+            "categories": [
+                "political"
+            ],
+            "created_at": "2020-01-05 13:42:19.104863",
+            "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+            "id": "lr9litcitfmul3qjx_3mmw",
+            "updated_at": "2020-01-05 13:42:19.104863",
+            "url": "https://api.chucknorris.io/jokes/lr9litcitfmul3qjx_3mmw",
+            "value": "Thousands of years ago Chuck Norris came across a bear. It was so terrified that it fled north into the arctic. It was also so terrified that all of its decendents now have white hair."
+        }
+    ]
+}
