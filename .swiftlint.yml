@@ -1,0 +1,37 @@
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+
+included:
+  - NorrisFacts
+  - NorrisFactsTests
+  - NorrisFactsUITests
+
+force_cast: warning
+
+force_try:
+  severity: warning
+
+line_length: 130
+
+type_body_length:
+  - 400
+  - 500
+
+file_length:
+  warning: 500
+  error: 1200
+
+type_name:
+  min_length: 3
+  max_length:
+    error: 40
+
+identifier_name:
+  min_length:
+    error: 3
+  excluded:
+    - id
+    - URL
+
+reporter: "xcode"
