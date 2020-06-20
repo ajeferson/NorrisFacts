@@ -23,7 +23,6 @@
 		BD14F8AA249B7CFC0029B50C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD14F8A9249B7CFC0029B50C /* Assets.xcassets */; };
 		BD14F8AD249B7CFC0029B50C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD14F8AC249B7CFC0029B50C /* Preview Assets.xcassets */; };
 		BD14F8B0249B7CFC0029B50C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD14F8AE249B7CFC0029B50C /* LaunchScreen.storyboard */; };
-		BD14F8BB249B7CFD0029B50C /* NorrisFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14F8BA249B7CFD0029B50C /* NorrisFactsTests.swift */; };
 		BD14F8C6249B7CFD0029B50C /* NorrisFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14F8C5249B7CFD0029B50C /* NorrisFactsUITests.swift */; };
 		BD355EF2249CEB23008901D4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD355EEE249CEB23008901D4 /* RxCocoa.framework */; };
 		BD355EF3249CEB23008901D4 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355EEE249CEB23008901D4 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -126,7 +125,6 @@
 		BD14F8AF249B7CFC0029B50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD14F8B1249B7CFC0029B50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD14F8B6249B7CFD0029B50C /* NorrisFactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NorrisFactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD14F8BA249B7CFD0029B50C /* NorrisFactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorrisFactsTests.swift; sourceTree = "<group>"; };
 		BD14F8BC249B7CFD0029B50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD14F8C1249B7CFD0029B50C /* NorrisFactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NorrisFactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD14F8C5249B7CFD0029B50C /* NorrisFactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorrisFactsUITests.swift; sourceTree = "<group>"; };
@@ -264,11 +262,10 @@
 		BD14F8B9249B7CFD0029B50C /* NorrisFactsTests */ = {
 			isa = PBXGroup;
 			children = (
-				BD14F8BA249B7CFD0029B50C /* NorrisFactsTests.swift */,
-				BD14F8BC249B7CFD0029B50C /* Info.plist */,
-				BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */,
-				BD7BBBA1249E602600F1F2D8 /* SearchSuccessResponse.json */,
-				BD7BBBA8249EA18200F1F2D8 /* StubResponse.swift */,
+				BD7BBBAF249EA38800F1F2D8 /* Common */,
+				BD7BBBAD249EA34D00F1F2D8 /* IntegrationTests */,
+				BD7BBBAE249EA37000F1F2D8 /* Fixtures */,
+				BD7BBBB0249EA39400F1F2D8 /* SupportingFiles */,
 			);
 			path = NorrisFactsTests;
 			sourceTree = "<group>";
@@ -300,6 +297,38 @@
 				BD355EF0249CEB23008901D4 /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD7BBBAD249EA34D00F1F2D8 /* IntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */,
+			);
+			path = IntegrationTests;
+			sourceTree = "<group>";
+		};
+		BD7BBBAE249EA37000F1F2D8 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				BD7BBBA1249E602600F1F2D8 /* SearchSuccessResponse.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		BD7BBBAF249EA38800F1F2D8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BD7BBBA8249EA18200F1F2D8 /* StubResponse.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BD7BBBB0249EA39400F1F2D8 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BD14F8BC249B7CFD0029B50C /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		BDE90513249E545200B2AF28 /* Facts */ = {
@@ -537,7 +566,6 @@
 			files = (
 				BD7BBBA9249EA18200F1F2D8 /* StubResponse.swift in Sources */,
 				BD7BBBA0249E5D6F00F1F2D8 /* FactsProviderTests.swift in Sources */,
-				BD14F8BB249B7CFD0029B50C /* NorrisFactsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +778,7 @@
 					"$(PROJECT_DIR)/Carthage/Build",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = NorrisFactsTests/Info.plist;
+				INFOPLIST_FILE = NorrisFactsTests/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -777,7 +805,7 @@
 					"$(PROJECT_DIR)/Carthage/Build",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = NorrisFactsTests/Info.plist;
+				INFOPLIST_FILE = NorrisFactsTests/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
