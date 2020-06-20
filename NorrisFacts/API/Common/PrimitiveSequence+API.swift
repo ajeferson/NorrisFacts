@@ -10,12 +10,6 @@ import Foundation
 import Moya
 import RxSwift
 
-private enum HttpStatusRanges {
-    static let redirect = 300..<400
-    static let badRequest = 400..<500
-    static let serverError = 500..<600
-}
-
 extension PrimitiveSequence where Trait == SingleTrait {
     func catchErrorReturnAPIError() -> PrimitiveSequence<Trait, Element> {
         catchError { error -> PrimitiveSequence<Trait, Element> in
@@ -25,11 +19,11 @@ extension PrimitiveSequence where Trait == SingleTrait {
 
             if case .statusCode(let response) = moyaError {
                 switch response.statusCode {
-                case HttpStatusRanges.redirect:
+                case HttpStatusCode.redirect ..< HttpStatusCode.badRequest:
                     return .error(APIError.redirect)
-                case HttpStatusRanges.badRequest:
+                case HttpStatusCode.badRequest ..< HttpStatusCode.serverError:
                     return .error(APIError.badRequest)
-                case HttpStatusRanges.serverError:
+                case HttpStatusCode.serverError...:
                     return .error(APIError.serverError)
                 default:
                     return .error(APIError.unknown)
