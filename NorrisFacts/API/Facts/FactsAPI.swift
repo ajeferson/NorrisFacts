@@ -13,7 +13,7 @@ enum FactsAPI: TargetType {
     case categories
     case search(query: String)
 
-    private enum QueryParameterKey: String {
+    private enum QueryParameterKeys: String {
         case query
     }
 
@@ -43,7 +43,7 @@ enum FactsAPI: TargetType {
         case .categories:
             return .requestPlain
         case .search(let query):
-            let parameters = [QueryParameterKey.query.rawValue: query]
+            let parameters = [QueryParameterKeys.query.rawValue: query]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }

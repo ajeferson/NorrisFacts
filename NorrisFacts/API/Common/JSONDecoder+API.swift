@@ -1,5 +1,5 @@
 //
-//  JSONDecoder+Common.swift
+//  JSONDecoder+API.swift
 //  NorrisFacts
 //
 //  Created by Alan Paiva on 6/20/20.
