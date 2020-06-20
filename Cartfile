@@ -2,3 +2,4 @@ github "Moya/Moya" ~> 14.0
 github "realm/realm-cocoa" ~> 5.0
 github "Quick/Quick" ~> 2.0
 github "Quick/Nimble" ~> 8.0
+github "AliSoftware/OHHTTPStubs" ~> 9.0
