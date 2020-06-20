@@ -23,15 +23,19 @@ struct FactsProvider {
         provider
             .rx
             .request(.search(query: query))
+            .filterSuccessfulStatusCodes()
             .map(FactListResult.self, using: .default, failsOnEmptyData: true)
             .map { $0.result }
+            .catchErrorReturnAPIError()
     }
 
     func fetchCategories() -> Single<[String]> {
         provider
             .rx
             .request(.categories)
+            .filterSuccessfulStatusCodes()
             .map([String].self)
+            .catchErrorReturnAPIError()
     }
 }
 

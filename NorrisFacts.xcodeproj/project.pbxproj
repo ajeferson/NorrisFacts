@@ -42,6 +42,9 @@
 		BD355F0D249CEE01008901D4 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; };
 		BD355F0E249CEE01008901D4 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
+		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
+		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
+		BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		BD355EFF249CEB39008901D4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BD355F0C249CEE01008901D4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
+		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
+		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+API.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,8 @@
 			children = (
 				BD05AC8E249DA069000F453B /* FactsAPI.swift */,
 				BD05AC91249DA83C000F453B /* FactsProvider.swift */,
+				BDE9050C249E4FE600B2AF28 /* APIError.swift */,
+				BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 			children = (
 				BD05AC9C249DB9A9000F453B /* JSONDecoder+Common.swift */,
 				BDE90508249DBF4E00B2AF28 /* URL+Common.swift */,
+				BDE9050A249DCC3200B2AF28 /* Error+Common.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,11 +466,14 @@
 				BD05AC8F249DA069000F453B /* FactsAPI.swift in Sources */,
 				BD05AC96249DB45A000F453B /* Fact.swift in Sources */,
 				BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */,
+				BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */,
 				BD14F8A4249B7CFB0029B50C /* AppDelegate.swift in Sources */,
+				BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */,
 				BD14F8A6249B7CFB0029B50C /* SceneDelegate.swift in Sources */,
 				BD05AC92249DA83C000F453B /* FactsProvider.swift in Sources */,
 				BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */,
 				BD05AC9D249DB9A9000F453B /* JSONDecoder+Common.swift in Sources */,
+				BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
