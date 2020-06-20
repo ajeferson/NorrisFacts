@@ -43,6 +43,8 @@
 		BD355F0E249CEE01008901D4 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD7BBB9D249E5D0A00F1F2D8 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; };
 		BD7BBB9E249E5D1100F1F2D8 /* OHHTTPStubs.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD7BBBA4249E6F3C00F1F2D8 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBBA3249E6F3C00F1F2D8 /* RxBlocking.framework */; platformFilter = ios; };
+		BD7BBBA5249E6F4700F1F2D8 /* RxBlocking.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBBA3249E6F3C00F1F2D8 /* RxBlocking.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
@@ -91,6 +93,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				BD7BBBA5249E6F4700F1F2D8 /* RxBlocking.framework in Copy Carthage Frameworks */,
 				BD7BBB9E249E5D1100F1F2D8 /* OHHTTPStubs.framework in Copy Carthage Frameworks */,
 				BD0C4905249CF3BD0090B7CD /* Nimble.framework in Copy Carthage Frameworks */,
 				BD0C4906249CF3BD0090B7CD /* Quick.framework in Copy Carthage Frameworks */,
@@ -132,6 +135,7 @@
 		BD355EFF249CEB39008901D4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BD355F0C249CEE01008901D4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		BD7BBBA3249E6F3C00F1F2D8 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				BD0C4903249CF3A90090B7CD /* Quick.framework in Frameworks */,
 				BD0C4904249CF3A90090B7CD /* Nimble.framework in Frameworks */,
 				BD7BBB9D249E5D0A00F1F2D8 /* OHHTTPStubs.framework in Frameworks */,
+				BD7BBBA4249E6F3C00F1F2D8 /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +272,7 @@
 		BD355EED249CEB23008901D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD7BBBA3249E6F3C00F1F2D8 /* RxBlocking.framework */,
 				BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */,
 				BD0C4901249CF3A90090B7CD /* Nimble.framework */,
 				BD0C4900249CF3A90090B7CD /* Quick.framework */,
