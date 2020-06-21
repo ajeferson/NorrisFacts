@@ -10,12 +10,12 @@ import Foundation
 @testable import NorrisFacts
 
 final class MockFactSearchCoordinator: FactSearchCoordinatorProtocol {
-    var finishCalls = [String?]()
+    var finishCalls = [SearchResult]()
 
     func start() {
     }
 
-    func finish(query: String?) {
-        finishCalls.append(query)
+    func finish(searchResult: SearchResult) {
+        finishCalls.append(searchResult)
     }
 }

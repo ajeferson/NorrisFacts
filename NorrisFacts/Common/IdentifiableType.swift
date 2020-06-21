@@ -19,3 +19,5 @@ extension IdentifiableType {
 }
 
 extension UIViewController: IdentifiableType {}
+
+extension UITableViewCell: IdentifiableType {}
