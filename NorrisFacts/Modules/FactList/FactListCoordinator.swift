@@ -7,10 +7,7 @@
 //
 
 import UIKit
-
-protocol Coordinator {
-    func start()
-}
+import RxSwift
 
 final class FactListCoordinator: Coordinator {
     private let window: UIWindowProtocol
@@ -46,7 +43,10 @@ protocol FactListRouter: AnyObject {
 extension FactListCoordinator: FactListRouter {
     func presentSearch() {
         guard let navigationController = navigationController else { return }
-        searchCoordinator = FactSearchCoordinator(navigationController: navigationController, storyboard: storyboard)
+
+        searchCoordinator = FactSearchCoordinator(parent: navigationController, storyboard: storyboard) { [weak self] _ in
+            self?.searchCoordinator = nil
+        }
         searchCoordinator?.start()
     }
 }

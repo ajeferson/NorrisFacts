@@ -12,6 +12,7 @@ import RxSwift
 
 final class FactSearchViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var cancelBarButton: UIBarButtonItem!
 
     private let bag = DisposeBag()
 
@@ -25,6 +26,7 @@ final class FactSearchViewController: UIViewController {
 
     private func bindViewModelInput() {
         let input = FactSearchViewModelInput(
+            cancelButtonClicked: cancelBarButton.rx.tap.asObservable(),
             searchButtonClicked: searchBar.rx.searchButtonClicked.asObservable(),
             searchText: searchBar.rx.text.asObservable()
         )
