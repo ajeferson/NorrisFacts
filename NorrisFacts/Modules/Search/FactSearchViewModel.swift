@@ -1,5 +1,5 @@
 //
-//  SearchViewModel.swift
+//  FactSearchViewModel.swift
 //  NorrisFacts
 //
 //  Created by Alan Paiva on 6/20/20.
@@ -9,26 +9,27 @@
 import Foundation
 import RxSwift
 
-struct SearchViewModelInput {
+struct FactSearchViewModelInput {
     let searchButtonClicked: Observable<Void>
     let searchText: Observable<String?>
 }
 
-protocol SearchViewModelProtocol {
-    func bind(input: SearchViewModelInput) -> Disposable
+protocol FactSearchViewModelProtocol {
+    func bind(input: FactSearchViewModelInput) -> Disposable
 }
 
-final class SearchViewModel: SearchViewModelProtocol {
-    func bind(input: SearchViewModelInput) -> Disposable {
+final class FactSearchViewModel: FactSearchViewModelProtocol {
+    func bind(input: FactSearchViewModelInput) -> Disposable {
         bindSearch(input)
     }
 
-    private func bindSearch(_ input: SearchViewModelInput) -> Disposable {
+    private func bindSearch(_ input: FactSearchViewModelInput) -> Disposable {
         input
             .searchButtonClicked
             .withLatestFrom(input.searchText)
             .compactMap { $0 }
             .filter { !$0.isEmpty }
+            .distinctUntilChanged()
             .subscribe()
     }
 }

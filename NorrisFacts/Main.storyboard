@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AB2-0y-ENj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,6 +7,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Facts-->
+        <scene sceneID="xSe-7w-Ynv">
+            <objects>
+                <viewController storyboardIdentifier="FactListViewController" id="zuX-bK-I46" customClass="FactListViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tkC-MS-qpD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfb-Ri-6NS">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Lfb-Ri-6NS" firstAttribute="centerX" secondItem="tkC-MS-qpD" secondAttribute="centerX" id="377-H4-3PH"/>
+                            <constraint firstItem="Lfb-Ri-6NS" firstAttribute="centerY" secondItem="tkC-MS-qpD" secondAttribute="centerY" id="68P-Of-HFw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CwN-xJ-VA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-20" y="-1221"/>
+        </scene>
         <!--Search Facts-->
         <scene sceneID="tOP-Hu-y8c">
             <objects>

@@ -39,8 +39,8 @@
 		BD355F03249CEB39008901D4 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355EFF249CEB39008901D4 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD355F0D249CEE01008901D4 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; };
 		BD355F0E249CEE01008901D4 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BD4A264A249EAEF800CC5624 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4A2649249EAEF800CC5624 /* SearchViewModel.swift */; };
-		BD5830C8249EAAD3000926B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5830C7249EAAD3000926B3 /* SearchViewController.swift */; };
+		BD4A264A249EAEF800CC5624 /* FactSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */; };
+		BD5830C8249EAAD3000926B3 /* FactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */; };
 		BD7BBB9D249E5D0A00F1F2D8 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; };
 		BD7BBB9E249E5D1100F1F2D8 /* OHHTTPStubs.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD7BBBA0249E5D6F00F1F2D8 /* FactsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */; };
@@ -51,6 +51,12 @@
 		BD7BBBA9249EA18200F1F2D8 /* StubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7BBBA8249EA18200F1F2D8 /* StubResponse.swift */; };
 		BD7BBBAB249EA19E00F1F2D8 /* String+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7BBBAA249EA19E00F1F2D8 /* String+Common.swift */; };
 		BDB9BA2D249EB6F600B0E5F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB9BA2C249EB6F600B0E5F2 /* Main.storyboard */; };
+		BDB9BA30249ECE8300B0E5F2 /* FactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA2F249ECE8300B0E5F2 /* FactListViewController.swift */; };
+		BDB9BA32249ECEA200B0E5F2 /* FactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA31249ECEA200B0E5F2 /* FactListViewModel.swift */; };
+		BDB9BA34249ED49F00B0E5F2 /* FactListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA33249ED49F00B0E5F2 /* FactListCoordinator.swift */; };
+		BDB9BA36249EDA0300B0E5F2 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA35249EDA0300B0E5F2 /* UIWindow.swift */; };
+		BDB9BA38249EDA2200B0E5F2 /* IdentifiableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA37249EDA2200B0E5F2 /* IdentifiableType.swift */; };
+		BDB9BA3A249EDA3C00B0E5F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA39249EDA3C00B0E5F2 /* Storyboard.swift */; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
@@ -138,8 +144,8 @@
 		BD355EFE249CEB38008901D4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		BD355EFF249CEB39008901D4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BD355F0C249CEE01008901D4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
-		BD4A2649249EAEF800CC5624 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		BD5830C7249EAAD3000926B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSearchViewModel.swift; sourceTree = "<group>"; };
+		BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSearchViewController.swift; sourceTree = "<group>"; };
 		BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsProviderTests.swift; sourceTree = "<group>"; };
 		BD7BBBA1249E602600F1F2D8 /* SearchSuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuccessResponse.json; sourceTree = "<group>"; };
@@ -148,6 +154,12 @@
 		BD7BBBA8249EA18200F1F2D8 /* StubResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponse.swift; sourceTree = "<group>"; };
 		BD7BBBAA249EA19E00F1F2D8 /* String+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Common.swift"; sourceTree = "<group>"; };
 		BDB9BA2C249EB6F600B0E5F2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BDB9BA2F249ECE8300B0E5F2 /* FactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListViewController.swift; sourceTree = "<group>"; };
+		BDB9BA31249ECEA200B0E5F2 /* FactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListViewModel.swift; sourceTree = "<group>"; };
+		BDB9BA33249ED49F00B0E5F2 /* FactListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListCoordinator.swift; sourceTree = "<group>"; };
+		BDB9BA35249EDA0300B0E5F2 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		BDB9BA37249EDA2200B0E5F2 /* IdentifiableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableType.swift; sourceTree = "<group>"; };
+		BDB9BA39249EDA3C00B0E5F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -213,6 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				BDE90514249E550100B2AF28 /* Extensions */,
+				BDB9BA37249EDA2200B0E5F2 /* IdentifiableType.swift */,
+				BDB9BA35249EDA0300B0E5F2 /* UIWindow.swift */,
+				BDB9BA39249EDA3C00B0E5F2 /* Storyboard.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -299,6 +314,7 @@
 		BD4A2647249EAEDE00CC5624 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				BDB9BA2E249ECE6A00B0E5F2 /* FactList */,
 				BD4A2648249EAEE400CC5624 /* Search */,
 			);
 			path = Modules;
@@ -307,8 +323,8 @@
 		BD4A2648249EAEE400CC5624 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				BD5830C7249EAAD3000926B3 /* SearchViewController.swift */,
-				BD4A2649249EAEF800CC5624 /* SearchViewModel.swift */,
+				BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */,
+				BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -343,6 +359,16 @@
 				BD14F8BC249B7CFD0029B50C /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		BDB9BA2E249ECE6A00B0E5F2 /* FactList */ = {
+			isa = PBXGroup;
+			children = (
+				BDB9BA33249ED49F00B0E5F2 /* FactListCoordinator.swift */,
+				BDB9BA2F249ECE8300B0E5F2 /* FactListViewController.swift */,
+				BDB9BA31249ECEA200B0E5F2 /* FactListViewModel.swift */,
+			);
+			path = FactList;
 			sourceTree = "<group>";
 		};
 		BDE90513249E545200B2AF28 /* Facts */ = {
@@ -558,18 +584,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB9BA30249ECE8300B0E5F2 /* FactListViewController.swift in Sources */,
 				BD05AC8F249DA069000F453B /* FactsAPI.swift in Sources */,
 				BD7BBBAB249EA19E00F1F2D8 /* String+Common.swift in Sources */,
 				BD05AC96249DB45A000F453B /* Fact.swift in Sources */,
 				BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */,
 				BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */,
+				BDB9BA36249EDA0300B0E5F2 /* UIWindow.swift in Sources */,
 				BD14F8A4249B7CFB0029B50C /* AppDelegate.swift in Sources */,
-				BD4A264A249EAEF800CC5624 /* SearchViewModel.swift in Sources */,
+				BD4A264A249EAEF800CC5624 /* FactSearchViewModel.swift in Sources */,
 				BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */,
+				BDB9BA3A249EDA3C00B0E5F2 /* Storyboard.swift in Sources */,
 				BD14F8A6249B7CFB0029B50C /* SceneDelegate.swift in Sources */,
-				BD5830C8249EAAD3000926B3 /* SearchViewController.swift in Sources */,
+				BDB9BA38249EDA2200B0E5F2 /* IdentifiableType.swift in Sources */,
+				BDB9BA32249ECEA200B0E5F2 /* FactListViewModel.swift in Sources */,
+				BD5830C8249EAAD3000926B3 /* FactSearchViewController.swift in Sources */,
 				BD05AC92249DA83C000F453B /* FactsProvider.swift in Sources */,
 				BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */,
+				BDB9BA34249ED49F00B0E5F2 /* FactListCoordinator.swift in Sources */,
 				BD05AC9D249DB9A9000F453B /* JSONDecoder+API.swift in Sources */,
 				BD7BBBA7249E98E900F1F2D8 /* HttpStatusCode.swift in Sources */,
 				BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */,
