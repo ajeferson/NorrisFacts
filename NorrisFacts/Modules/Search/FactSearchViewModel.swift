@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 
 struct FactSearchViewModelInput {
@@ -15,15 +16,28 @@ struct FactSearchViewModelInput {
     let searchText: Observable<String?>
 }
 
+struct FactSearchViewModelOutput {
+    let isLoading: Driver<Bool>
+}
+
 protocol FactSearchViewModelProtocol {
+    var output: FactSearchViewModelOutput { get }
+
     func bind(input: FactSearchViewModelInput) -> Disposable
 }
 
 final class FactSearchViewModel: FactSearchViewModelProtocol {
+    private let factsProvider: FactsProviderProtocol
     weak var coordinator: FactSearchCoordinatorProtocol?
 
-    init(coordinator: FactSearchCoordinatorProtocol) {
+    private let isLoadingSubject = BehaviorRelay(value: false)
+    var output: FactSearchViewModelOutput {
+        .init(isLoading: isLoadingSubject.asDriver())
+    }
+
+    init(coordinator: FactSearchCoordinatorProtocol, factsProvider: FactsProviderProtocol) {
         self.coordinator = coordinator
+        self.factsProvider = factsProvider
     }
 
     func bind(input: FactSearchViewModelInput) -> Disposable {
@@ -37,19 +51,38 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
         input
             .cancelButtonClicked
             .subscribe(onNext: { [weak self] _ in
-                self?.coordinator?.finish(query: nil)
+                self?.coordinator?.finish(facts: nil)
             })
     }
 
     private func bindSearch(_ input: FactSearchViewModelInput) -> Disposable {
-        input
+        let query = input
             .searchButtonClicked
             .withLatestFrom(input.searchText)
             .compactMap { $0 }
             .filter { !$0.isEmpty }
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] query in
-                self?.coordinator?.finish(query: query)
-            })
+
+        return Disposables.create(
+            // Loading state
+            query
+                .take(1)
+                .map { _ in true }
+                .bind(to: isLoadingSubject),
+
+            // Search results
+            query
+                .flatMapLatest { [weak self] query -> Observable<[Fact]> in
+                    guard let self = self else {
+                        return .empty()
+                    }
+                    return self.factsProvider
+                        .search(query: query)
+                        .asObservable()
+                }
+                .subscribe(onNext: { [weak self] facts in
+                    self?.coordinator?.finish(facts: facts)
+                })
+        )
     }
 }

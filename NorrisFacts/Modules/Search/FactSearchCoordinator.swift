@@ -10,16 +10,16 @@ import UIKit
 import RxSwift
 
 protocol FactSearchCoordinatorProtocol: Coordinator {
-    func finish(query: String?)
+    func finish(facts: [Fact]?)
 }
 
 final class FactSearchCoordinator: FactSearchCoordinatorProtocol {
     private let parent: UIViewController
     private var navigationController: UINavigationController?
     private let storyboard: StoryboardProtocol
-    private let finishHandler: (String?) -> Void
+    private let finishHandler: ([Fact]?) -> Void
 
-    init(parent: UIViewController, storyboard: StoryboardProtocol, onFinish finishHandler: @escaping (String?) -> Void) {
+    init(parent: UIViewController, storyboard: StoryboardProtocol, onFinish finishHandler: @escaping ([Fact]?) -> Void) {
         self.parent = parent
         self.storyboard = storyboard
         self.finishHandler = finishHandler
@@ -34,15 +34,16 @@ final class FactSearchCoordinator: FactSearchCoordinatorProtocol {
         navigationController.modalPresentationStyle = .fullScreen
         self.navigationController = navigationController
 
-        let viewModel = FactSearchViewModel(coordinator: self)
+        let factsProvider = FactsProvider()
+        let viewModel = FactSearchViewModel(coordinator: self, factsProvider: factsProvider)
         viewController.viewModel = viewModel
 
         parent.present(navigationController, animated: true, completion: nil)
     }
 
-    func finish(query: String?) {
+    func finish(facts: [Fact]?) {
         navigationController?.dismiss(animated: true) { [weak self] in
-            self?.finishHandler(query)
+            self?.finishHandler(facts)
         }
     }
 }

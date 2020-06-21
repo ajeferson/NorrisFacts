@@ -13,6 +13,7 @@ import RxSwift
 final class FactSearchViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var cancelBarButton: UIBarButtonItem!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 
     private let bag = DisposeBag()
 
@@ -22,6 +23,7 @@ final class FactSearchViewController: UIViewController {
         super.viewDidLoad()
 
         bindViewModelInput()
+        bindViewModelOutput()
     }
 
     private func bindViewModelInput() {
@@ -33,6 +35,21 @@ final class FactSearchViewController: UIViewController {
 
         viewModel?
             .bind(input: input)
+            .disposed(by: bag)
+    }
+
+    private func bindViewModelOutput() {
+        guard let output = viewModel?.output else { return }
+
+        output
+            .isLoading
+            .drive(activityIndicator.rx.isAnimating)
+            .disposed(by: bag)
+
+        output
+            .isLoading
+            .map(!)
+            .drive(activityIndicator.rx.isHidden)
             .disposed(by: bag)
     }
 }

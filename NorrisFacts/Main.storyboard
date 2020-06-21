@@ -41,14 +41,22 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-dj-96v">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Tu-dj-96v" firstAttribute="centerX" secondItem="wN5-nW-pAS" secondAttribute="centerX" id="VZF-kg-A6W"/>
+                            <constraint firstItem="2Tu-dj-96v" firstAttribute="centerY" secondItem="wN5-nW-pAS" secondAttribute="centerY" id="olO-Ag-82m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yiS-ha-PVB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search Facts" id="APw-IJ-bsC">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ERq-Pm-RMf"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="2Tu-dj-96v" id="Rv9-aZ-tiL"/>
                         <outlet property="cancelBarButton" destination="ERq-Pm-RMf" id="jLL-iq-2K9"/>
                         <outlet property="searchBar" destination="ooK-vo-asS" id="s8a-5P-PAt"/>
                     </connections>

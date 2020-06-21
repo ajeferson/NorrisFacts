@@ -16,7 +16,7 @@ protocol FactsProviderProtocol {
     func fetchCategories() -> Single<[String]>
 }
 
-struct FactsProvider {
+struct FactsProvider: FactsProviderProtocol {
     private let provider = MoyaProvider<FactsAPI>()
 
     func search(query: String) -> Single<[Fact]> {
