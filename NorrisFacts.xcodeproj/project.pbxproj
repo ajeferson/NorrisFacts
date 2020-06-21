@@ -65,6 +65,10 @@
 		BDB9BA49249F067300B0E5F2 /* MockFactListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */; };
 		BDB9BA4B249F1C2100B0E5F2 /* FactListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */; };
 		BDB9BA4E249F1C8400B0E5F2 /* FactListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */; };
+		BDCEE6C3249F926A00CA200B /* ErrorDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C2249F926A00CA200B /* ErrorDescriptor.swift */; };
+		BDCEE6C5249F96BB00CA200B /* UIViewController+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C4249F96BB00CA200B /* UIViewController+Common.swift */; };
+		BDCEE6C7249F97C300CA200B /* Observable+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C6249F97C300CA200B /* Observable+Common.swift */; };
+		BDCEE6C9249F97E300CA200B /* Result+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C8249F97E300CA200B /* Result+Common.swift */; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
@@ -176,6 +180,10 @@
 		BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactListCoordinator.swift; sourceTree = "<group>"; };
 		BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemTableViewCell.swift; sourceTree = "<group>"; };
 		BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemViewModel.swift; sourceTree = "<group>"; };
+		BDCEE6C2249F926A00CA200B /* ErrorDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptor.swift; sourceTree = "<group>"; };
+		BDCEE6C4249F96BB00CA200B /* UIViewController+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Common.swift"; sourceTree = "<group>"; };
+		BDCEE6C6249F97C300CA200B /* Observable+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Common.swift"; sourceTree = "<group>"; };
+		BDCEE6C8249F97E300CA200B /* Result+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Common.swift"; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -242,9 +250,13 @@
 			children = (
 				BDE90514249E550100B2AF28 /* Extensions */,
 				BDB9BA3E249EFC0600B0E5F2 /* Coordinator.swift */,
+				BDCEE6C2249F926A00CA200B /* ErrorDescriptor.swift */,
 				BDB9BA37249EDA2200B0E5F2 /* IdentifiableType.swift */,
-				BDB9BA35249EDA0300B0E5F2 /* UIWindow.swift */,
+				BDCEE6C6249F97C300CA200B /* Observable+Common.swift */,
+				BDCEE6C8249F97E300CA200B /* Result+Common.swift */,
 				BDB9BA39249EDA3C00B0E5F2 /* Storyboard.swift */,
+				BDCEE6C4249F96BB00CA200B /* UIViewController+Common.swift */,
+				BDB9BA35249EDA0300B0E5F2 /* UIWindow.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -641,6 +653,10 @@
 				BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */,
 				BDB9BA36249EDA0300B0E5F2 /* UIWindow.swift in Sources */,
 				BD14F8A4249B7CFB0029B50C /* AppDelegate.swift in Sources */,
+				BDCEE6C5249F96BB00CA200B /* UIViewController+Common.swift in Sources */,
+				BDCEE6C3249F926A00CA200B /* ErrorDescriptor.swift in Sources */,
+				BDCEE6C9249F97E300CA200B /* Result+Common.swift in Sources */,
+				BDCEE6C7249F97C300CA200B /* Observable+Common.swift in Sources */,
 				BD4A264A249EAEF800CC5624 /* FactSearchViewModel.swift in Sources */,
 				BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */,
 				BDB9BA3A249EDA3C00B0E5F2 /* Storyboard.swift in Sources */,
