@@ -13,6 +13,7 @@ import RxSwift
 final class FactListViewController: UIViewController {
     @IBOutlet private weak var searchBarButton: UIBarButtonItem!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var messageLabel: UILabel!
 
     private let bag = DisposeBag()
 
@@ -21,8 +22,13 @@ final class FactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupView()
         bindViewModelInput()
         bindViewModelOutput()
+    }
+
+    private func setupView() {
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 
     private func bindViewModelInput() {
@@ -41,6 +47,17 @@ final class FactListViewController: UIViewController {
             .drive(tableView.rx.items(cellIdentifier: cellType.id, cellType: cellType)) { _, itemViewModel, cell in
                 cell.viewModel = itemViewModel
             }
+            .disposed(by: bag)
+
+        input
+            .isShowingItems
+            .map(!)
+            .drive(tableView.rx.isHidden)
+            .disposed(by: bag)
+
+        input
+            .message
+            .drive(messageLabel.rx.text)
             .disposed(by: bag)
     }
 }

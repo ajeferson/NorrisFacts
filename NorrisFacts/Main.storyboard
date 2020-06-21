@@ -15,6 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlD-lo-GZ7">
+                                <rect key="frame" x="168" y="437.5" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-fH-m8e">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -53,6 +59,8 @@
                             <constraint firstItem="8Ke-fH-m8e" firstAttribute="top" secondItem="Ohb-6B-voi" secondAttribute="top" id="PgR-yM-l2b"/>
                             <constraint firstItem="8Ke-fH-m8e" firstAttribute="leading" secondItem="Ohb-6B-voi" secondAttribute="leading" id="T9t-8D-ycJ"/>
                             <constraint firstAttribute="bottom" secondItem="8Ke-fH-m8e" secondAttribute="bottom" id="isX-Tl-oBz"/>
+                            <constraint firstItem="nlD-lo-GZ7" firstAttribute="centerY" secondItem="tkC-MS-qpD" secondAttribute="centerY" id="t9T-ly-vty"/>
+                            <constraint firstItem="nlD-lo-GZ7" firstAttribute="centerX" secondItem="tkC-MS-qpD" secondAttribute="centerX" id="xny-Fn-8Gs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
                     </view>
@@ -60,6 +68,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="fCf-4W-2x7"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="messageLabel" destination="nlD-lo-GZ7" id="hge-Tj-9zB"/>
                         <outlet property="searchBarButton" destination="fCf-4W-2x7" id="Pei-n3-CUT"/>
                         <outlet property="tableView" destination="8Ke-fH-m8e" id="fNL-57-JXb"/>
                     </connections>
