@@ -18,10 +18,10 @@ protocol FactListViewModelProtocol {
 }
 
 final class FactListViewModel: FactListViewModelProtocol {
-    weak var router: FactListRouter?
+    weak var coordinator: FactListCoordinatorProtocol?
 
-    init(router: FactListRouter) {
-        self.router = router
+    init(coordinator: FactListCoordinatorProtocol) {
+        self.coordinator = coordinator
     }
 
     func bind(input: FactListViewModelInput) -> Disposable {
@@ -29,7 +29,7 @@ final class FactListViewModel: FactListViewModelProtocol {
             .searchBarButtonTap
             .subscribe { [weak self] event in
                 guard case .next = event else { return }
-                self?.router?.presentSearch()
+                self?.coordinator?.startSearch()
             }
     }
 }

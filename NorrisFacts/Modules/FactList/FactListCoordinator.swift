@@ -9,7 +9,11 @@
 import UIKit
 import RxSwift
 
-final class FactListCoordinator: Coordinator {
+protocol FactListCoordinatorProtocol: Coordinator {
+    func startSearch()
+}
+
+final class FactListCoordinator: FactListCoordinatorProtocol {
     private let window: UIWindowProtocol
     private let storyboard: StoryboardProtocol
     private var navigationController: UINavigationController?
@@ -28,20 +32,14 @@ final class FactListCoordinator: Coordinator {
         let navigationController = UINavigationController(rootViewController: viewController)
         self.navigationController = navigationController
 
-        let viewModel = FactListViewModel(router: self)
+        let viewModel = FactListViewModel(coordinator: self)
         viewController.viewModel = viewModel
 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
-}
 
-protocol FactListRouter: AnyObject {
-    func presentSearch()
-}
-
-extension FactListCoordinator: FactListRouter {
-    func presentSearch() {
+    func startSearch() {
         guard let navigationController = navigationController else { return }
 
         searchCoordinator = FactSearchCoordinator(parent: navigationController, storyboard: storyboard) { [weak self] _ in
