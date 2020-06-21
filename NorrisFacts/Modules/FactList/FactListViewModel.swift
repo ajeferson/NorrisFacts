@@ -7,7 +7,29 @@
 //
 
 import Foundation
+import RxSwift
 
-protocol FactListViewModelProtocol {}
+struct FactListViewModelInput {
+    let searchBarButtonTap: Observable<Void>
+}
 
-final class FactListViewModel: FactListViewModelProtocol {}
+protocol FactListViewModelProtocol {
+    func bind(input: FactListViewModelInput) -> Disposable
+}
+
+final class FactListViewModel: FactListViewModelProtocol {
+    weak var router: FactListRouter?
+
+    init(router: FactListRouter) {
+        self.router = router
+    }
+
+    func bind(input: FactListViewModelInput) -> Disposable {
+        input
+            .searchBarButtonTap
+            .subscribe { [weak self] event in
+                guard case .next = event else { return }
+                self?.router?.presentSearch()
+            }
+    }
+}

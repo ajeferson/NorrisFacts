@@ -27,16 +27,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87"/>
+                    <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="fCf-4W-2x7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBarButton" destination="fCf-4W-2x7" id="Pei-n3-CUT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CwN-xJ-VA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20" y="-1221"/>
+            <point key="canvasLocation" x="-758" y="-522"/>
         </scene>
         <!--Search Facts-->
         <scene sceneID="tOP-Hu-y8c">
             <objects>
-                <viewController id="iwW-ug-pMl" customClass="SearchViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FactSearchViewController" modalPresentationStyle="fullScreen" id="iwW-ug-pMl" customClass="FactSearchViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wN5-nW-pAS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,25 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HS9-5q-L4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20.289855072463769" y="-468.08035714285711"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="84m-rH-Nq6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AB2-0y-ENj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eGT-Tl-ktz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="iwW-ug-pMl" kind="relationship" relationship="rootViewController" id="c62-Yz-eIs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i3l-M5-3pa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-930.43478260869574" y="-468.08035714285711"/>
+            <point key="canvasLocation" x="-20" y="-522"/>
         </scene>
     </scenes>
 </document>

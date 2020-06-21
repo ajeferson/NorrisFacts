@@ -15,6 +15,8 @@ protocol Coordinator {
 final class FactListCoordinator: Coordinator {
     private let window: UIWindowProtocol
     private let storyboard: StoryboardProtocol
+    private var navigationController: UINavigationController?
+    private var searchCoordinator: FactSearchCoordinator?
 
     init(window: UIWindowProtocol, storyboard: StoryboardProtocol) {
         self.window = window
@@ -27,10 +29,24 @@ final class FactListCoordinator: Coordinator {
         }
 
         let navigationController = UINavigationController(rootViewController: viewController)
-        let viewModel = FactListViewModel()
+        self.navigationController = navigationController
+
+        let viewModel = FactListViewModel(router: self)
         viewController.viewModel = viewModel
 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+}
+
+protocol FactListRouter: AnyObject {
+    func presentSearch()
+}
+
+extension FactListCoordinator: FactListRouter {
+    func presentSearch() {
+        guard let navigationController = navigationController else { return }
+        searchCoordinator = FactSearchCoordinator(navigationController: navigationController, storyboard: storyboard)
+        searchCoordinator?.start()
     }
 }

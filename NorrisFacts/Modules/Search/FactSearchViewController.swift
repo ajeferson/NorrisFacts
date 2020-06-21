@@ -13,8 +13,9 @@ import RxSwift
 final class FactSearchViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
 
-    private let viewModel: FactSearchViewModelProtocol = FactSearchViewModel()
-    private var bag = DisposeBag()
+    private let bag = DisposeBag()
+
+    var viewModel: FactSearchViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ final class FactSearchViewController: UIViewController {
             searchText: searchBar.rx.text.asObservable()
         )
 
-        viewModel
+        viewModel?
             .bind(input: input)
             .disposed(by: bag)
     }
