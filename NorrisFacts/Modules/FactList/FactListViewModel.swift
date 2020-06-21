@@ -24,7 +24,7 @@ protocol FactListViewModelProtocol {
     var output: FactListViewModelOutput { get }
 
     func bind(input: FactListViewModelInput) -> Disposable
-    func update(searchResults: [Fact])
+    func update(searchResult: SearchResult)
 }
 
 final class FactListViewModel: FactListViewModelProtocol {
@@ -34,7 +34,7 @@ final class FactListViewModel: FactListViewModelProtocol {
     private let message = PublishSubject<String>()
 
     private enum Constants {
-        static let emptySearchResults = "No results"
+        static let emptySearchResult = "No results"
     }
 
     var output: FactListViewModelOutput {
@@ -60,12 +60,16 @@ final class FactListViewModel: FactListViewModelProtocol {
             }
     }
 
-    func update(searchResults: [Fact]) {
-        if searchResults.isEmpty {
-            message.onNext(Constants.emptySearchResults)
+    func update(searchResult: SearchResult) {
+        guard case .success(let facts) = searchResult else {
+            return
         }
 
-        let itemViewModels = searchResults.map { fact in
+        if facts.isEmpty {
+            message.onNext(Constants.emptySearchResult)
+        }
+
+        let itemViewModels = facts.map { fact in
             FactListItemViewModel(value: fact.value)
         }
         itemsSubject.onNext(itemViewModels)

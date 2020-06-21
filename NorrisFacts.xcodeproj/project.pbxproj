@@ -69,6 +69,7 @@
 		BDCEE6C5249F96BB00CA200B /* UIViewController+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C4249F96BB00CA200B /* UIViewController+Common.swift */; };
 		BDCEE6C7249F97C300CA200B /* Observable+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C6249F97C300CA200B /* Observable+Common.swift */; };
 		BDCEE6C9249F97E300CA200B /* Result+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C8249F97E300CA200B /* Result+Common.swift */; };
+		BDCEE6CB249FD1AF00CA200B /* MockFactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6CA249FD1AF00CA200B /* MockFactsProvider.swift */; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
@@ -184,6 +185,7 @@
 		BDCEE6C4249F96BB00CA200B /* UIViewController+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Common.swift"; sourceTree = "<group>"; };
 		BDCEE6C6249F97C300CA200B /* Observable+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Common.swift"; sourceTree = "<group>"; };
 		BDCEE6C8249F97E300CA200B /* Result+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Common.swift"; sourceTree = "<group>"; };
+		BDCEE6CA249FD1AF00CA200B /* MockFactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactsProvider.swift; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 			children = (
 				BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */,
 				BDB9BA44249F046300B0E5F2 /* MockFactSearchCoordinator.swift */,
+				BDCEE6CA249FD1AF00CA200B /* MockFactsProvider.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				BD7BBBA9249EA18200F1F2D8 /* StubResponse.swift in Sources */,
 				BDB9BA49249F067300B0E5F2 /* MockFactListCoordinator.swift in Sources */,
 				BDB9BA42249EFEAC00B0E5F2 /* FactSearchViewModelTests.swift in Sources */,
+				BDCEE6CB249FD1AF00CA200B /* MockFactsProvider.swift in Sources */,
 				BD7BBBA0249E5D6F00F1F2D8 /* FactsProviderTests.swift in Sources */,
 				BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */,
 			);

@@ -10,6 +10,11 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+enum SearchResult {
+    case cancel
+    case success([Fact])
+}
+
 struct FactSearchViewModelInput {
     let cancelButtonClicked: Observable<Void>
     let searchButtonClicked: Observable<Void>
@@ -29,6 +34,7 @@ protocol FactSearchViewModelProtocol {
 
 final class FactSearchViewModel: FactSearchViewModelProtocol {
     private let factsProvider: FactsProviderProtocol
+    private let scheduler: SchedulerType
     weak var coordinator: FactSearchCoordinatorProtocol?
 
     private let isLoadingSubject = BehaviorRelay(value: false)
@@ -45,9 +51,10 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
         )
     }
 
-    init(coordinator: FactSearchCoordinatorProtocol, factsProvider: FactsProviderProtocol) {
+    init(coordinator: FactSearchCoordinatorProtocol, factsProvider: FactsProviderProtocol, scheduler: SchedulerType) {
         self.coordinator = coordinator
         self.factsProvider = factsProvider
+        self.scheduler = scheduler
     }
 
     func bind(input: FactSearchViewModelInput) -> Disposable {
@@ -61,7 +68,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
         input
             .cancelButtonClicked
             .subscribe(onNext: { [weak self] _ in
-                self?.coordinator?.finish(facts: nil)
+                self?.coordinator?.finish(searchResult: .cancel)
             })
     }
 
@@ -71,7 +78,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             .withLatestFrom(input.searchText)
             .compactMap { $0 }
             .filter { !$0.isEmpty }
-            .debounce(Constants.searchDebounceTime, scheduler: MainScheduler.instance)
+            .debounce(Constants.searchDebounceTime, scheduler: scheduler)
 
         let searchResult = query
             .flatMapLatest { [weak self] query -> Observable<Result<[Fact], Error>> in
@@ -97,7 +104,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             searchResult
                 .compactMap { try? $0.get() }
                 .subscribe(onNext: { [weak self] facts in
-                    self?.coordinator?.finish(facts: facts)
+                    self?.coordinator?.finish(searchResult: .success(facts))
                 }),
 
             // Search error

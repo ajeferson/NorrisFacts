@@ -15,3 +15,5 @@ struct Fact: Decodable {
     let iconUrl: String
     let categories: [String]
 }
+
+extension Fact: Equatable {}

@@ -44,12 +44,9 @@ final class FactListCoordinator: FactListCoordinatorProtocol {
     func startSearch() {
         guard let navigationController = navigationController else { return }
 
-        searchCoordinator = FactSearchCoordinator(parent: navigationController, storyboard: storyboard) { [weak self] results in
+        searchCoordinator = FactSearchCoordinator(parent: navigationController, storyboard: storyboard) { [weak self] result in
             self?.searchCoordinator = nil
-
-            if let searchResults = results {
-                self?.viewModel?.update(searchResults: searchResults)
-            }
+            self?.viewModel?.update(searchResult: result)
         }
         searchCoordinator?.start()
     }
