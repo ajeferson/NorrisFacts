@@ -14,7 +14,46 @@
                     <view key="view" contentMode="scaleToFill" id="tkC-MS-qpD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-fH-m8e">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FactListItemTableViewCell" rowHeight="77" id="81R-Tk-Hsr" customClass="FactListItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="77"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="81R-Tk-Hsr" id="1v4-Oa-Vha">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Freddy has nightmares about Chuck Norris" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGk-28-LSg">
+                                                    <rect key="frame" x="16" y="16" width="382" height="45"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="jGk-28-LSg" secondAttribute="trailing" constant="16" id="Bcg-t3-K30"/>
+                                                <constraint firstAttribute="bottom" secondItem="jGk-28-LSg" secondAttribute="bottom" constant="16" id="evS-wK-l3c"/>
+                                                <constraint firstItem="jGk-28-LSg" firstAttribute="top" secondItem="1v4-Oa-Vha" secondAttribute="top" constant="16" id="oSQ-Nz-Om9"/>
+                                                <constraint firstItem="jGk-28-LSg" firstAttribute="leading" secondItem="1v4-Oa-Vha" secondAttribute="leading" constant="16" id="wVh-uG-v6m"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="valueLabel" destination="jGk-28-LSg" id="h3I-pC-e3F"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ohb-6B-voi" firstAttribute="trailing" secondItem="8Ke-fH-m8e" secondAttribute="trailing" id="Em2-TS-w6q"/>
+                            <constraint firstItem="8Ke-fH-m8e" firstAttribute="top" secondItem="Ohb-6B-voi" secondAttribute="top" id="PgR-yM-l2b"/>
+                            <constraint firstItem="8Ke-fH-m8e" firstAttribute="leading" secondItem="Ohb-6B-voi" secondAttribute="leading" id="T9t-8D-ycJ"/>
+                            <constraint firstAttribute="bottom" secondItem="8Ke-fH-m8e" secondAttribute="bottom" id="isX-Tl-oBz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
                     </view>
                     <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87">
@@ -22,11 +61,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBarButton" destination="fCf-4W-2x7" id="Pei-n3-CUT"/>
+                        <outlet property="tableView" destination="8Ke-fH-m8e" id="fNL-57-JXb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CwN-xJ-VA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-758" y="-522"/>
+            <point key="canvasLocation" x="-759.4202898550725" y="-522.32142857142856"/>
         </scene>
         <!--Search Facts-->
         <scene sceneID="tOP-Hu-y8c">

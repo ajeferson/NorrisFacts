@@ -63,6 +63,8 @@
 		BDB9BA45249F046300B0E5F2 /* MockFactSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA44249F046300B0E5F2 /* MockFactSearchCoordinator.swift */; };
 		BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA46249F04D000B0E5F2 /* FactListViewModelTests.swift */; };
 		BDB9BA49249F067300B0E5F2 /* MockFactListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */; };
+		BDB9BA4B249F1C2100B0E5F2 /* FactListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */; };
+		BDB9BA4E249F1C8400B0E5F2 /* FactListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
@@ -172,6 +174,8 @@
 		BDB9BA44249F046300B0E5F2 /* MockFactSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactSearchCoordinator.swift; sourceTree = "<group>"; };
 		BDB9BA46249F04D000B0E5F2 /* FactListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListViewModelTests.swift; sourceTree = "<group>"; };
 		BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactListCoordinator.swift; sourceTree = "<group>"; };
+		BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemTableViewCell.swift; sourceTree = "<group>"; };
+		BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemViewModel.swift; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB9BA2E249ECE6A00B0E5F2 /* FactList */,
+				BDB9BA4C249F1C4600B0E5F2 /* FactListItem */,
 				BD4A2648249EAEE400CC5624 /* Search */,
 			);
 			path = Modules;
@@ -403,6 +408,15 @@
 				BDB9BA44249F046300B0E5F2 /* MockFactSearchCoordinator.swift */,
 			);
 			path = TestDoubles;
+			sourceTree = "<group>";
+		};
+		BDB9BA4C249F1C4600B0E5F2 /* FactListItem */ = {
+			isa = PBXGroup;
+			children = (
+				BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */,
+				BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */,
+			);
+			path = FactListItem;
 			sourceTree = "<group>";
 		};
 		BDE90513249E545200B2AF28 /* Facts */ = {
@@ -634,12 +648,14 @@
 				BDB9BA38249EDA2200B0E5F2 /* IdentifiableType.swift in Sources */,
 				BDB9BA32249ECEA200B0E5F2 /* FactListViewModel.swift in Sources */,
 				BD5830C8249EAAD3000926B3 /* FactSearchViewController.swift in Sources */,
+				BDB9BA4E249F1C8400B0E5F2 /* FactListItemViewModel.swift in Sources */,
 				BD05AC92249DA83C000F453B /* FactsProvider.swift in Sources */,
 				BDB9BA3F249EFC0600B0E5F2 /* Coordinator.swift in Sources */,
 				BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */,
 				BDB9BA34249ED49F00B0E5F2 /* FactListCoordinator.swift in Sources */,
 				BD05AC9D249DB9A9000F453B /* JSONDecoder+API.swift in Sources */,
 				BD7BBBA7249E98E900F1F2D8 /* HttpStatusCode.swift in Sources */,
+				BDB9BA4B249F1C2100B0E5F2 /* FactListItemTableViewCell.swift in Sources */,
 				BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

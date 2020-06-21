@@ -18,6 +18,7 @@ final class FactListCoordinator: FactListCoordinatorProtocol {
     private let storyboard: StoryboardProtocol
     private var navigationController: UINavigationController?
     private var searchCoordinator: FactSearchCoordinator?
+    private var viewModel: FactListViewModel?
 
     init(window: UIWindowProtocol, storyboard: StoryboardProtocol) {
         self.window = window
@@ -34,6 +35,7 @@ final class FactListCoordinator: FactListCoordinatorProtocol {
 
         let viewModel = FactListViewModel(coordinator: self)
         viewController.viewModel = viewModel
+        self.viewModel = viewModel
 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
@@ -42,8 +44,12 @@ final class FactListCoordinator: FactListCoordinatorProtocol {
     func startSearch() {
         guard let navigationController = navigationController else { return }
 
-        searchCoordinator = FactSearchCoordinator(parent: navigationController, storyboard: storyboard) { [weak self] _ in
+        searchCoordinator = FactSearchCoordinator(parent: navigationController, storyboard: storyboard) { [weak self] results in
             self?.searchCoordinator = nil
+
+            if let searchResults = results {
+                self?.viewModel?.update(searchResults: searchResults)
+            }
         }
         searchCoordinator?.start()
     }

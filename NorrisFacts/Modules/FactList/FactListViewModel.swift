@@ -7,18 +7,31 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 
 struct FactListViewModelInput {
     let searchBarButtonTap: Observable<Void>
 }
 
+struct FactListViewModelOutput {
+    let items: Driver<[FactListItemViewModel]>
+}
+
 protocol FactListViewModelProtocol {
+    var output: FactListViewModelOutput { get }
+
     func bind(input: FactListViewModelInput) -> Disposable
+    func update(searchResults: [Fact])
 }
 
 final class FactListViewModel: FactListViewModelProtocol {
     weak var coordinator: FactListCoordinatorProtocol?
+
+    private let itemsSubject = PublishSubject<[FactListItemViewModel]>()
+    var output: FactListViewModelOutput {
+        .init(items: itemsSubject.asDriver(onErrorJustReturn: []))
+    }
 
     init(coordinator: FactListCoordinatorProtocol) {
         self.coordinator = coordinator
@@ -31,5 +44,12 @@ final class FactListViewModel: FactListViewModelProtocol {
                 guard case .next = event else { return }
                 self?.coordinator?.startSearch()
             }
+    }
+
+    func update(searchResults: [Fact]) {
+        let itemViewModels = searchResults.map { fact in
+            FactListItemViewModel(value: fact.value)
+        }
+        itemsSubject.onNext(itemViewModels)
     }
 }
