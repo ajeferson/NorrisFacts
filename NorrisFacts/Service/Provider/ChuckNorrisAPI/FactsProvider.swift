@@ -11,9 +11,9 @@ import Moya
 import RxMoya
 import RxSwift
 
+// TODO: Rename to FactProvider
 protocol FactsProviderProtocol {
     func search(query: String) -> Single<[Fact]>
-    func fetchCategories() -> Single<[String]>
 }
 
 struct FactsProvider: FactsProviderProtocol {
@@ -26,15 +26,6 @@ struct FactsProvider: FactsProviderProtocol {
             .filterSuccessfulStatusCodes()
             .map(FactListResult.self, using: .default, failsOnEmptyData: true)
             .map { $0.result }
-            .catchErrorReturnAPIError()
-    }
-
-    func fetchCategories() -> Single<[String]> {
-        provider
-            .rx
-            .request(.categories)
-            .filterSuccessfulStatusCodes()
-            .map([String].self)
             .catchErrorReturnAPIError()
     }
 }
