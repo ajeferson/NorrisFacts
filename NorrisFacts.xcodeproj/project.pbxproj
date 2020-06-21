@@ -41,6 +41,8 @@
 		BD355F0E249CEE01008901D4 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD355F0C249CEE01008901D4 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD4A264A249EAEF800CC5624 /* FactSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */; };
 		BD5830C8249EAAD3000926B3 /* FactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */; };
+		BD735CAE249FDE96007F6040 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD735CAD249FDE96007F6040 /* CategoryManager.swift */; };
+		BD735CB2249FE1A6007F6040 /* CategoryCachingWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */; };
 		BD7BBB9D249E5D0A00F1F2D8 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; };
 		BD7BBB9E249E5D1100F1F2D8 /* OHHTTPStubs.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD7BBBA0249E5D6F00F1F2D8 /* FactsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */; };
@@ -164,6 +166,8 @@
 		BD355F0C249CEE01008901D4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSearchViewModel.swift; sourceTree = "<group>"; };
 		BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSearchViewController.swift; sourceTree = "<group>"; };
+		BD735CAD249FDE96007F6040 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCachingWorkflow.swift; sourceTree = "<group>"; };
 		BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsProviderTests.swift; sourceTree = "<group>"; };
 		BD7BBBA1249E602600F1F2D8 /* SearchSuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuccessResponse.json; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 		BD05AC90249DA82C000F453B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				BD735CAC249FDE76007F6040 /* Manager */,
 				BD822FC4249FDD1C00164C0B /* Provider */,
 				BD822FBB249FDC5B00164C0B /* Store */,
 			);
@@ -310,6 +315,7 @@
 				BD14F8AE249B7CFC0029B50C /* LaunchScreen.storyboard */,
 				BDB9BA2C249EB6F600B0E5F2 /* Main.storyboard */,
 				BD14F8B1249B7CFC0029B50C /* Info.plist */,
+				BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */,
 			);
 			path = NorrisFacts;
 			sourceTree = "<group>";
@@ -374,6 +380,14 @@
 				BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		BD735CAC249FDE76007F6040 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BD735CAD249FDE96007F6040 /* CategoryManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		BD7BBBAD249EA34D00F1F2D8 /* IntegrationTests */ = {
@@ -693,6 +707,7 @@
 				BDCEE6C9249F97E300CA200B /* Result+Common.swift in Sources */,
 				BD822FBD249FDC6400164C0B /* CategoryStore.swift in Sources */,
 				BD822FBA249FD3CD00164C0B /* CategoryProvider.swift in Sources */,
+				BD735CAE249FDE96007F6040 /* CategoryManager.swift in Sources */,
 				BD822FC1249FDCAA00164C0B /* RealmStore.swift in Sources */,
 				BDCEE6C7249F97C300CA200B /* Observable+Common.swift in Sources */,
 				BD822FBF249FDC8D00164C0B /* Realm+Rx.swift in Sources */,
@@ -711,6 +726,7 @@
 				BD05AC9D249DB9A9000F453B /* JSONDecoder+API.swift in Sources */,
 				BD7BBBA7249E98E900F1F2D8 /* HttpStatusCode.swift in Sources */,
 				BDB9BA4B249F1C2100B0E5F2 /* FactListItemTableViewCell.swift in Sources */,
+				BD735CB2249FE1A6007F6040 /* CategoryCachingWorkflow.swift in Sources */,
 				BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

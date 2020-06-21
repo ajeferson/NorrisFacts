@@ -9,7 +9,10 @@
 import Foundation
 import RxSwift
 
-protocol CategoryStoreProtocol: RealmStore {}
+protocol CategoryStoreProtocol: RealmStore {
+    func all() -> Single<[Category]>
+    func save(categories: [Category]) -> Completable
+}
 
 final class CategoryStore: CategoryStoreProtocol {
     func all() -> Single<[Category]> {
