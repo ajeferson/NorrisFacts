@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Facts-->
+        <scene sceneID="xSe-7w-Ynv">
+            <objects>
+                <viewController storyboardIdentifier="FactListViewController" id="zuX-bK-I46" customClass="FactListViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tkC-MS-qpD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="fCf-4W-2x7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBarButton" destination="fCf-4W-2x7" id="Pei-n3-CUT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CwN-xJ-VA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-758" y="-522"/>
+        </scene>
+        <!--Search Facts-->
+        <scene sceneID="tOP-Hu-y8c">
+            <objects>
+                <viewController storyboardIdentifier="FactSearchViewController" modalPresentationStyle="fullScreen" id="iwW-ug-pMl" customClass="FactSearchViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wN5-nW-pAS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-vo-asS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yiS-ha-PVB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search Facts" id="APw-IJ-bsC">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ERq-Pm-RMf"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelBarButton" destination="ERq-Pm-RMf" id="jLL-iq-2K9"/>
+                        <outlet property="searchBar" destination="ooK-vo-asS" id="s8a-5P-PAt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HS9-5q-L4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-20" y="-522"/>
+        </scene>
+    </scenes>
+</document>
