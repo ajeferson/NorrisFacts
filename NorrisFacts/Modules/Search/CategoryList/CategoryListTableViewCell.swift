@@ -10,15 +10,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-struct CategoryListViewModelInput {
-    let loadCategories: Observable<Void>
-    let categoryTap: Observable<String>
-}
-
-struct CategoryListViewModelOutput {
-    let categories: Driver<[String]>
-}
-
 final class CategoryListTableViewCell: UITableViewCell {
     @IBOutlet private weak var tagListView: TagListView!
     @IBOutlet private weak var leadingConstraint: NSLayoutConstraint!

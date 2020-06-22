@@ -10,6 +10,15 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+struct CategoryListViewModelInput {
+    let loadCategories: Observable<Void>
+    let categoryTap: Observable<String>
+}
+
+struct CategoryListViewModelOutput {
+    let categories: Driver<[String]>
+}
+
 protocol CategoryListViewModelProtocol {
     var output: CategoryListViewModelOutput { get }
 

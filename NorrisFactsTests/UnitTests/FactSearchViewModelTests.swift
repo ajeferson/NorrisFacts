@@ -12,16 +12,6 @@ import RxSwift
 import RxTest
 @testable import NorrisFacts
 
-final class MockCategoryStore: CategoryStoreProtocol {
-    func all() -> Single<[NorrisFacts.Category]> {
-        Single.just([])
-    }
-
-    func save(categories: [NorrisFacts.Category]) -> Completable {
-        .empty()
-    }
-}
-
 final class FactSearchViewModelTests: QuickSpec {
     override func spec() {
         describe("FactSearchViewModel") {

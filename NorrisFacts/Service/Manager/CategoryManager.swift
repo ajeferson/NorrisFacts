@@ -39,7 +39,7 @@ final class CategoryManager: CategoryManagerProtocol {
                             return .empty()
                         }
                         return self.store.save(categories: categories)
-                }
+                    }
             }
     }
 }
