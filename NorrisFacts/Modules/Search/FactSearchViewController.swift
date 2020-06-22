@@ -30,6 +30,7 @@ final class FactSearchViewController: UIViewController {
 
     private func setupView() {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
     }
 
@@ -73,7 +74,18 @@ final class FactSearchViewController: UIViewController {
     }
 }
 
-extension FactSearchViewController: UITableViewDataSource {
+extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = viewModel?.titleForSectionHeader(at: section) else {
+            return nil
+        }
+        return TitleHeaderView(title: title)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }

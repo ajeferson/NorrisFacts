@@ -32,9 +32,10 @@ protocol FactSearchViewModelProtocol {
     func bind(input: FactSearchViewModelInput) -> Disposable
     func bind(categoryTap: Observable<String>) -> Disposable
     func makeCategoryListViewModel() -> CategoryListViewModelProtocol
+    func titleForSectionHeader(at index: Int) -> String?
 }
 
-final class FactSearchViewModel: FactSearchViewModelProtocol {
+final class FactSearchViewModel {
     weak var coordinator: FactSearchCoordinatorProtocol?
     private let factsProvider: FactsProviderProtocol
     private let categoryStore: CategoryStoreProtocol
@@ -64,21 +65,6 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
         self.factsProvider = factsProvider
         self.categoryStore = categoryStore
         self.scheduler = scheduler
-    }
-
-    func bind(input: FactSearchViewModelInput) -> Disposable {
-        Disposables.create(
-            bindCancel(input),
-            bindSearch(input)
-        )
-    }
-
-    func bind(categoryTap: Observable<String>) -> Disposable {
-        categoryTap.bind(to: querySubject)
-    }
-
-    func makeCategoryListViewModel() -> CategoryListViewModelProtocol {
-        CategoryListViewModel(categoryStore: categoryStore)
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {
@@ -148,6 +134,32 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             return .network
         case .underlying, .unknown, .badRequest, .redirect:
             return .general
+        }
+    }
+}
+
+extension FactSearchViewModel: FactSearchViewModelProtocol {
+    func bind(input: FactSearchViewModelInput) -> Disposable {
+        Disposables.create(
+            bindCancel(input),
+            bindSearch(input)
+        )
+    }
+
+    func bind(categoryTap: Observable<String>) -> Disposable {
+        categoryTap.bind(to: querySubject)
+    }
+
+    func makeCategoryListViewModel() -> CategoryListViewModelProtocol {
+        CategoryListViewModel(categoryStore: categoryStore)
+    }
+
+    func titleForSectionHeader(at index: Int) -> String? {
+        switch index {
+        case 0:
+            return "Suggestions"
+        default:
+            return nil
         }
     }
 }
