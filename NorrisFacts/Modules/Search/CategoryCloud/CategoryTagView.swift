@@ -7,40 +7,54 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class CategoryTagView: UIView {
     private enum Constants {
-        static let fontSize: CGFloat = 17
-        static let horizontalSpacing: CGFloat = 12
-        static let verticalSpacing: CGFloat = 6
+        static let fontSize: CGFloat = 16
+        static let horizontalSpacing: CGFloat = 10
+        static let verticalSpacing: CGFloat = 5
         static let cornerRadius: CGFloat = 3
     }
 
+    private let text: String
+    private lazy var button: UIButton = {
+        let button = UIButton()
+        let attributedTitle = NSAttributedString(string: text, attributes: [
+            .font: UIFont.boldSystemFont(ofSize: Constants.fontSize),
+            .foregroundColor: UIColor.white
+        ])
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    var tap: ControlEvent<Void> {
+        button.rx.tap
+    }
+
     init(text: String) {
+        self.text = text
         super.init(frame: .zero)
-        setup(with: text)
+
+        setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setup(with text: String) {
+    private func setup() {
         backgroundColor = .systemBlue
         translatesAutoresizingMaskIntoConstraints = false
 
-        let label = UILabel()
-        label.text = text
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: Constants.fontSize)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(label)
+        addSubview(button)
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.horizontalSpacing),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.horizontalSpacing),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: Constants.verticalSpacing),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.verticalSpacing)
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.horizontalSpacing),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.horizontalSpacing),
+            button.topAnchor.constraint(equalTo: topAnchor, constant: Constants.verticalSpacing),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.verticalSpacing)
         ])
 
         layer.cornerRadius = Constants.cornerRadius

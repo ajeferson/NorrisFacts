@@ -37,8 +37,7 @@ final class FactSearchViewController: UIViewController {
         let input = FactSearchViewModelInput(
             cancelButtonClicked: cancelBarButton.rx.tap.asObservable(),
             searchButtonClicked: searchBar.rx.searchButtonClicked.asObservable(),
-            searchText: searchBar.rx.text.asObservable(),
-            viewWillAppear: rx.methodInvoked(#selector(viewWillAppear(_:))).map { _ in }
+            searchText: searchBar.rx.text.asObservable()
         )
 
         viewModel?
@@ -72,8 +71,11 @@ extension FactSearchViewController: UITableViewDataSource {
             fatalError("This ought to be impossible")
         }
 
-        if let output = viewModel?.output {
-            cell.setup(with: output.categories)
+        if let viewModel = viewModel {
+            cell.setup()
+            cell.viewModel?
+                .bind(searchViewModel: viewModel)
+                .disposed(by: bag)
         }
 
         return cell

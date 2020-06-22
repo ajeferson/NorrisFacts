@@ -19,19 +19,18 @@ struct FactSearchViewModelInput {
     let cancelButtonClicked: Observable<Void>
     let searchButtonClicked: Observable<Void>
     let searchText: Observable<String?>
-    let viewWillAppear: Observable<Void>
 }
 
 struct FactSearchViewModelOutput {
     let isLoading: Driver<Bool>
     let error: Driver<ErrorDescriptor>
-    let categories: Driver<[String]>
 }
 
 protocol FactSearchViewModelProtocol {
     var output: FactSearchViewModelOutput { get }
 
     func bind(input: FactSearchViewModelInput) -> Disposable
+    func bind(categoryTap: Observable<String>) -> Disposable
 }
 
 final class FactSearchViewModel: FactSearchViewModelProtocol {
@@ -46,14 +45,12 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
 
     private enum Constants {
         static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
-        static let numberOfCategories = 8
     }
 
     var output: FactSearchViewModelOutput {
         .init(
             isLoading: isLoadingSubject.asDriver(),
-            error: errorSubject.asDriver(onErrorJustReturn: .general),
-            categories: categoriesSubject.asDriver(onErrorJustReturn: [])
+            error: errorSubject.asDriver(onErrorJustReturn: .general)
         )
     }
 
@@ -70,24 +67,12 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
     func bind(input: FactSearchViewModelInput) -> Disposable {
         Disposables.create(
             bindCancel(input),
-            bindSearch(input),
-            bindCategories(input)
+            bindSearch(input)
         )
     }
 
-    private func bindCategories(_ input: FactSearchViewModelInput) -> Disposable {
-        input
-            .viewWillAppear
-            .flatMap { [weak self] _ -> Observable<[Category]> in
-                guard let self = self else {
-                    return .empty()
-                }
-                return self.categoryStore.all().asObservable()
-            }
-            .map { $0.map { $0.name.uppercased() } }
-            .map { $0.shuffled() }
-            .map { Array($0.prefix(Constants.numberOfCategories)) }
-            .bind(to: categoriesSubject)
+    func bind(categoryTap: Observable<String>) -> Disposable {
+        categoryTap.subscribe()
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {
@@ -105,6 +90,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             .compactMap { $0 }
             .filter { !$0.isEmpty }
             .debounce(Constants.searchDebounceTime, scheduler: scheduler)
+            .share()
 
         let searchResult = query
             .flatMapLatest { [weak self] query -> Observable<Result<[Fact], Error>> in

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class CategoryCloudView: UIView {
     private let spacing: CGFloat = 10
@@ -42,6 +43,12 @@ final class CategoryCloudView: UIView {
         return horizontalStack
     }
 
+    private let bag = DisposeBag()
+    private let tagTapSubject = PublishSubject<String>()
+    var tagTap: Observable<String> {
+        tagTapSubject
+    }
+
     func addTags(_ tags: [String], width: CGFloat) {
         guard !tagsAdded else {
             return
@@ -71,6 +78,11 @@ final class CategoryCloudView: UIView {
                 horizontalStack.addArrangedSubview(tagView)
                 accumulatedWidth += spacedWidth
             }
+
+            tagView.tap
+                .map { tag }
+                .bind(to: tagTapSubject)
+                .disposed(by: bag)
         }
     }
 }
