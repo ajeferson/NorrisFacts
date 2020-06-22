@@ -1,5 +1,5 @@
 //
-//  CategoryCloudView.swift
+//  TagListView.swift
 //  NorrisFacts
 //
 //  Created by Alan Paiva on 6/21/20.
@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-final class CategoryCloudView: UIView {
+final class TagListView: UIView {
     private let spacing: CGFloat = 10
     private var tagsAdded = false
     private lazy var horizontalStack = makeHorizontalStack()
@@ -59,7 +59,7 @@ final class CategoryCloudView: UIView {
         var accumulatedWidth: CGFloat = 0
 
         tags.forEach { tag in
-            let tagView = CategoryTagView(text: tag)
+            let tagView = TagView(text: tag)
             tagView.layoutIfNeeded()
 
             let tagWidth = tagView.frame.size.width

@@ -31,6 +31,7 @@ protocol FactSearchViewModelProtocol {
 
     func bind(input: FactSearchViewModelInput) -> Disposable
     func bind(categoryTap: Observable<String>) -> Disposable
+    func makeCategoryListViewModel() -> CategoryListViewModelProtocol
 }
 
 final class FactSearchViewModel: FactSearchViewModelProtocol {
@@ -73,6 +74,10 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
 
     func bind(categoryTap: Observable<String>) -> Disposable {
         categoryTap.subscribe()
+    }
+
+    func makeCategoryListViewModel() -> CategoryListViewModelProtocol {
+        CategoryListViewModel(categoryStore: categoryStore)
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {

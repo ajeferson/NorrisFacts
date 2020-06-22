@@ -96,14 +96,14 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCloudTableViewCell" rowHeight="203" id="tHf-xN-7c7" customClass="CategoryCloudTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryListTableViewCell" rowHeight="203" id="tHf-xN-7c7" customClass="CategoryListTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tHf-xN-7c7" id="BKQ-MP-Zk0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-XA-Ni0" customClass="CategoryCloudView" customModule="NorrisFacts" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-XA-Ni0" customClass="TagListView" customModule="NorrisFacts" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="16" width="382" height="171"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
@@ -116,8 +116,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="categoryCloudView" destination="3ig-XA-Ni0" id="V0j-T5-Baa"/>
                                             <outlet property="leadingConstraint" destination="dv4-vy-nCt" id="gaJ-XO-9Cp"/>
+                                            <outlet property="tagListView" destination="3ig-XA-Ni0" id="oYb-YP-iJP"/>
                                             <outlet property="trailingConstraint" destination="aAt-tY-Tfb" id="qSO-KW-blp"/>
                                         </connections>
                                     </tableViewCell>

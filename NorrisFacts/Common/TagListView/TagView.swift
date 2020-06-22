@@ -1,5 +1,5 @@
 //
-//  CategoryTagView.swift
+//  TagView.swift
 //  NorrisFacts
 //
 //  Created by Alan Paiva on 6/21/20.
@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class CategoryTagView: UIView {
+final class TagView: UIView {
     private enum Constants {
         static let fontSize: CGFloat = 16
         static let horizontalSpacing: CGFloat = 10

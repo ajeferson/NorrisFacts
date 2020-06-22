@@ -67,15 +67,16 @@ extension FactSearchViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: CategoryCloudTableViewCell = tableView.dequeueReusableCell(for: indexPath) else {
+        guard let cell: CategoryListTableViewCell = tableView.dequeueReusableCell(for: indexPath) else {
             fatalError("This ought to be impossible")
         }
 
         if let viewModel = viewModel {
-            cell.setup()
-            cell.viewModel?
+            let categoryListViewModel = viewModel.makeCategoryListViewModel()
+            categoryListViewModel
                 .bind(searchViewModel: viewModel)
                 .disposed(by: bag)
+            cell.viewModel = categoryListViewModel
         }
 
         return cell
