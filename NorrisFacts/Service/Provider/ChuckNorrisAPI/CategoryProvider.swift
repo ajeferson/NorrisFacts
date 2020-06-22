@@ -16,7 +16,7 @@ protocol CategoryProviderProtocol {
 }
 
 struct CategoryProvider: CategoryProviderProtocol {
-    private let provider = MoyaProvider<FactsAPI>()
+    private let provider = MoyaProvider<ChuckNorrisAPI>()
 
     func fetchCategories() -> Single<[Category]> {
         provider

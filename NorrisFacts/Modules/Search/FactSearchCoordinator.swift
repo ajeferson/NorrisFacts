@@ -34,10 +34,10 @@ final class FactSearchCoordinator: FactSearchCoordinatorProtocol {
         navigationController.modalPresentationStyle = .fullScreen
         self.navigationController = navigationController
 
-        let factsProvider = FactsProvider()
+        let factProvider = FactProvider()
         let categoryStore = CategoryStore()
         let viewModel = FactSearchViewModel(coordinator: self,
-                                            factsProvider: factsProvider,
+                                            factProvider: factProvider,
                                             categoryStore: categoryStore,
                                             scheduler: MainScheduler.instance)
         viewController.viewModel = viewModel

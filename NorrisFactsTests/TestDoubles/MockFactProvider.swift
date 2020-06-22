@@ -1,5 +1,5 @@
 //
-//  MockFactsProvider.swift
+//  MockFactProvider.swift
 //  NorrisFactsTests
 //
 //  Created by Alan Paiva on 6/21/20.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 @testable import NorrisFacts
 
-final class MockFactsProvider: FactsProviderProtocol {
+final class MockFactProvider: FactProviderProtocol {
     var searchResults = [Fact]()
 
     func search(query: String) -> Single<[Fact]> {

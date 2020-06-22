@@ -1,5 +1,5 @@
 //
-//  FactsProviderTests.swift
+//  FactProviderTests.swift
 //  NorrisFactsTests
 //
 //  Created by Alan Paiva on 6/20/20.
@@ -13,9 +13,9 @@ import RxBlocking
 import RxSwift
 @testable import NorrisFacts
 
-final class FactsProviderTests: QuickSpec {
+final class FactProviderTests: QuickSpec {
     override func spec() {
-        describe("FactsProvider") {
+        describe("FactProvider") {
             afterEach {
                 HTTPStubs.removeAllStubs()
             }
@@ -26,7 +26,7 @@ final class FactsProviderTests: QuickSpec {
                         let query = "north"
                         self.fake(api: .search(query: query), response: .searchSuccess)
 
-                        let provider = FactsProvider()
+                        let provider = FactProvider()
                         let result = provider
                             .search(query: query)
                             .toBlocking()
@@ -70,4 +70,4 @@ final class FactsProviderTests: QuickSpec {
     }
 }
 
-extension FactsProviderTests: ProviderTests {}
+extension FactProviderTests: ProviderTests {}

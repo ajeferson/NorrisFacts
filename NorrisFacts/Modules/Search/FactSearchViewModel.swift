@@ -37,7 +37,7 @@ protocol FactSearchViewModelProtocol {
 
 final class FactSearchViewModel {
     weak var coordinator: FactSearchCoordinatorProtocol?
-    private let factsProvider: FactsProviderProtocol
+    private let factProvider: FactProviderProtocol
     private let categoryStore: CategoryStoreProtocol
     private let scheduler: SchedulerType
 
@@ -58,11 +58,11 @@ final class FactSearchViewModel {
     }
 
     init(coordinator: FactSearchCoordinatorProtocol,
-         factsProvider: FactsProviderProtocol,
+         factProvider: FactProviderProtocol,
          categoryStore: CategoryStoreProtocol,
          scheduler: SchedulerType) {
         self.coordinator = coordinator
-        self.factsProvider = factsProvider
+        self.factProvider = factProvider
         self.categoryStore = categoryStore
         self.scheduler = scheduler
     }
@@ -92,7 +92,7 @@ final class FactSearchViewModel {
                 guard let self = self else {
                     return .empty()
                 }
-                return self.factsProvider
+                return self.factProvider
                     .search(query: query)
                     .asObservable()
                     .mapToResult()

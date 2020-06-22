@@ -26,26 +26,26 @@ final class FactSearchViewModelTests: QuickSpec {
     override func spec() {
         describe("FactSearchViewModel") {
             var coordinator: MockFactSearchCoordinator!
-            var factsProvider: MockFactsProvider!
+            var factProvider: MockFactProvider!
             var categoryStore: MockCategoryStore!
             var scheduler: TestScheduler!
             var viewModel: FactSearchViewModel!
 
             beforeEach {
                 coordinator = MockFactSearchCoordinator()
-                factsProvider = MockFactsProvider()
+                factProvider = MockFactProvider()
                 categoryStore = MockCategoryStore()
                 scheduler = TestScheduler(initialClock: 0)
 
                 viewModel = FactSearchViewModel(coordinator: coordinator,
-                                                factsProvider: factsProvider,
+                                                factProvider: factProvider,
                                                 categoryStore: categoryStore,
                                                 scheduler: scheduler)
             }
 
             afterEach {
                 coordinator = nil
-                factsProvider = nil
+                factProvider = nil
                 categoryStore = nil
                 scheduler = nil
                 viewModel = nil
@@ -79,7 +79,7 @@ final class FactSearchViewModelTests: QuickSpec {
                                     value: "Some cool joke about Chuck Norris",
                                     iconUrl: "https://some-icon.url",
                                     categories: ["political"])
-                    factsProvider.searchResults = [fact]
+                    factProvider.searchResults = [fact]
 
                     let searchText: TestableObservable<String?> = scheduler.createColdObservable([.next(100, "night")])
                     let searchButonTap = scheduler.createColdObservable([.next(150, ())])

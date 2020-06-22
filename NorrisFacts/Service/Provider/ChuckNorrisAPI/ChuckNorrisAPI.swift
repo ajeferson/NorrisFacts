@@ -9,8 +9,7 @@
 import Foundation
 import Moya
 
-// TODO: Rename to chuck norris api
-enum FactsAPI: TargetType {
+enum ChuckNorrisAPI: TargetType {
     case categories
     case search(query: String)
 
