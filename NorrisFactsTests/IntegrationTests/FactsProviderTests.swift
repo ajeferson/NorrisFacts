@@ -20,74 +20,6 @@ final class FactsProviderTests: QuickSpec {
                 HTTPStubs.removeAllStubs()
             }
 
-            describe("categories") {
-                context("request fails") {
-                    func verify(statusCode: Int, returnsError expectedError: APIError) {
-                        self.fake(api: .categories, statusCode: statusCode)
-
-                        let provider = FactsProvider()
-                        let result = provider
-                            .fetchCategories()
-                            .toBlocking()
-                            .materialize()
-
-                        guard case let .failed(elements, error) = result else {
-                            fail("Request should fail")
-                            return
-                        }
-
-                        expect(elements).to(haveCount(0))
-
-                        guard let apiError = error as? APIError, expectedError == apiError else {
-                            fail("Error is not expected: \(error)")
-                            return
-                        }
-                    }
-
-                    context("redirect") {
-                        it("returns .redirect") {
-                            verify(statusCode: HttpStatusCode.redirect, returnsError: .redirect)
-                        }
-                    }
-
-                    context("bad request") {
-                        it("returns .badReques") {
-                            verify(statusCode: HttpStatusCode.badRequest, returnsError: .badRequest)
-                        }
-                    }
-
-                    context("internal server error") {
-                        it("returns .serverError") {
-                            verify(statusCode: HttpStatusCode.serverError, returnsError: .serverError)
-                        }
-                    }
-
-                    context("down network") {
-                        it("returns .network error") {
-                            self.fakeDownNetwork(for: .categories)
-
-                            let provider = FactsProvider()
-                            let result = provider
-                                .fetchCategories()
-                                .toBlocking()
-                                .materialize()
-
-                            guard case let .failed(elements, error) = result else {
-                                fail("Request should fail")
-                                return
-                            }
-
-                            expect(elements).to(haveCount(0))
-
-                            guard case APIError.network = error else {
-                                fail("Error is not expected: \(error)")
-                                return
-                            }
-                        }
-                    }
-                }
-            }
-
             describe("serch") {
                 context("request succeeds") {
                     it("returns parsed list of facts") {
@@ -138,36 +70,4 @@ final class FactsProviderTests: QuickSpec {
     }
 }
 
-// MARK: - Helper Methods
-
-extension FactsProviderTests {
-    private func condition(for api: FactsAPI) -> HTTPStubsTestBlock {
-        let url = api.baseURL.appendingPathComponent(api.path)
-        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-        return isHost(components.host!) && isPath(components.path)
-    }
-
-    private func fake(api: FactsAPI, response: StubResponse? = nil, statusCode: Int = HttpStatusCode.success) {
-        stub(condition: condition(for: api)) { _ in
-            switch response {
-            case .some(let response):
-                return HTTPStubsResponse(
-                    fileAtPath: OHPathForFile(response.filename, type(of: self))!,
-                    statusCode: Int32(statusCode),
-                    headers: [:]
-                )
-            case .none:
-                return HTTPStubsResponse(data: Data(),
-                                         statusCode: Int32(statusCode),
-                                         headers: nil)
-            }
-        }
-    }
-
-    private func fakeDownNetwork(for api: FactsAPI) {
-        stub(condition: condition(for: api)) { _ in
-            let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet)
-            return HTTPStubsResponse(error: error)
-        }
-    }
-}
+extension FactsProviderTests: ProviderTests {}

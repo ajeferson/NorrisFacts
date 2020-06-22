@@ -87,6 +87,8 @@
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
 		BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */; };
 		BDFC71B724A07A9B00D3A723 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71B624A07A9B00D3A723 /* TitleHeaderView.swift */; };
+		BDFC71B924A07F0200D3A723 /* CategoryProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */; };
+		BDFC71BB24A07F8200D3A723 /* ProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +218,8 @@
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+API.swift"; sourceTree = "<group>"; };
 		BDFC71B624A07A9B00D3A723 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProviderTests.swift; sourceTree = "<group>"; };
+		BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,7 +412,9 @@
 		BD7BBBAD249EA34D00F1F2D8 /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */,
 				BD7BBB9F249E5D6F00F1F2D8 /* FactsProviderTests.swift */,
+				BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -785,9 +791,11 @@
 			files = (
 				BDB9BA45249F046300B0E5F2 /* MockFactSearchCoordinator.swift in Sources */,
 				BD7BBBA9249EA18200F1F2D8 /* StubResponse.swift in Sources */,
+				BDFC71B924A07F0200D3A723 /* CategoryProviderTests.swift in Sources */,
 				BDB9BA49249F067300B0E5F2 /* MockFactListCoordinator.swift in Sources */,
 				BDB9BA42249EFEAC00B0E5F2 /* FactSearchViewModelTests.swift in Sources */,
 				BDCEE6CB249FD1AF00CA200B /* MockFactsProvider.swift in Sources */,
+				BDFC71BB24A07F8200D3A723 /* ProviderTests.swift in Sources */,
 				BD7BBBA0249E5D6F00F1F2D8 /* FactsProviderTests.swift in Sources */,
 				BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */,
 			);

@@ -12,26 +12,41 @@ import RxSwift
 import RxTest
 @testable import NorrisFacts
 
+final class MockCategoryStore: CategoryStoreProtocol {
+    func all() -> Single<[NorrisFacts.Category]> {
+        Single.just([])
+    }
+
+    func save(categories: [NorrisFacts.Category]) -> Completable {
+        .empty()
+    }
+}
+
 final class FactSearchViewModelTests: QuickSpec {
     override func spec() {
         describe("FactSearchViewModel") {
             var coordinator: MockFactSearchCoordinator!
             var factsProvider: MockFactsProvider!
-            var viewModel: FactSearchViewModel!
+            var categoryStore: MockCategoryStore!
             var scheduler: TestScheduler!
+            var viewModel: FactSearchViewModel!
 
             beforeEach {
                 coordinator = MockFactSearchCoordinator()
                 factsProvider = MockFactsProvider()
+                categoryStore = MockCategoryStore()
                 scheduler = TestScheduler(initialClock: 0)
+
                 viewModel = FactSearchViewModel(coordinator: coordinator,
                                                 factsProvider: factsProvider,
+                                                categoryStore: categoryStore,
                                                 scheduler: scheduler)
             }
 
             afterEach {
                 coordinator = nil
                 factsProvider = nil
+                categoryStore = nil
                 scheduler = nil
                 viewModel = nil
             }
