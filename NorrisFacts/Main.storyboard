@@ -85,19 +85,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-vo-asS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" placeholder="Enter your search term" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-vo-asS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </searchBar>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-dj-96v">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IP8-Rn-xHi">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCloudTableViewCell" rowHeight="203" id="tHf-xN-7c7" customClass="CategoryCloudTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="203"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tHf-xN-7c7" id="BKQ-MP-Zk0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-XA-Ni0" customClass="CategoryCloudView" customModule="NorrisFacts" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="382" height="171"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3ig-XA-Ni0" firstAttribute="top" secondItem="BKQ-MP-Zk0" secondAttribute="top" constant="16" id="UHR-FX-HwJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="3ig-XA-Ni0" secondAttribute="trailing" constant="16" id="aAt-tY-Tfb"/>
+                                                <constraint firstItem="3ig-XA-Ni0" firstAttribute="leading" secondItem="BKQ-MP-Zk0" secondAttribute="leading" constant="16" id="dv4-vy-nCt"/>
+                                                <constraint firstAttribute="bottom" secondItem="3ig-XA-Ni0" secondAttribute="bottom" constant="16" id="rW5-Tv-99N"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryCloudView" destination="3ig-XA-Ni0" id="V0j-T5-Baa"/>
+                                            <outlet property="leadingConstraint" destination="dv4-vy-nCt" id="gaJ-XO-9Cp"/>
+                                            <outlet property="trailingConstraint" destination="aAt-tY-Tfb" id="qSO-KW-blp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="IP8-Rn-xHi" secondAttribute="bottom" id="EA7-uv-Gem"/>
+                            <constraint firstItem="IP8-Rn-xHi" firstAttribute="top" secondItem="ooK-vo-asS" secondAttribute="bottom" id="HqX-wZ-bxw"/>
+                            <constraint firstItem="ooK-vo-asS" firstAttribute="leading" secondItem="yiS-ha-PVB" secondAttribute="leading" id="Iz8-wQ-Inx"/>
+                            <constraint firstItem="yiS-ha-PVB" firstAttribute="trailing" secondItem="IP8-Rn-xHi" secondAttribute="trailing" id="KHN-SA-1lN"/>
+                            <constraint firstItem="ooK-vo-asS" firstAttribute="trailing" secondItem="yiS-ha-PVB" secondAttribute="trailing" id="LGh-1I-0FI"/>
                             <constraint firstItem="2Tu-dj-96v" firstAttribute="centerX" secondItem="wN5-nW-pAS" secondAttribute="centerX" id="VZF-kg-A6W"/>
+                            <constraint firstItem="ooK-vo-asS" firstAttribute="trailing" secondItem="yiS-ha-PVB" secondAttribute="trailing" id="ZzT-um-B8U"/>
+                            <constraint firstItem="ooK-vo-asS" firstAttribute="top" secondItem="yiS-ha-PVB" secondAttribute="top" id="ezG-kb-LA1"/>
+                            <constraint firstItem="IP8-Rn-xHi" firstAttribute="leading" secondItem="yiS-ha-PVB" secondAttribute="leading" id="o3L-U2-Ndy"/>
+                            <constraint firstItem="ooK-vo-asS" firstAttribute="leading" secondItem="yiS-ha-PVB" secondAttribute="leading" id="odG-Q4-9XJ"/>
                             <constraint firstItem="2Tu-dj-96v" firstAttribute="centerY" secondItem="wN5-nW-pAS" secondAttribute="centerY" id="olO-Ag-82m"/>
+                            <constraint firstItem="ooK-vo-asS" firstAttribute="top" secondItem="yiS-ha-PVB" secondAttribute="top" id="uF5-Q3-pYs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yiS-ha-PVB"/>
                     </view>
@@ -108,11 +148,12 @@
                         <outlet property="activityIndicator" destination="2Tu-dj-96v" id="Rv9-aZ-tiL"/>
                         <outlet property="cancelBarButton" destination="ERq-Pm-RMf" id="jLL-iq-2K9"/>
                         <outlet property="searchBar" destination="ooK-vo-asS" id="s8a-5P-PAt"/>
+                        <outlet property="tableView" destination="IP8-Rn-xHi" id="rIk-LT-XgF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HS9-5q-L4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20" y="-522"/>
+            <point key="canvasLocation" x="-20.289855072463769" y="-522.32142857142856"/>
         </scene>
     </scenes>
 </document>

@@ -19,11 +19,13 @@ struct FactSearchViewModelInput {
     let cancelButtonClicked: Observable<Void>
     let searchButtonClicked: Observable<Void>
     let searchText: Observable<String?>
+    let viewWillAppear: Observable<Void>
 }
 
 struct FactSearchViewModelOutput {
     let isLoading: Driver<Bool>
     let error: Driver<ErrorDescriptor>
+    let categories: Driver<[String]>
 }
 
 protocol FactSearchViewModelProtocol {
@@ -33,35 +35,59 @@ protocol FactSearchViewModelProtocol {
 }
 
 final class FactSearchViewModel: FactSearchViewModelProtocol {
-    private let factsProvider: FactsProviderProtocol
-    private let scheduler: SchedulerType
     weak var coordinator: FactSearchCoordinatorProtocol?
+    private let factsProvider: FactsProviderProtocol
+    private let categoryStore: CategoryStoreProtocol
+    private let scheduler: SchedulerType
 
     private let isLoadingSubject = BehaviorRelay(value: false)
+    private let categoriesSubject = BehaviorSubject(value: [String]())
     private let errorSubject = PublishSubject<ErrorDescriptor>()
 
     private enum Constants {
         static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
+        static let numberOfCategories = 8
     }
 
     var output: FactSearchViewModelOutput {
         .init(
             isLoading: isLoadingSubject.asDriver(),
-            error: errorSubject.asDriver(onErrorJustReturn: .general)
+            error: errorSubject.asDriver(onErrorJustReturn: .general),
+            categories: categoriesSubject.asDriver(onErrorJustReturn: [])
         )
     }
 
-    init(coordinator: FactSearchCoordinatorProtocol, factsProvider: FactsProviderProtocol, scheduler: SchedulerType) {
+    init(coordinator: FactSearchCoordinatorProtocol,
+         factsProvider: FactsProviderProtocol,
+         categoryStore: CategoryStoreProtocol,
+         scheduler: SchedulerType) {
         self.coordinator = coordinator
         self.factsProvider = factsProvider
+        self.categoryStore = categoryStore
         self.scheduler = scheduler
     }
 
     func bind(input: FactSearchViewModelInput) -> Disposable {
         Disposables.create(
             bindCancel(input),
-            bindSearch(input)
+            bindSearch(input),
+            bindCategories(input)
         )
+    }
+
+    private func bindCategories(_ input: FactSearchViewModelInput) -> Disposable {
+        input
+            .viewWillAppear
+            .flatMap { [weak self] _ -> Observable<[Category]> in
+                guard let self = self else {
+                    return .empty()
+                }
+                return self.categoryStore.all().asObservable()
+            }
+            .map { $0.map { $0.name.uppercased() } }
+            .map { $0.shuffled() }
+            .map { Array($0.prefix(Constants.numberOfCategories)) }
+            .bind(to: categoriesSubject)
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {

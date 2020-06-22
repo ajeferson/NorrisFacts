@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 
 final class FactSearchViewController: UIViewController {
+    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -22,15 +23,22 @@ final class FactSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupView()
         bindViewModelInput()
         bindViewModelOutput()
+    }
+
+    private func setupView() {
+        tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
     private func bindViewModelInput() {
         let input = FactSearchViewModelInput(
             cancelButtonClicked: cancelBarButton.rx.tap.asObservable(),
             searchButtonClicked: searchBar.rx.searchButtonClicked.asObservable(),
-            searchText: searchBar.rx.text.asObservable()
+            searchText: searchBar.rx.text.asObservable(),
+            viewWillAppear: rx.methodInvoked(#selector(viewWillAppear(_:))).map { _ in }
         )
 
         viewModel?
@@ -51,12 +59,23 @@ final class FactSearchViewController: UIViewController {
             .map(!)
             .drive(activityIndicator.rx.isHidden)
             .disposed(by: bag)
+    }
+}
 
-        output
-            .error
-            .drive(onNext: { [weak self] error in
-                self?.alert(error: error)
-            })
-            .disposed(by: bag)
+extension FactSearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell: CategoryCloudTableViewCell = tableView.dequeueReusableCell(for: indexPath) else {
+            fatalError("This ought to be impossible")
+        }
+
+        if let output = viewModel?.output {
+            cell.setup(with: output.categories)
+        }
+
+        return cell
     }
 }
