@@ -58,6 +58,18 @@ final class FactSearchViewController: UIViewController {
             .map(!)
             .drive(activityIndicator.rx.isHidden)
             .disposed(by: bag)
+
+        output
+            .error
+            .drive(onNext: { [weak self] error in
+                self?.alert(error: error)
+            })
+            .disposed(by: bag)
+
+        output
+            .isLoading
+            .drive(tableView.rx.isHidden)
+            .disposed(by: bag)
     }
 }
 

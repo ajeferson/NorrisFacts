@@ -43,6 +43,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
     private let isLoadingSubject = BehaviorRelay(value: false)
     private let categoriesSubject = BehaviorSubject(value: [String]())
     private let errorSubject = PublishSubject<ErrorDescriptor>()
+    private let querySubject = PublishSubject<String>()
 
     private enum Constants {
         static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
@@ -73,7 +74,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
     }
 
     func bind(categoryTap: Observable<String>) -> Disposable {
-        categoryTap.subscribe()
+        categoryTap.bind(to: querySubject)
     }
 
     func makeCategoryListViewModel() -> CategoryListViewModelProtocol {
@@ -89,12 +90,15 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
     }
 
     private func bindSearch(_ input: FactSearchViewModelInput) -> Disposable {
-        let query = input
+        let textQuery = input
             .searchButtonClicked
             .withLatestFrom(input.searchText)
             .compactMap { $0 }
             .filter { !$0.isEmpty }
             .debounce(Constants.searchDebounceTime, scheduler: scheduler)
+
+        let query = Observable
+            .merge(textQuery, querySubject)
             .share()
 
         let searchResult = query
@@ -113,7 +117,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             // Loading state
             Observable.merge(
                 query.map { _ in true },
-                searchResult.map { _ in false }
+                searchResult.compactMap { $0.getError() }.map { _ in false }
             )
             .bind(to: isLoadingSubject),
 
