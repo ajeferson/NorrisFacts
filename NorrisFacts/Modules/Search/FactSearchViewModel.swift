@@ -30,15 +30,21 @@ protocol FactSearchViewModelProtocol {
     var output: FactSearchViewModelOutput { get }
 
     func bind(input: FactSearchViewModelInput) -> Disposable
+    func bind(categoryTap: Observable<String>) -> Disposable
+    func makeCategoryListViewModel() -> CategoryListViewModelProtocol
+    func titleForSectionHeader(at index: Int) -> String?
 }
 
-final class FactSearchViewModel: FactSearchViewModelProtocol {
-    private let factsProvider: FactsProviderProtocol
-    private let scheduler: SchedulerType
+final class FactSearchViewModel {
     weak var coordinator: FactSearchCoordinatorProtocol?
+    private let factProvider: FactProviderProtocol
+    private let categoryStore: CategoryStoreProtocol
+    private let scheduler: SchedulerType
 
     private let isLoadingSubject = BehaviorRelay(value: false)
+    private let categoriesSubject = BehaviorSubject(value: [String]())
     private let errorSubject = PublishSubject<ErrorDescriptor>()
+    private let querySubject = PublishSubject<String>()
 
     private enum Constants {
         static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
@@ -51,17 +57,14 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
         )
     }
 
-    init(coordinator: FactSearchCoordinatorProtocol, factsProvider: FactsProviderProtocol, scheduler: SchedulerType) {
+    init(coordinator: FactSearchCoordinatorProtocol,
+         factProvider: FactProviderProtocol,
+         categoryStore: CategoryStoreProtocol,
+         scheduler: SchedulerType) {
         self.coordinator = coordinator
-        self.factsProvider = factsProvider
+        self.factProvider = factProvider
+        self.categoryStore = categoryStore
         self.scheduler = scheduler
-    }
-
-    func bind(input: FactSearchViewModelInput) -> Disposable {
-        Disposables.create(
-            bindCancel(input),
-            bindSearch(input)
-        )
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {
@@ -73,19 +76,23 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
     }
 
     private func bindSearch(_ input: FactSearchViewModelInput) -> Disposable {
-        let query = input
+        let textQuery = input
             .searchButtonClicked
             .withLatestFrom(input.searchText)
             .compactMap { $0 }
             .filter { !$0.isEmpty }
             .debounce(Constants.searchDebounceTime, scheduler: scheduler)
 
+        let query = Observable
+            .merge(textQuery, querySubject)
+            .share()
+
         let searchResult = query
             .flatMapLatest { [weak self] query -> Observable<Result<[Fact], Error>> in
                 guard let self = self else {
                     return .empty()
                 }
-                return self.factsProvider
+                return self.factProvider
                     .search(query: query)
                     .asObservable()
                     .mapToResult()
@@ -96,7 +103,7 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             // Loading state
             Observable.merge(
                 query.map { _ in true },
-                searchResult.map { _ in false }
+                searchResult.compactMap { $0.getError() }.map { _ in false }
             )
             .bind(to: isLoadingSubject),
 
@@ -127,6 +134,32 @@ final class FactSearchViewModel: FactSearchViewModelProtocol {
             return .network
         case .underlying, .unknown, .badRequest, .redirect:
             return .general
+        }
+    }
+}
+
+extension FactSearchViewModel: FactSearchViewModelProtocol {
+    func bind(input: FactSearchViewModelInput) -> Disposable {
+        Disposables.create(
+            bindCancel(input),
+            bindSearch(input)
+        )
+    }
+
+    func bind(categoryTap: Observable<String>) -> Disposable {
+        categoryTap.bind(to: querySubject)
+    }
+
+    func makeCategoryListViewModel() -> CategoryListViewModelProtocol {
+        CategoryListViewModel(categoryStore: categoryStore)
+    }
+
+    func titleForSectionHeader(at index: Int) -> String? {
+        switch index {
+        case 0:
+            return "Suggestions"
+        default:
+            return nil
         }
     }
 }

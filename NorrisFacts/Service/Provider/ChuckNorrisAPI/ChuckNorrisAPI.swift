@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-enum FactsAPI: TargetType {
+enum ChuckNorrisAPI: TargetType {
     case categories
     case search(query: String)
 

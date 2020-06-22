@@ -1,5 +1,5 @@
 //
-//  FactsProvider.swift
+//  FactProvider.swift
 //  NorrisFacts
 //
 //  Created by Alan Paiva on 6/19/20.
@@ -11,13 +11,12 @@ import Moya
 import RxMoya
 import RxSwift
 
-protocol FactsProviderProtocol {
+protocol FactProviderProtocol {
     func search(query: String) -> Single<[Fact]>
-    func fetchCategories() -> Single<[String]>
 }
 
-struct FactsProvider: FactsProviderProtocol {
-    private let provider = MoyaProvider<FactsAPI>()
+struct FactProvider: FactProviderProtocol {
+    private let provider = MoyaProvider<ChuckNorrisAPI>()
 
     func search(query: String) -> Single<[Fact]> {
         provider
@@ -28,18 +27,9 @@ struct FactsProvider: FactsProviderProtocol {
             .map { $0.result }
             .catchErrorReturnAPIError()
     }
-
-    func fetchCategories() -> Single<[String]> {
-        provider
-            .rx
-            .request(.categories)
-            .filterSuccessfulStatusCodes()
-            .map([String].self)
-            .catchErrorReturnAPIError()
-    }
 }
 
-private extension FactsProvider {
+private extension FactProvider {
     struct FactListResult: Decodable {
         let total: Int
         let result: [Fact]
