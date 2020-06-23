@@ -10,7 +10,10 @@ import Foundation
 import RealmSwift
 import RxSwift
 
-protocol QueryStoreProtocol: RealmStore {}
+protocol QueryStoreProtocol: RealmStore {
+    func all(limit: Int) -> Single<[Query]>
+    func save(query: Query) -> Completable
+}
 
 final class QueryStore: QueryStoreProtocol {
     func all(limit: Int) -> Single<[Query]> {

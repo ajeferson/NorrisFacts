@@ -40,6 +40,7 @@ final class FactSearchViewModel {
     weak var coordinator: FactSearchCoordinatorProtocol?
     private let factProvider: FactProviderProtocol
     private let categoryStore: CategoryStoreProtocol
+    private let queryStore: QueryStoreProtocol
     private let scheduler: SchedulerType
 
     private let isLoadingSubject = BehaviorRelay(value: false)
@@ -61,10 +62,12 @@ final class FactSearchViewModel {
     init(coordinator: FactSearchCoordinatorProtocol,
          factProvider: FactProviderProtocol,
          categoryStore: CategoryStoreProtocol,
+         queryStore: QueryStoreProtocol,
          scheduler: SchedulerType) {
         self.coordinator = coordinator
         self.factProvider = factProvider
         self.categoryStore = categoryStore
+        self.queryStore = queryStore
         self.scheduler = scheduler
     }
 
@@ -119,7 +122,19 @@ final class FactSearchViewModel {
             searchResult
                 .compactMap { $0.getError() }
                 .map(map(error:))
-                .bind(to: errorSubject)
+                .bind(to: errorSubject),
+
+            searchResult
+                .withLatestFrom(textQuery)
+                .flatMap { [weak self] query -> Completable in
+                    guard let self = self else {
+                        return .empty()
+                    }
+
+                    let queryObject = Query(name: query)
+                    return self.queryStore.save(query: queryObject)
+                }
+                .subscribe()
         )
     }
 
