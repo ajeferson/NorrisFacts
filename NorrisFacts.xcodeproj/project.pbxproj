@@ -20,7 +20,6 @@
 		BD0C4907249CF3BD0090B7CD /* RxTest.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C48FF249CF3A90090B7CD /* RxTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD14F8A4249B7CFB0029B50C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14F8A3249B7CFB0029B50C /* AppDelegate.swift */; };
 		BD14F8A6249B7CFB0029B50C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14F8A5249B7CFB0029B50C /* SceneDelegate.swift */; };
-		BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14F8A7249B7CFB0029B50C /* ContentView.swift */; };
 		BD14F8AA249B7CFC0029B50C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD14F8A9249B7CFC0029B50C /* Assets.xcassets */; };
 		BD14F8B0249B7CFC0029B50C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD14F8AE249B7CFC0029B50C /* LaunchScreen.storyboard */; };
 		BD14F8C6249B7CFD0029B50C /* NorrisFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14F8C5249B7CFD0029B50C /* NorrisFactsUITests.swift */; };
@@ -163,7 +162,6 @@
 		BD14F8A0249B7CFB0029B50C /* NorrisFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NorrisFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD14F8A3249B7CFB0029B50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD14F8A5249B7CFB0029B50C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BD14F8A7249B7CFB0029B50C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD14F8A9249B7CFC0029B50C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD14F8AF249B7CFC0029B50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD14F8B1249B7CFC0029B50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -280,6 +278,7 @@
 				BD735CAC249FDE76007F6040 /* Manager */,
 				BD822FC4249FDD1C00164C0B /* Provider */,
 				BD822FBB249FDC5B00164C0B /* Store */,
+				BD750BEB24A254CA0036FED5 /* Workflow */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -341,14 +340,8 @@
 				BD05AC90249DA82C000F453B /* Service */,
 				BD4A2647249EAEDE00CC5624 /* Modules */,
 				BD05AC9B249DB985000F453B /* Common */,
-				BD14F8A3249B7CFB0029B50C /* AppDelegate.swift */,
-				BD14F8A5249B7CFB0029B50C /* SceneDelegate.swift */,
-				BD14F8A7249B7CFB0029B50C /* ContentView.swift */,
-				BD14F8A9249B7CFC0029B50C /* Assets.xcassets */,
-				BD14F8AE249B7CFC0029B50C /* LaunchScreen.storyboard */,
-				BDB9BA2C249EB6F600B0E5F2 /* Main.storyboard */,
-				BD14F8B1249B7CFC0029B50C /* Info.plist */,
-				BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */,
+				BD750BEC24A254E10036FED5 /* Support */,
+				BD750BED24A2552F0036FED5 /* Storyboards */,
 			);
 			path = NorrisFacts;
 			sourceTree = "<group>";
@@ -398,8 +391,7 @@
 		BD4A2647249EAEDE00CC5624 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				BDB9BA2E249ECE6A00B0E5F2 /* FactList */,
-				BDB9BA4C249F1C4600B0E5F2 /* FactListItem */,
+				BDB9BA2E249ECE6A00B0E5F2 /* List */,
 				BD4A2648249EAEE400CC5624 /* Search */,
 			);
 			path = Modules;
@@ -433,6 +425,34 @@
 				BD735CAD249FDE96007F6040 /* CategoryManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		BD750BEB24A254CA0036FED5 /* Workflow */ = {
+			isa = PBXGroup;
+			children = (
+				BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */,
+			);
+			path = Workflow;
+			sourceTree = "<group>";
+		};
+		BD750BEC24A254E10036FED5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				BD14F8A3249B7CFB0029B50C /* AppDelegate.swift */,
+				BD14F8A5249B7CFB0029B50C /* SceneDelegate.swift */,
+				BD14F8B1249B7CFC0029B50C /* Info.plist */,
+				BD14F8A9249B7CFC0029B50C /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		BD750BED24A2552F0036FED5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BD14F8AE249B7CFC0029B50C /* LaunchScreen.storyboard */,
+				BDB9BA2C249EB6F600B0E5F2 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		BD7BBBAD249EA34D00F1F2D8 /* IntegrationTests */ = {
@@ -488,14 +508,15 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
-		BDB9BA2E249ECE6A00B0E5F2 /* FactList */ = {
+		BDB9BA2E249ECE6A00B0E5F2 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				BDB9BA4C249F1C4600B0E5F2 /* ListItem */,
 				BDB9BA33249ED49F00B0E5F2 /* FactListCoordinator.swift */,
 				BDB9BA2F249ECE8300B0E5F2 /* FactListViewController.swift */,
 				BDB9BA31249ECEA200B0E5F2 /* FactListViewModel.swift */,
 			);
-			path = FactList;
+			path = List;
 			sourceTree = "<group>";
 		};
 		BDB9BA40249EFE8C00B0E5F2 /* UnitTests */ = {
@@ -519,13 +540,13 @@
 			path = TestDoubles;
 			sourceTree = "<group>";
 		};
-		BDB9BA4C249F1C4600B0E5F2 /* FactListItem */ = {
+		BDB9BA4C249F1C4600B0E5F2 /* ListItem */ = {
 			isa = PBXGroup;
 			children = (
 				BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */,
 				BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */,
 			);
-			path = FactListItem;
+			path = ListItem;
 			sourceTree = "<group>";
 		};
 		BDBD211624A070B00069CF26 /* TagListView */ = {
@@ -809,7 +830,6 @@
 				BDB9BA3F249EFC0600B0E5F2 /* Coordinator.swift in Sources */,
 				BDCF80BE24A01BD3001110A5 /* TagView.swift in Sources */,
 				BD6C562424A197350030D098 /* TableViewSectionViewModelProtocol.swift in Sources */,
-				BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */,
 				BDB9BA34249ED49F00B0E5F2 /* FactListCoordinator.swift in Sources */,
 				BD05AC9D249DB9A9000F453B /* JSONDecoder+API.swift in Sources */,
 				BD7BBBA7249E98E900F1F2D8 /* HttpStatusCode.swift in Sources */,
@@ -997,7 +1017,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = NorrisFacts/Info.plist;
+				INFOPLIST_FILE = NorrisFacts/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1020,7 +1040,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = NorrisFacts/Info.plist;
+				INFOPLIST_FILE = NorrisFacts/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

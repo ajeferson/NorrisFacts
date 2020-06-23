@@ -30,15 +30,15 @@ protocol FactListViewModelProtocol {
 }
 
 final class FactListViewModel: FactListViewModelProtocol {
+    private enum Constants {
+        static let emptySearchResult = "No results"
+    }
+
     weak var coordinator: FactListCoordinatorProtocol?
 
     private let itemsSubject = PublishSubject<[FactListItemViewModel]>()
     private let shareItemsSubject = PublishSubject<[Any]>()
     private let message = PublishSubject<String>()
-
-    private enum Constants {
-        static let emptySearchResult = "No results"
-    }
 
     var output: FactListViewModelOutput {
         .init(

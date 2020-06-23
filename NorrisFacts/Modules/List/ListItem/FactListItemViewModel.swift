@@ -9,7 +9,6 @@
 import UIKit
 
 struct FactListItemViewModel {
-    // TODO: Make all Constants to have same styling
     private enum Constants {
         static let uncategorized = "Uncategorized"
         static let largeFontSize: CGFloat = 22

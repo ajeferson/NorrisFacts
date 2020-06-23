@@ -27,6 +27,11 @@ protocol CategoryListViewModelProtocol: TableViewSectionViewModelProtocol {
 }
 
 final class CategoryListViewModel: CategoryListViewModelProtocol {
+    private enum Constants {
+        static let title = "Suggestions"
+        static let numberOfCategories = 8
+    }
+
     private let categoryStore: CategoryStoreProtocol
 
     private let categoriesSubject = BehaviorRelay<[String]>(value: [])
@@ -37,11 +42,6 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
             categories: categoriesSubject.asDriver(),
             categoryTap: categoryTapSubject.asDriver(onErrorJustReturn: "")
         )
-    }
-
-    private enum Constants {
-        static let title = "Suggestions"
-        static let numberOfCategories = 8
     }
 
     var title: String {
