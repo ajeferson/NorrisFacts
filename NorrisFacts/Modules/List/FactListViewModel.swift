@@ -18,7 +18,7 @@ struct FactListViewModelInput {
 struct FactListViewModelOutput {
     let items: Driver<[FactListItemViewModel]>
     let isShowingItems: Driver<Bool>
-    let message: Driver<String>
+    let message: Driver<String?>
     let sharedItems: Driver<[Any]>
 }
 
@@ -31,14 +31,15 @@ protocol FactListViewModelProtocol {
 
 final class FactListViewModel: FactListViewModelProtocol {
     private enum Constants {
+        static let searchHint = "Tap search to start"
         static let emptySearchResult = "No results"
     }
 
     weak var coordinator: FactListCoordinatorProtocol?
 
-    private let itemsSubject = PublishSubject<[FactListItemViewModel]>()
+    private let itemsSubject = BehaviorRelay<[FactListItemViewModel]>(value: [])
     private let shareItemsSubject = PublishSubject<[Any]>()
-    private let message = PublishSubject<String>()
+    private let message = BehaviorRelay<String?>(value: Constants.searchHint)
 
     var output: FactListViewModelOutput {
         .init(
@@ -46,7 +47,7 @@ final class FactListViewModel: FactListViewModelProtocol {
             isShowingItems: itemsSubject
                 .map { !$0.isEmpty }
                 .asDriver(onErrorJustReturn: false),
-            message: message.asDriver(onErrorJustReturn: ""),
+            message: message.asDriver(onErrorJustReturn: nil),
             sharedItems: shareItemsSubject.asDriver(onErrorJustReturn: [])
         )
     }
@@ -83,13 +84,11 @@ final class FactListViewModel: FactListViewModelProtocol {
             return
         }
 
-        if facts.isEmpty {
-            message.onNext(Constants.emptySearchResult)
-        }
+        message.accept(facts.isEmpty ? Constants.emptySearchResult : nil)
 
         let itemViewModels = facts.map { fact in
             FactListItemViewModel(fact: fact)
         }
-        itemsSubject.onNext(itemViewModels)
+        itemsSubject.accept(itemViewModels)
     }
 }
