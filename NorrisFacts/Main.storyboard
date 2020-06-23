@@ -159,7 +159,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="IP8-Rn-xHi" secondAttribute="bottom" id="EA7-uv-Gem"/>
                             <constraint firstItem="IP8-Rn-xHi" firstAttribute="top" secondItem="ooK-vo-asS" secondAttribute="bottom" id="HqX-wZ-bxw"/>
