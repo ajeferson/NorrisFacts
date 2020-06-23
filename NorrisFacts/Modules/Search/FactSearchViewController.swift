@@ -119,6 +119,13 @@ final class FactSearchViewController: UIViewController {
             .isLoading
             .drive(tableView.rx.isHidden)
             .disposed(by: bag)
+
+        output
+            .isLoading
+            .drive(onNext: { [weak self] _ in
+                self?.searchBar.resignFirstResponder()
+            })
+            .disposed(by: bag)
     }
 }
 
