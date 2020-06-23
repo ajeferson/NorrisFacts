@@ -12,12 +12,14 @@ import RxSwift
 
 struct FactListViewModelInput {
     let searchBarButtonTap: Observable<Void>
+    let factTap: Observable<Int>
 }
 
 struct FactListViewModelOutput {
     let items: Driver<[FactListItemViewModel]>
     let isShowingItems: Driver<Bool>
     let message: Driver<String>
+    let sharedItems: Driver<[Any]>
 }
 
 protocol FactListViewModelProtocol {
@@ -31,6 +33,7 @@ final class FactListViewModel: FactListViewModelProtocol {
     weak var coordinator: FactListCoordinatorProtocol?
 
     private let itemsSubject = PublishSubject<[FactListItemViewModel]>()
+    private let shareItemsSubject = PublishSubject<[Any]>()
     private let message = PublishSubject<String>()
 
     private enum Constants {
@@ -43,7 +46,8 @@ final class FactListViewModel: FactListViewModelProtocol {
             isShowingItems: itemsSubject
                 .map { !$0.isEmpty }
                 .asDriver(onErrorJustReturn: false),
-            message: message.asDriver(onErrorJustReturn: "")
+            message: message.asDriver(onErrorJustReturn: ""),
+            sharedItems: shareItemsSubject.asDriver(onErrorJustReturn: [])
         )
     }
 
@@ -52,12 +56,27 @@ final class FactListViewModel: FactListViewModelProtocol {
     }
 
     func bind(input: FactListViewModelInput) -> Disposable {
-        input
-            .searchBarButtonTap
-            .subscribe { [weak self] event in
-                guard case .next = event else { return }
-                self?.coordinator?.startSearch()
-            }
+        Disposables.create(
+            // Search button tapped
+            input
+                .searchBarButtonTap
+                .subscribe { [weak self] event in
+                    guard case .next = event else { return }
+                    self?.coordinator?.startSearch()
+                },
+
+            // Shared fact
+            input
+                .factTap
+                .withLatestFrom(
+                    Observable.combineLatest(input.factTap, itemsSubject)
+                )
+                .map { index, items in
+                    items[index].value
+                }
+                .map { [$0] as [Any]  }
+                .bind(to: shareItemsSubject)
+        )
     }
 
     func update(searchResult: SearchResult) {

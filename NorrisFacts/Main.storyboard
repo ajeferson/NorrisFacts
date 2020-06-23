@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Facts-->
+        <!--Chuck Norris Facts-->
         <scene sceneID="xSe-7w-Ynv">
             <objects>
                 <viewController storyboardIdentifier="FactListViewController" id="zuX-bK-I46" customClass="FactListViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87">
+                    <navigationItem key="navigationItem" title="Chuck Norris Facts" id="JNW-gw-D87">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="fCf-4W-2x7"/>
                     </navigationItem>
                     <connections>
