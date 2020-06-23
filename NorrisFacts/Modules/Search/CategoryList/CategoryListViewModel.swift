@@ -40,11 +40,12 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
     }
 
     private enum Constants {
+        static let title = "Suggestions"
         static let numberOfCategories = 8
     }
 
     var title: String {
-        "Suggestions"
+        Constants.title
     }
 
     var numberOfItems: Int {

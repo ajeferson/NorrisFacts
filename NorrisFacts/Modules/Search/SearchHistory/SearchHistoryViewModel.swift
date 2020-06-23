@@ -30,6 +30,11 @@ final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
     private let queriesSubject = BehaviorRelay<[Query]>(value: [])
     private let queryTapSubject = PublishSubject<String>()
 
+    private enum Constants {
+        static let title = "Past Searches"
+        static let maxQueries = 10
+    }
+
     var output: SearchHistoryViewModelOutput {
         .init(queryTap: queryTapSubject.asDriver(onErrorJustReturn: ""))
     }
@@ -39,7 +44,7 @@ final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
     }
 
     var title: String {
-        "Past Searches"
+        Constants.title
     }
 
     var numberOfItems: Int {
@@ -68,7 +73,7 @@ final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
                 guard let self = self else {
                     return .just([])
                 }
-                return self.queryStore.all(limit: 10)
+                return self.queryStore.all(limit: Constants.maxQueries)
             }
             .asDriver(onErrorJustReturn: [])
             .drive(queriesSubject)
