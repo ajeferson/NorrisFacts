@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Facts-->
+        <!--Chuck Norris Facts-->
         <scene sceneID="xSe-7w-Ynv">
             <objects>
                 <viewController storyboardIdentifier="FactListViewController" id="zuX-bK-I46" customClass="FactListViewController" customModule="NorrisFacts" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,29 +24,40 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-fH-m8e">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FactListItemTableViewCell" rowHeight="77" id="81R-Tk-Hsr" customClass="FactListItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="77"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FactListItemTableViewCell" rowHeight="138" id="81R-Tk-Hsr" customClass="FactListItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="81R-Tk-Hsr" id="1v4-Oa-Vha">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Freddy has nightmares about Chuck Norris" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGk-28-LSg">
-                                                    <rect key="frame" x="16" y="16" width="382" height="45"/>
+                                                    <rect key="frame" x="16" y="16" width="382" height="66"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHv-1a-mon" customClass="TagView" customModule="NorrisFacts" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="92" width="150" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="1Zp-Lk-GnT"/>
+                                                        <constraint firstAttribute="width" constant="150" id="X9b-30-WHj"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="eHv-1a-mon" firstAttribute="leading" secondItem="jGk-28-LSg" secondAttribute="leading" id="6Xo-ws-TPD"/>
                                                 <constraint firstAttribute="trailing" secondItem="jGk-28-LSg" secondAttribute="trailing" constant="16" id="Bcg-t3-K30"/>
-                                                <constraint firstAttribute="bottom" secondItem="jGk-28-LSg" secondAttribute="bottom" constant="16" id="evS-wK-l3c"/>
+                                                <constraint firstAttribute="bottom" secondItem="eHv-1a-mon" secondAttribute="bottom" constant="16" id="i8G-Uj-1Nb"/>
                                                 <constraint firstItem="jGk-28-LSg" firstAttribute="top" secondItem="1v4-Oa-Vha" secondAttribute="top" constant="16" id="oSQ-Nz-Om9"/>
+                                                <constraint firstItem="eHv-1a-mon" firstAttribute="top" secondItem="jGk-28-LSg" secondAttribute="bottom" constant="10" id="psU-v0-GAO"/>
                                                 <constraint firstItem="jGk-28-LSg" firstAttribute="leading" secondItem="1v4-Oa-Vha" secondAttribute="leading" constant="16" id="wVh-uG-v6m"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="tagView" destination="eHv-1a-mon" id="qhI-p0-aZb"/>
                                             <outlet property="valueLabel" destination="jGk-28-LSg" id="h3I-pC-e3F"/>
                                         </connections>
                                     </tableViewCell>
@@ -64,7 +75,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ohb-6B-voi"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Facts" id="JNW-gw-D87">
+                    <navigationItem key="navigationItem" title="Chuck Norris Facts" id="JNW-gw-D87">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="fCf-4W-2x7"/>
                     </navigationItem>
                     <connections>
@@ -85,8 +96,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Enter your search term" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-vo-asS">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Enter your search term" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-vo-asS">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </searchBar>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-dj-96v">
@@ -122,23 +134,23 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="gYh-r2-CSL" customClass="SearchHistoryItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="231" width="414" height="41"/>
+                                        <rect key="frame" x="0.0" y="231" width="414" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYh-r2-CSL" id="I71-0h-poq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBz-w4-c15">
-                                                    <rect key="frame" x="16" y="10" width="47" height="21"/>
+                                                    <rect key="frame" x="16" y="15" width="47" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="MBz-w4-c15" secondAttribute="bottom" constant="10" id="P6h-Ta-pTD"/>
+                                                <constraint firstAttribute="bottom" secondItem="MBz-w4-c15" secondAttribute="bottom" constant="15" id="P6h-Ta-pTD"/>
                                                 <constraint firstItem="MBz-w4-c15" firstAttribute="leading" secondItem="I71-0h-poq" secondAttribute="leading" constant="16" id="euh-kf-ViY"/>
-                                                <constraint firstItem="MBz-w4-c15" firstAttribute="top" secondItem="I71-0h-poq" secondAttribute="top" constant="10" id="heZ-Fp-Wb9"/>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="top" secondItem="I71-0h-poq" secondAttribute="top" constant="15" id="heZ-Fp-Wb9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -148,7 +160,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="IP8-Rn-xHi" secondAttribute="bottom" id="EA7-uv-Gem"/>
                             <constraint firstItem="IP8-Rn-xHi" firstAttribute="top" secondItem="ooK-vo-asS" secondAttribute="bottom" id="HqX-wZ-bxw"/>

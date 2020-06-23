@@ -26,14 +26,14 @@ protocol SearchHistoryViewModelProtocol: TableViewSectionViewModelProtocol {
 }
 
 final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
-    private let queryStore: QueryStoreProtocol
-    private let queriesSubject = BehaviorRelay<[Query]>(value: [])
-    private let queryTapSubject = PublishSubject<String>()
-
     private enum Constants {
         static let title = "Past Searches"
         static let maxQueries = 10
     }
+
+    private let queryStore: QueryStoreProtocol
+    private let queriesSubject = BehaviorRelay<[Query]>(value: [])
+    private let queryTapSubject = PublishSubject<String>()
 
     var output: SearchHistoryViewModelOutput {
         .init(queryTap: queryTapSubject.asDriver(onErrorJustReturn: ""))

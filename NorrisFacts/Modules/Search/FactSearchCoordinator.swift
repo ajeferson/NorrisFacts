@@ -31,7 +31,7 @@ final class FactSearchCoordinator: FactSearchCoordinatorProtocol {
         }
 
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalPresentationStyle = .overFullScreen
         self.navigationController = navigationController
 
         let factProvider = FactProvider()

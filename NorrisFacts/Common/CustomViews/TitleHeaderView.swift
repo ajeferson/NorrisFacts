@@ -24,7 +24,7 @@ final class TitleHeaderView: UIView {
     }
 
     private func setup(with title: String) {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
 
         let titleLabel = UILabel()
         titleLabel.text = title

@@ -48,6 +48,10 @@ protocol FactSearchViewModelProtocol {
 }
 
 final class FactSearchViewModel {
+    private enum Constants {
+        static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
+    }
+
     weak var coordinator: FactSearchCoordinatorProtocol?
     private let factProvider: FactProviderProtocol
     private let categoryStore: CategoryStoreProtocol
@@ -64,10 +68,6 @@ final class FactSearchViewModel {
     let searchHistoryViewModel: SearchHistoryViewModelProtocol
 
     private var displayMode: DisplayMode = .none
-
-    private enum Constants {
-        static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
-    }
 
     var output: FactSearchViewModelOutput {
         .init(

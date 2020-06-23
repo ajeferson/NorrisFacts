@@ -18,13 +18,16 @@ final class TagView: UIView {
         static let cornerRadius: CGFloat = 3
     }
 
-    private let text: String
+    var text: String = "" {
+        didSet {
+            let attributedTitle = buttonAttributedTitle(for: text)
+            button.setAttributedTitle(attributedTitle, for: .normal)
+        }
+    }
+
     private lazy var button: UIButton = {
         let button = UIButton()
-        let attributedTitle = NSAttributedString(string: text, attributes: [
-            .font: UIFont.boldSystemFont(ofSize: Constants.fontSize),
-            .foregroundColor: UIColor.white
-        ])
+        let attributedTitle = buttonAttributedTitle(for: text)
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -42,7 +45,15 @@ final class TagView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func buttonAttributedTitle(for text: String) -> NSAttributedString {
+        NSAttributedString(string: text, attributes: [
+            .font: UIFont.boldSystemFont(ofSize: Constants.fontSize),
+            .foregroundColor: UIColor.white
+        ])
     }
 
     private func setup() {
@@ -58,5 +69,10 @@ final class TagView: UIView {
         ])
 
         layer.cornerRadius = Constants.cornerRadius
+
+        // Disable any previously set width constraints
+        constraints
+            .filter { $0.firstAttribute == .width }
+            .forEach { $0.isActive = false }
     }
 }

@@ -18,4 +18,10 @@ extension UIViewController {
         alert.addAction(.init(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+
+    func share(items: [Any]) {
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceRect = .zero
+        present(activityController, animated: true, completion: nil)
+    }
 }
