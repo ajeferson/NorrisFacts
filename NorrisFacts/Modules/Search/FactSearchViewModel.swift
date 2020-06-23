@@ -15,6 +15,13 @@ enum SearchResult {
     case success([Fact])
 }
 
+private enum DisplayMode {
+    case all
+    case categoryList
+    case searchHistory
+    case none
+}
+
 struct FactSearchViewModelInput {
     let cancelButtonClicked: Observable<Void>
     let searchButtonClicked: Observable<Void>
@@ -27,6 +34,7 @@ struct FactSearchViewModelOutput {
 }
 
 protocol FactSearchViewModelProtocol {
+    var numberOfSections: Int { get }
     var output: FactSearchViewModelOutput { get }
 
     var categoryListViewModel: CategoryListViewModelProtocol { get }
@@ -35,6 +43,8 @@ protocol FactSearchViewModelProtocol {
     func bind(input: FactSearchViewModelInput) -> Disposable
     func bind(categoryTap: Observable<String>) -> Disposable
     func bind(queryTap: Observable<String>) -> Disposable
+
+    func sectionViewModel(at index: Int) -> TableViewSectionViewModelProtocol?
 }
 
 final class FactSearchViewModel {
@@ -52,6 +62,8 @@ final class FactSearchViewModel {
 
     let categoryListViewModel: CategoryListViewModelProtocol
     let searchHistoryViewModel: SearchHistoryViewModelProtocol
+
+    private var displayMode: DisplayMode = .none
 
     private enum Constants {
         static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
@@ -77,6 +89,28 @@ final class FactSearchViewModel {
 
         categoryListViewModel = CategoryListViewModel(categoryStore: categoryStore)
         searchHistoryViewModel = SearchHistoryViewModel(queryStore: queryStore)
+    }
+
+    func bindDisplayMode() -> Disposable {
+        Observable.combineLatest(
+            categoryStore.all().map { !$0.isEmpty }.asObservable(),
+            queryStore.all(limit: 1).map { !$0.isEmpty }.asObservable()
+        )
+        .map { (hasCategories, hasPastSearches) -> DisplayMode in
+            switch (hasCategories, hasPastSearches) {
+            case (false, false):
+                return .none
+            case (false, true):
+                return .searchHistory
+            case (true, true):
+                return .all
+            case (true, false):
+                return .categoryList
+            }
+        }
+        .subscribe(onNext: { [weak self] displayMode in
+            self?.displayMode = displayMode
+        })
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {
@@ -166,8 +200,31 @@ final class FactSearchViewModel {
 }
 
 extension FactSearchViewModel: FactSearchViewModelProtocol {
+    var numberOfSections: Int {
+        switch displayMode {
+        case .none:
+            return 0
+        case .categoryList, .searchHistory:
+            return 1
+        case .all:
+            return 2
+        }
+    }
+
+    func sectionViewModel(at index: Int) -> TableViewSectionViewModelProtocol? {
+        switch (displayMode, index) {
+        case (.categoryList, 0), (.all, 0):
+            return categoryListViewModel
+        case (.searchHistory, 0), (.all, 1):
+            return searchHistoryViewModel
+        default:
+            return nil
+        }
+    }
+
     func bind(input: FactSearchViewModelInput) -> Disposable {
         Disposables.create(
+            bindDisplayMode(),
             bindCancel(input),
             bindSearch(input)
         )

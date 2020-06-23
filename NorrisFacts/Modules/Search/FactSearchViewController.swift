@@ -25,6 +25,8 @@ final class FactSearchViewController: UIViewController {
 
         setupView()
         bindViewModelInput()
+        bindViewModelToCategoryTap()
+        bindViewModelToQueryTap()
         bindViewModelOutput()
     }
 
@@ -47,7 +49,6 @@ final class FactSearchViewController: UIViewController {
             .bind(input: input)
             .disposed(by: bag)
 
-        // TODO: Load categories in the same way
         let searchHistoryInput = SearchHistoryViewModelInput(
             loadQueries: .just(())
         )
@@ -56,6 +57,32 @@ final class FactSearchViewController: UIViewController {
         searchHistoryViewModel
             .bind(input: searchHistoryInput)
             .disposed(by: bag)
+
+        let queryTap = searchHistoryViewModel
+            .output
+            .queryTap
+            .asObservable()
+
+        viewModel
+            .bind(queryTap: queryTap)
+            .disposed(by: bag)
+    }
+
+    private func bindViewModelToCategoryTap() {
+        guard let viewModel = viewModel else { return }
+
+        let categoryListViewModel = viewModel.categoryListViewModel
+        let categoryTap = categoryListViewModel.output.categoryTap.asObservable()
+
+        viewModel
+            .bind(categoryTap: categoryTap)
+            .disposed(by: bag)
+    }
+
+    private func bindViewModelToQueryTap() {
+        guard let viewModel = viewModel else { return }
+
+        let searchHistoryViewModel = viewModel.searchHistoryViewModel
 
         let queryTap = searchHistoryViewModel
             .output
@@ -97,33 +124,35 @@ final class FactSearchViewController: UIViewController {
 
 extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        viewModel?.numberOfSections ?? 0
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let viewModel = sectionViewModel(for: section) else {
+        guard let sectionViewModel = viewModel?.sectionViewModel(at: section) else {
             return nil
         }
-        return TitleHeaderView(title: viewModel.title)
+        return TitleHeaderView(title: sectionViewModel.title)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let viewModel = sectionViewModel(for: section) else {
+        guard let sectionViewModel = viewModel?.sectionViewModel(at: section) else {
             return 0
         }
-        return viewModel.numberOfItems
+        return sectionViewModel.numberOfItems
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = FactSearchTableViewSection(rawValue: indexPath.section) else {
-            fatalError("Table view is improperly setup")
+        guard let sectionViewModel = viewModel?.sectionViewModel(at: indexPath.section) else {
+            return UITableViewCell()
         }
 
-        switch section {
-        case .categoryList:
+        switch sectionViewModel {
+        case is CategoryListViewModel:
             return makeCategoryListTableViewCell(for: indexPath)
-        case .searchHistory:
+        case is SearchHistoryViewModel:
             return makeSearchHistoryItemTableViewCell(for: indexPath)
+        default:
+            return UITableViewCell()
         }
     }
 
@@ -134,37 +163,17 @@ extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let viewModel = sectionViewModel(for: indexPath.section) else {
+        guard let sectionViewModel = viewModel?.sectionViewModel(at: indexPath.section) else {
             return
         }
-        viewModel.didSelectRow(at: indexPath.row)
-    }
-
-    private func sectionViewModel(for index: Int) -> TableViewSectionViewModelProtocol? {
-        guard let section = FactSearchTableViewSection(rawValue: index), let viewModel = viewModel else {
-            return nil
-        }
-        switch section {
-        case .categoryList:
-            return viewModel.categoryListViewModel
-        case .searchHistory:
-            return viewModel.searchHistoryViewModel
-        }
+        sectionViewModel.didSelectRow(at: indexPath.row)
     }
 
     private func makeCategoryListTableViewCell(for indexPath: IndexPath) -> UITableViewCell {
         guard let cell: CategoryListTableViewCell = tableView.dequeueReusableCell(for: indexPath) else {
             fatalError("This ought to be impossible")
         }
-
-        if let viewModel = viewModel {
-            let categoryListViewModel = viewModel.categoryListViewModel
-            categoryListViewModel
-                .bind(searchViewModel: viewModel)
-                .disposed(by: bag)
-            cell.viewModel = categoryListViewModel
-        }
-
+        cell.viewModel = viewModel?.categoryListViewModel
         return cell
     }
 
