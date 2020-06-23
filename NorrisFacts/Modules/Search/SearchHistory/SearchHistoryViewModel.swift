@@ -14,7 +14,13 @@ struct SearchHistoryViewModelInput {
     let loadQueries: Observable<Void>
 }
 
+struct SearchHistoryViewModelOutput {
+    let queryTap: Driver<String>
+}
+
 protocol SearchHistoryViewModelProtocol: TableViewSectionViewModelProtocol {
+    var output: SearchHistoryViewModelOutput { get }
+
     func item(for index: Int) -> String?
     func bind(input: SearchHistoryViewModelInput) -> Disposable
 }
@@ -22,6 +28,11 @@ protocol SearchHistoryViewModelProtocol: TableViewSectionViewModelProtocol {
 final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
     private let queryStore: QueryStoreProtocol
     private let queriesSubject = BehaviorRelay<[Query]>(value: [])
+    private let queryTapSubject = PublishSubject<String>()
+
+    var output: SearchHistoryViewModelOutput {
+        .init(queryTap: queryTapSubject.asDriver(onErrorJustReturn: ""))
+    }
 
     init(queryStore: QueryStoreProtocol) {
         self.queryStore = queryStore
@@ -33,6 +44,13 @@ final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
 
     var numberOfItems: Int {
         queriesSubject.value.count
+    }
+
+    func didSelectRow(at index: Int) {
+        guard let query = item(for: index) else {
+            return
+        }
+        queryTapSubject.onNext(query)
     }
 
     func item(for index: Int) -> String? {

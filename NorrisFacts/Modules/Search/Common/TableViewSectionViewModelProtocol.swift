@@ -11,4 +11,10 @@ import Foundation
 protocol TableViewSectionViewModelProtocol {
     var title: String { get }
     var numberOfItems: Int { get }
+
+    func didSelectRow(at index: Int)
+}
+
+extension TableViewSectionViewModelProtocol {
+    func didSelectRow(at index: Int) {}
 }

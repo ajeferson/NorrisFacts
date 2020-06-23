@@ -34,6 +34,7 @@ protocol FactSearchViewModelProtocol {
 
     func bind(input: FactSearchViewModelInput) -> Disposable
     func bind(categoryTap: Observable<String>) -> Disposable
+    func bind(queryTap: Observable<String>) -> Disposable
 }
 
 final class FactSearchViewModel {
@@ -46,7 +47,8 @@ final class FactSearchViewModel {
     private let isLoadingSubject = BehaviorRelay(value: false)
     private let categoriesSubject = BehaviorSubject(value: [String]())
     private let errorSubject = PublishSubject<ErrorDescriptor>()
-    private let querySubject = PublishSubject<String>()
+    private let categoryTapSubject = PublishSubject<String>()
+    private let queryTapSubject = PublishSubject<String>()
 
     let categoryListViewModel: CategoryListViewModelProtocol
     let searchHistoryViewModel: SearchHistoryViewModelProtocol
@@ -93,8 +95,10 @@ final class FactSearchViewModel {
             .filter { !$0.isEmpty }
             .debounce(Constants.searchDebounceTime, scheduler: scheduler)
 
+        let persistableQuery = Observable.merge(textQuery, queryTapSubject)
+
         let query = Observable
-            .merge(textQuery, querySubject)
+            .merge(persistableQuery, categoryTapSubject)
             .share()
 
         let searchResult = query
@@ -130,8 +134,9 @@ final class FactSearchViewModel {
                 .map(map(error:))
                 .bind(to: errorSubject),
 
+            // Save query
             searchResult
-                .withLatestFrom(textQuery)
+                .withLatestFrom(persistableQuery)
                 .flatMap { [weak self] query -> Completable in
                     guard let self = self else {
                         return .empty()
@@ -169,6 +174,10 @@ extension FactSearchViewModel: FactSearchViewModelProtocol {
     }
 
     func bind(categoryTap: Observable<String>) -> Disposable {
-        categoryTap.bind(to: querySubject)
+        categoryTap.bind(to: categoryTapSubject)
+    }
+
+    func bind(queryTap: Observable<String>) -> Disposable {
+        queryTap.bind(to: queryTapSubject)
     }
 }

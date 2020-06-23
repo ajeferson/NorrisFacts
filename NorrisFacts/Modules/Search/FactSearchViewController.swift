@@ -35,12 +35,15 @@ final class FactSearchViewController: UIViewController {
     }
 
     private func bindViewModelInput() {
+        guard let viewModel = viewModel else { return }
+
         let input = FactSearchViewModelInput(
             cancelButtonClicked: cancelBarButton.rx.tap.asObservable(),
             searchButtonClicked: searchBar.rx.searchButtonClicked.asObservable(),
             searchText: searchBar.rx.text.asObservable()
         )
-        viewModel?
+
+        viewModel
             .bind(input: input)
             .disposed(by: bag)
 
@@ -48,9 +51,19 @@ final class FactSearchViewController: UIViewController {
         let searchHistoryInput = SearchHistoryViewModelInput(
             loadQueries: .just(())
         )
-        viewModel?
-            .searchHistoryViewModel
+
+        let searchHistoryViewModel = viewModel.searchHistoryViewModel
+        searchHistoryViewModel
             .bind(input: searchHistoryInput)
+            .disposed(by: bag)
+
+        let queryTap = searchHistoryViewModel
+            .output
+            .queryTap
+            .asObservable()
+
+        viewModel
+            .bind(queryTap: queryTap)
             .disposed(by: bag)
     }
 
@@ -120,6 +133,11 @@ extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let viewModel = sectionViewModel(for: indexPath.section) else {
+            return
+        }
+        viewModel.didSelectRow(at: indexPath.row)
     }
 
     private func sectionViewModel(for index: Int) -> TableViewSectionViewModelProtocol? {
