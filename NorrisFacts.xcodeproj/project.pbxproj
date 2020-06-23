@@ -11,6 +11,7 @@
 		BD05AC92249DA83C000F453B /* FactProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC91249DA83C000F453B /* FactProvider.swift */; };
 		BD05AC96249DB45A000F453B /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC95249DB45A000F453B /* Fact.swift */; };
 		BD05AC9D249DB9A9000F453B /* JSONDecoder+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD05AC9C249DB9A9000F453B /* JSONDecoder+API.swift */; };
+		BD0AFD6A24A1C03300EBAE2B /* MockQueryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AFD6924A1C03300EBAE2B /* MockQueryStore.swift */; };
 		BD0C4902249CF3A90090B7CD /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C48FF249CF3A90090B7CD /* RxTest.framework */; platformFilter = ios; };
 		BD0C4903249CF3A90090B7CD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C4900249CF3A90090B7CD /* Quick.framework */; platformFilter = ios; };
 		BD0C4904249CF3A90090B7CD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C4901249CF3A90090B7CD /* Nimble.framework */; platformFilter = ios; };
@@ -155,6 +156,7 @@
 		BD05AC91249DA83C000F453B /* FactProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactProvider.swift; sourceTree = "<group>"; };
 		BD05AC95249DB45A000F453B /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
 		BD05AC9C249DB9A9000F453B /* JSONDecoder+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+API.swift"; sourceTree = "<group>"; };
+		BD0AFD6924A1C03300EBAE2B /* MockQueryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQueryStore.swift; sourceTree = "<group>"; };
 		BD0C48FF249CF3A90090B7CD /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		BD0C4900249CF3A90090B7CD /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		BD0C4901249CF3A90090B7CD /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */,
 				BDCEE6CA249FD1AF00CA200B /* MockFactProvider.swift */,
 				BDB9BA44249F046300B0E5F2 /* MockFactSearchCoordinator.swift */,
+				BD0AFD6924A1C03300EBAE2B /* MockQueryStore.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				BD7BBBA0249E5D6F00F1F2D8 /* FactProviderTests.swift in Sources */,
 				BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */,
 				BDDD6E2324A0876B001EAE80 /* MockCategoryStore.swift in Sources */,
+				BD0AFD6A24A1C03300EBAE2B /* MockQueryStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

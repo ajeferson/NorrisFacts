@@ -18,6 +18,7 @@ final class FactSearchViewModelTests: QuickSpec {
             var coordinator: MockFactSearchCoordinator!
             var factProvider: MockFactProvider!
             var categoryStore: MockCategoryStore!
+            var queryStore: MockQueryStore!
             var scheduler: TestScheduler!
             var viewModel: FactSearchViewModel!
 
@@ -25,11 +26,13 @@ final class FactSearchViewModelTests: QuickSpec {
                 coordinator = MockFactSearchCoordinator()
                 factProvider = MockFactProvider()
                 categoryStore = MockCategoryStore()
+                queryStore = MockQueryStore()
                 scheduler = TestScheduler(initialClock: 0)
 
                 viewModel = FactSearchViewModel(coordinator: coordinator,
                                                 factProvider: factProvider,
                                                 categoryStore: categoryStore,
+                                                queryStore: queryStore,
                                                 scheduler: scheduler)
             }
 
@@ -37,6 +40,7 @@ final class FactSearchViewModelTests: QuickSpec {
                 coordinator = nil
                 factProvider = nil
                 categoryStore = nil
+                queryStore = nil
                 scheduler = nil
                 viewModel = nil
             }
