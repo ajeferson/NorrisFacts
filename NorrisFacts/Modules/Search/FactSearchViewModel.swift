@@ -31,8 +31,9 @@ protocol FactSearchViewModelProtocol {
 
     func bind(input: FactSearchViewModelInput) -> Disposable
     func bind(categoryTap: Observable<String>) -> Disposable
-    func makeCategoryListViewModel() -> CategoryListViewModelProtocol
-    func titleForSectionHeader(at index: Int) -> String?
+
+    func categoryListViewModel() -> CategoryListViewModelProtocol
+    func searchHistoryViewModel() -> SearchHistoryViewModelProtocol
 }
 
 final class FactSearchViewModel {
@@ -150,16 +151,11 @@ extension FactSearchViewModel: FactSearchViewModelProtocol {
         categoryTap.bind(to: querySubject)
     }
 
-    func makeCategoryListViewModel() -> CategoryListViewModelProtocol {
+    func categoryListViewModel() -> CategoryListViewModelProtocol {
         CategoryListViewModel(categoryStore: categoryStore)
     }
 
-    func titleForSectionHeader(at index: Int) -> String? {
-        switch index {
-        case 0:
-            return "Suggestions"
-        default:
-            return nil
-        }
+    func searchHistoryViewModel() -> SearchHistoryViewModelProtocol {
+        SearchHistoryViewModel()
     }
 }

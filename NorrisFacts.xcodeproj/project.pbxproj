@@ -43,6 +43,10 @@
 		BD5830C8249EAAD3000926B3 /* FactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */; };
 		BD6C561724A182EC0030D098 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C561624A182EC0030D098 /* Query.swift */; };
 		BD6C561924A184E30030D098 /* QueryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C561824A184E30030D098 /* QueryStore.swift */; };
+		BD6C561E24A18B1D0030D098 /* SearchHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C561D24A18B1D0030D098 /* SearchHistoryViewModel.swift */; };
+		BD6C562024A18D950030D098 /* SearchHistoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C561F24A18D950030D098 /* SearchHistoryItemTableViewCell.swift */; };
+		BD6C562224A197090030D098 /* FactSearchTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C562124A197090030D098 /* FactSearchTableViewSection.swift */; };
+		BD6C562424A197350030D098 /* TableViewSectionViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6C562324A197350030D098 /* TableViewSectionViewModelProtocol.swift */; };
 		BD735CAE249FDE96007F6040 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD735CAD249FDE96007F6040 /* CategoryManager.swift */; };
 		BD735CB2249FE1A6007F6040 /* CategoryCachingWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */; };
 		BD7BBB9D249E5D0A00F1F2D8 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */; platformFilter = ios; };
@@ -179,6 +183,10 @@
 		BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSearchViewController.swift; sourceTree = "<group>"; };
 		BD6C561624A182EC0030D098 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		BD6C561824A184E30030D098 /* QueryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryStore.swift; sourceTree = "<group>"; };
+		BD6C561D24A18B1D0030D098 /* SearchHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewModel.swift; sourceTree = "<group>"; };
+		BD6C561F24A18D950030D098 /* SearchHistoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItemTableViewCell.swift; sourceTree = "<group>"; };
+		BD6C562124A197090030D098 /* FactSearchTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactSearchTableViewSection.swift; sourceTree = "<group>"; };
+		BD6C562324A197350030D098 /* TableViewSectionViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionViewModelProtocol.swift; sourceTree = "<group>"; };
 		BD735CAD249FDE96007F6040 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		BD735CB1249FE1A6007F6040 /* CategoryCachingWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCachingWorkflow.swift; sourceTree = "<group>"; };
 		BD7BBB9C249E5D0900F1F2D8 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
@@ -400,12 +408,32 @@
 		BD4A2648249EAEE400CC5624 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				BD6C562524A197440030D098 /* Common */,
+				BD6C561A24A18AD60030D098 /* SearchHistory */,
 				BDCF80BF24A01C13001110A5 /* CategoryList */,
 				BDB9BA3B249EDAFE00B0E5F2 /* FactSearchCoordinator.swift */,
 				BD5830C7249EAAD3000926B3 /* FactSearchViewController.swift */,
 				BD4A2649249EAEF800CC5624 /* FactSearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		BD6C561A24A18AD60030D098 /* SearchHistory */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C561F24A18D950030D098 /* SearchHistoryItemTableViewCell.swift */,
+				BD6C561D24A18B1D0030D098 /* SearchHistoryViewModel.swift */,
+			);
+			path = SearchHistory;
+			sourceTree = "<group>";
+		};
+		BD6C562524A197440030D098 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BD6C562124A197090030D098 /* FactSearchTableViewSection.swift */,
+				BD6C562324A197350030D098 /* TableViewSectionViewModelProtocol.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		BD735CAC249FDE76007F6040 /* Manager */ = {
@@ -762,6 +790,7 @@
 				BDCEE6C5249F96BB00CA200B /* UIViewController+Common.swift in Sources */,
 				BDBD211524A070290069CF26 /* CategoryListViewModel.swift in Sources */,
 				BDCEE6C3249F926A00CA200B /* ErrorDescriptor.swift in Sources */,
+				BD6C562224A197090030D098 /* FactSearchTableViewSection.swift in Sources */,
 				BD822FC3249FDCCF00164C0B /* Category.swift in Sources */,
 				BDCEE6C9249F97E300CA200B /* Result+Common.swift in Sources */,
 				BD822FBD249FDC6400164C0B /* CategoryStore.swift in Sources */,
@@ -778,14 +807,17 @@
 				BDFC71B724A07A9B00D3A723 /* TitleHeaderView.swift in Sources */,
 				BD14F8A6249B7CFB0029B50C /* SceneDelegate.swift in Sources */,
 				BDB9BA38249EDA2200B0E5F2 /* IdentifiableType.swift in Sources */,
+				BD6C561E24A18B1D0030D098 /* SearchHistoryViewModel.swift in Sources */,
 				BDCF80BC24A01BA7001110A5 /* TagListView.swift in Sources */,
 				BDB9BA32249ECEA200B0E5F2 /* FactListViewModel.swift in Sources */,
 				BD5830C8249EAAD3000926B3 /* FactSearchViewController.swift in Sources */,
+				BD6C562024A18D950030D098 /* SearchHistoryItemTableViewCell.swift in Sources */,
 				BDB9BA4E249F1C8400B0E5F2 /* FactListItemViewModel.swift in Sources */,
 				BDCF80BA249FF717001110A5 /* CategoryListTableViewCell.swift in Sources */,
 				BD05AC92249DA83C000F453B /* FactProvider.swift in Sources */,
 				BDB9BA3F249EFC0600B0E5F2 /* Coordinator.swift in Sources */,
 				BDCF80BE24A01BD3001110A5 /* TagView.swift in Sources */,
+				BD6C562424A197350030D098 /* TableViewSectionViewModelProtocol.swift in Sources */,
 				BD14F8A8249B7CFB0029B50C /* ContentView.swift in Sources */,
 				BDB9BA34249ED49F00B0E5F2 /* FactListCoordinator.swift in Sources */,
 				BD05AC9D249DB9A9000F453B /* JSONDecoder+API.swift in Sources */,

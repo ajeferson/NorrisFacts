@@ -104,7 +104,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-XA-Ni0" customClass="TagListView" customModule="NorrisFacts" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="0.0" width="382" height="203"/>
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="183"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                             </subviews>
@@ -112,13 +112,36 @@
                                                 <constraint firstItem="3ig-XA-Ni0" firstAttribute="top" secondItem="BKQ-MP-Zk0" secondAttribute="top" id="UHR-FX-HwJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="3ig-XA-Ni0" secondAttribute="trailing" constant="16" id="aAt-tY-Tfb"/>
                                                 <constraint firstItem="3ig-XA-Ni0" firstAttribute="leading" secondItem="BKQ-MP-Zk0" secondAttribute="leading" constant="16" id="dv4-vy-nCt"/>
-                                                <constraint firstAttribute="bottom" secondItem="3ig-XA-Ni0" secondAttribute="bottom" id="rW5-Tv-99N"/>
+                                                <constraint firstAttribute="bottom" secondItem="3ig-XA-Ni0" secondAttribute="bottom" constant="20" id="rW5-Tv-99N"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="leadingConstraint" destination="dv4-vy-nCt" id="gaJ-XO-9Cp"/>
                                             <outlet property="tagListView" destination="3ig-XA-Ni0" id="oYb-YP-iJP"/>
                                             <outlet property="trailingConstraint" destination="aAt-tY-Tfb" id="qSO-KW-blp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" rowHeight="40" id="gYh-r2-CSL" customClass="SearchHistoryItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="231" width="414" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYh-r2-CSL" id="I71-0h-poq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBz-w4-c15">
+                                                    <rect key="frame" x="16" y="9.5" width="49" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="centerY" secondItem="I71-0h-poq" secondAttribute="centerY" id="ekb-g2-SbH"/>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="leading" secondItem="I71-0h-poq" secondAttribute="leading" constant="16" id="euh-kf-ViY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="queryLabel" destination="MBz-w4-c15" id="HDv-Ua-DVL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

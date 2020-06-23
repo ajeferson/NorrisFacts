@@ -19,7 +19,7 @@ struct CategoryListViewModelOutput {
     let categories: Driver<[String]>
 }
 
-protocol CategoryListViewModelProtocol {
+protocol CategoryListViewModelProtocol: TableViewSectionViewModelProtocol {
     var output: CategoryListViewModelOutput { get }
 
     func bind(input: CategoryListViewModelInput) -> Disposable
@@ -38,6 +38,14 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
 
     private enum Constants {
         static let numberOfCategories = 8
+    }
+
+    var title: String {
+        "Suggestions"
+    }
+
+    var numberOfItems: Int {
+        1
     }
 
     init(categoryStore: CategoryStoreProtocol) {
