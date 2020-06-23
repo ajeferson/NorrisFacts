@@ -10,6 +10,7 @@ import UIKit
 
 final class FactListItemTableViewCell: UITableViewCell {
     @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var tagView: TagView!
 
     var viewModel: FactListItemViewModel? {
         didSet {
@@ -18,6 +19,9 @@ final class FactListItemTableViewCell: UITableViewCell {
     }
 
     private func updateView() {
-        valueLabel.text = viewModel?.value
+        guard let viewModel = viewModel else { return }
+
+        valueLabel.text = viewModel.value
+        tagView.text = viewModel.category
     }
 }

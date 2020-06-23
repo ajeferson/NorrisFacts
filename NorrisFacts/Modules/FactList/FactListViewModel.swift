@@ -70,7 +70,7 @@ final class FactListViewModel: FactListViewModelProtocol {
         }
 
         let itemViewModels = facts.map { fact in
-            FactListItemViewModel(value: fact.value)
+            FactListItemViewModel(fact: fact)
         }
         itemsSubject.onNext(itemViewModels)
     }
