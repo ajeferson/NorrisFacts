@@ -40,9 +40,17 @@ final class FactSearchViewController: UIViewController {
             searchButtonClicked: searchBar.rx.searchButtonClicked.asObservable(),
             searchText: searchBar.rx.text.asObservable()
         )
-
         viewModel?
             .bind(input: input)
+            .disposed(by: bag)
+
+        // TODO: Load categories in the same way
+        let searchHistoryInput = SearchHistoryViewModelInput(
+            loadQueries: .just(())
+        )
+        viewModel?
+            .searchHistoryViewModel
+            .bind(input: searchHistoryInput)
             .disposed(by: bag)
     }
 
@@ -120,9 +128,9 @@ extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
         switch section {
         case .categoryList:
-            return viewModel.categoryListViewModel()
+            return viewModel.categoryListViewModel
         case .searchHistory:
-            return viewModel.searchHistoryViewModel()
+            return viewModel.searchHistoryViewModel
         }
     }
 
@@ -132,7 +140,7 @@ extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         if let viewModel = viewModel {
-            let categoryListViewModel = viewModel.categoryListViewModel()
+            let categoryListViewModel = viewModel.categoryListViewModel
             categoryListViewModel
                 .bind(searchViewModel: viewModel)
                 .disposed(by: bag)
@@ -148,7 +156,7 @@ extension FactSearchViewController: UITableViewDataSource, UITableViewDelegate {
                 fatalError("This ought to be impossible")
         }
 
-        let searchHistoryViewModel = viewModel.searchHistoryViewModel()
+        let searchHistoryViewModel = viewModel.searchHistoryViewModel
         cell.query = searchHistoryViewModel.item(for: indexPath.row)
 
         return cell

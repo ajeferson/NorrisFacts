@@ -121,23 +121,24 @@
                                             <outlet property="trailingConstraint" destination="aAt-tY-Tfb" id="qSO-KW-blp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" rowHeight="40" id="gYh-r2-CSL" customClass="SearchHistoryItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="231" width="414" height="40"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="gYh-r2-CSL" customClass="SearchHistoryItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="231" width="414" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYh-r2-CSL" id="I71-0h-poq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBz-w4-c15">
-                                                    <rect key="frame" x="16" y="9.5" width="49" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <rect key="frame" x="16" y="10" width="47" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MBz-w4-c15" firstAttribute="centerY" secondItem="I71-0h-poq" secondAttribute="centerY" id="ekb-g2-SbH"/>
+                                                <constraint firstAttribute="bottom" secondItem="MBz-w4-c15" secondAttribute="bottom" constant="10" id="P6h-Ta-pTD"/>
                                                 <constraint firstItem="MBz-w4-c15" firstAttribute="leading" secondItem="I71-0h-poq" secondAttribute="leading" constant="16" id="euh-kf-ViY"/>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="top" secondItem="I71-0h-poq" secondAttribute="top" constant="10" id="heZ-Fp-Wb9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

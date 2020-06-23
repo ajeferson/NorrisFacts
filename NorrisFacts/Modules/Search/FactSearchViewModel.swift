@@ -29,11 +29,11 @@ struct FactSearchViewModelOutput {
 protocol FactSearchViewModelProtocol {
     var output: FactSearchViewModelOutput { get }
 
+    var categoryListViewModel: CategoryListViewModelProtocol { get }
+    var searchHistoryViewModel: SearchHistoryViewModelProtocol { get }
+
     func bind(input: FactSearchViewModelInput) -> Disposable
     func bind(categoryTap: Observable<String>) -> Disposable
-
-    func categoryListViewModel() -> CategoryListViewModelProtocol
-    func searchHistoryViewModel() -> SearchHistoryViewModelProtocol
 }
 
 final class FactSearchViewModel {
@@ -47,6 +47,9 @@ final class FactSearchViewModel {
     private let categoriesSubject = BehaviorSubject(value: [String]())
     private let errorSubject = PublishSubject<ErrorDescriptor>()
     private let querySubject = PublishSubject<String>()
+
+    let categoryListViewModel: CategoryListViewModelProtocol
+    let searchHistoryViewModel: SearchHistoryViewModelProtocol
 
     private enum Constants {
         static let searchDebounceTime = DispatchTimeInterval.milliseconds(250)
@@ -69,6 +72,9 @@ final class FactSearchViewModel {
         self.categoryStore = categoryStore
         self.queryStore = queryStore
         self.scheduler = scheduler
+
+        categoryListViewModel = CategoryListViewModel(categoryStore: categoryStore)
+        searchHistoryViewModel = SearchHistoryViewModel(queryStore: queryStore)
     }
 
     private func bindCancel(_ input: FactSearchViewModelInput) -> Disposable {
@@ -164,13 +170,5 @@ extension FactSearchViewModel: FactSearchViewModelProtocol {
 
     func bind(categoryTap: Observable<String>) -> Disposable {
         categoryTap.bind(to: querySubject)
-    }
-
-    func categoryListViewModel() -> CategoryListViewModelProtocol {
-        CategoryListViewModel(categoryStore: categoryStore)
-    }
-
-    func searchHistoryViewModel() -> SearchHistoryViewModelProtocol {
-        SearchHistoryViewModel()
     }
 }
