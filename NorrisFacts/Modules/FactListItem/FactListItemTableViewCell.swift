@@ -22,6 +22,7 @@ final class FactListItemTableViewCell: UITableViewCell {
         guard let viewModel = viewModel else { return }
 
         valueLabel.text = viewModel.value
+        valueLabel.font = UIFont.systemFont(ofSize: viewModel.fontSize)
         tagView.text = viewModel.category
     }
 }
