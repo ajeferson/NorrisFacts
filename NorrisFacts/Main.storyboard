@@ -134,23 +134,23 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="gYh-r2-CSL" customClass="SearchHistoryItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="231" width="414" height="41"/>
+                                        <rect key="frame" x="0.0" y="231" width="414" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYh-r2-CSL" id="I71-0h-poq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBz-w4-c15">
-                                                    <rect key="frame" x="16" y="10" width="47" height="21"/>
+                                                    <rect key="frame" x="16" y="15" width="47" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="MBz-w4-c15" secondAttribute="bottom" constant="10" id="P6h-Ta-pTD"/>
+                                                <constraint firstAttribute="bottom" secondItem="MBz-w4-c15" secondAttribute="bottom" constant="15" id="P6h-Ta-pTD"/>
                                                 <constraint firstItem="MBz-w4-c15" firstAttribute="leading" secondItem="I71-0h-poq" secondAttribute="leading" constant="16" id="euh-kf-ViY"/>
-                                                <constraint firstItem="MBz-w4-c15" firstAttribute="top" secondItem="I71-0h-poq" secondAttribute="top" constant="10" id="heZ-Fp-Wb9"/>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="top" secondItem="I71-0h-poq" secondAttribute="top" constant="15" id="heZ-Fp-Wb9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -160,6 +160,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="IP8-Rn-xHi" secondAttribute="bottom" id="EA7-uv-Gem"/>
                             <constraint firstItem="IP8-Rn-xHi" firstAttribute="top" secondItem="ooK-vo-asS" secondAttribute="bottom" id="HqX-wZ-bxw"/>
