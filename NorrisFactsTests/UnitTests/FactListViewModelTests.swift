@@ -32,7 +32,10 @@ final class FactListViewModelTests: QuickSpec {
                 it("starts search module") {
                     let scheduler = TestScheduler(initialClock: 0)
                     let searchBarButtonTap = scheduler.createColdObservable([.next(0, ())])
-                    let input = FactListViewModelInput(searchBarButtonTap: searchBarButtonTap.asObservable())
+                    let input = FactListViewModelInput(
+                        searchBarButtonTap: searchBarButtonTap.asObservable(),
+                        factTap: .empty()
+                    )
 
                     _ = viewModel.bind(input: input)
 
