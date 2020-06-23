@@ -71,10 +71,9 @@ final class FactListViewModel: FactListViewModelProtocol {
                 .withLatestFrom(
                     Observable.combineLatest(input.factTap, itemsSubject)
                 )
-                .map { index, items in
-                    items[index].value
+                .map { index, itemViewModels in
+                    itemViewModels[index].shareableItems
                 }
-                .map { [$0] as [Any]  }
                 .bind(to: shareItemsSubject)
         )
     }

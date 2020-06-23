@@ -9,10 +9,7 @@
 import UIKit
 
 struct FactListItemViewModel {
-    let value: String
-    let category: String
-    let fontSize: CGFloat
-
+    // TODO: Make all Constants to have same styling
     private enum Constants {
         static let uncategorized = "Uncategorized"
         static let largeFontSize: CGFloat = 22
@@ -20,8 +17,19 @@ struct FactListItemViewModel {
         static let charactersThreshold = 80
     }
 
+    let value: String
+    let url: String
+    let category: String
+    let fontSize: CGFloat
+
+    var shareableItems: [Any] {
+        let shareableString = "\(value)\n\(url)"
+        return [shareableString]
+    }
+
     init(fact: Fact) {
         self.value = fact.value
+        self.url = fact.url
 
         let category = fact.categories.first ?? Constants.uncategorized
         self.category = category.uppercased()
