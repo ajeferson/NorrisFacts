@@ -15,12 +15,16 @@ final class FactListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var messageLabel: UILabel!
 
+    private var isSetup = false
     private let bag = DisposeBag()
 
     var viewModel: FactListViewModelProtocol?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard !isSetup else { return }
+        isSetup = true
 
         setupView()
         bindViewModelInput()

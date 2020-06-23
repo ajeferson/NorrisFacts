@@ -21,6 +21,7 @@ extension UIViewController {
 
     func share(items: [Any]) {
         let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceRect = .zero
         present(activityController, animated: true, completion: nil)
     }
 }
