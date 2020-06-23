@@ -92,7 +92,7 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-dj-96v">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IP8-Rn-xHi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IP8-Rn-xHi">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -104,7 +104,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-XA-Ni0" customClass="TagListView" customModule="NorrisFacts" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="0.0" width="382" height="203"/>
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="183"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                             </subviews>
@@ -112,13 +112,37 @@
                                                 <constraint firstItem="3ig-XA-Ni0" firstAttribute="top" secondItem="BKQ-MP-Zk0" secondAttribute="top" id="UHR-FX-HwJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="3ig-XA-Ni0" secondAttribute="trailing" constant="16" id="aAt-tY-Tfb"/>
                                                 <constraint firstItem="3ig-XA-Ni0" firstAttribute="leading" secondItem="BKQ-MP-Zk0" secondAttribute="leading" constant="16" id="dv4-vy-nCt"/>
-                                                <constraint firstAttribute="bottom" secondItem="3ig-XA-Ni0" secondAttribute="bottom" id="rW5-Tv-99N"/>
+                                                <constraint firstAttribute="bottom" secondItem="3ig-XA-Ni0" secondAttribute="bottom" constant="20" id="rW5-Tv-99N"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="leadingConstraint" destination="dv4-vy-nCt" id="gaJ-XO-9Cp"/>
                                             <outlet property="tagListView" destination="3ig-XA-Ni0" id="oYb-YP-iJP"/>
                                             <outlet property="trailingConstraint" destination="aAt-tY-Tfb" id="qSO-KW-blp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryItemTableViewCell" id="gYh-r2-CSL" customClass="SearchHistoryItemTableViewCell" customModule="NorrisFacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="231" width="414" height="41"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYh-r2-CSL" id="I71-0h-poq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBz-w4-c15">
+                                                    <rect key="frame" x="16" y="10" width="47" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="MBz-w4-c15" secondAttribute="bottom" constant="10" id="P6h-Ta-pTD"/>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="leading" secondItem="I71-0h-poq" secondAttribute="leading" constant="16" id="euh-kf-ViY"/>
+                                                <constraint firstItem="MBz-w4-c15" firstAttribute="top" secondItem="I71-0h-poq" secondAttribute="top" constant="10" id="heZ-Fp-Wb9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="queryLabel" destination="MBz-w4-c15" id="HDv-Ua-DVL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

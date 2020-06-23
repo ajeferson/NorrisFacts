@@ -36,9 +36,11 @@ final class FactSearchCoordinator: FactSearchCoordinatorProtocol {
 
         let factProvider = FactProvider()
         let categoryStore = CategoryStore()
+        let queryStore = QueryStore()
         let viewModel = FactSearchViewModel(coordinator: self,
                                             factProvider: factProvider,
                                             categoryStore: categoryStore,
+                                            queryStore: queryStore,
                                             scheduler: MainScheduler.instance)
         viewController.viewModel = viewModel
 

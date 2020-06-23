@@ -17,13 +17,13 @@ struct CategoryListViewModelInput {
 
 struct CategoryListViewModelOutput {
     let categories: Driver<[String]>
+    let categoryTap: Driver<String>
 }
 
-protocol CategoryListViewModelProtocol {
+protocol CategoryListViewModelProtocol: TableViewSectionViewModelProtocol {
     var output: CategoryListViewModelOutput { get }
 
     func bind(input: CategoryListViewModelInput) -> Disposable
-    func bind(searchViewModel viewModel: FactSearchViewModelProtocol) -> Disposable
 }
 
 final class CategoryListViewModel: CategoryListViewModelProtocol {
@@ -33,11 +33,23 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
     private let categoryTapSubject = PublishSubject<String>()
 
     var output: CategoryListViewModelOutput {
-        .init(categories: categoriesSubject.asDriver())
+        .init(
+            categories: categoriesSubject.asDriver(),
+            categoryTap: categoryTapSubject.asDriver(onErrorJustReturn: "")
+        )
     }
 
     private enum Constants {
+        static let title = "Suggestions"
         static let numberOfCategories = 8
+    }
+
+    var title: String {
+        Constants.title
+    }
+
+    var numberOfItems: Int {
+        1
     }
 
     init(categoryStore: CategoryStoreProtocol) {
@@ -49,10 +61,6 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
             bindCategoryLoading(input),
             bindCategoryTap(input)
         )
-    }
-
-    func bind(searchViewModel viewModel: FactSearchViewModelProtocol) -> Disposable {
-        viewModel.bind(categoryTap: categoryTapSubject)
     }
 
     private func bindCategoryTap(_ input: CategoryListViewModelInput) -> Disposable {
