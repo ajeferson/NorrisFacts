@@ -60,18 +60,3 @@ final class CategoryListViewModelTests: QuickSpec {
         }
     }
 }
-
-struct CategoryFactory {
-    static func makeAllStringCategories() -> [String] {
-        let decoder = JSONDecoder()
-        let filename = StubResponse.fetchCategoriesSuccess.filename
-        let bundle = Bundle(for: CategoryListViewModelTests.self)
-        let url = bundle.url(forResource: filename, withExtension: nil)!
-        let data = try! Data(contentsOf: url)
-        return try! decoder.decode([String].self, from: data)
-    }
-
-    static func makeAllCategories() -> [NorrisFacts.Category] {
-        makeAllStringCategories().map { .init(name: $0) }
-    }
-}

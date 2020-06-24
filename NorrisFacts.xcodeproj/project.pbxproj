@@ -87,6 +87,7 @@
 		BDB9BA4B249F1C2100B0E5F2 /* FactListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */; };
 		BDB9BA4E249F1C8400B0E5F2 /* FactListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */; };
 		BDBB1DE724A3FDCC00B491DC /* SearchHistoryViewModelIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB1DE624A3FDCC00B491DC /* SearchHistoryViewModelIntegrationTests.swift */; };
+		BDBB1DE924A4162900B491DC /* CategoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB1DE824A4162900B491DC /* CategoryFactory.swift */; };
 		BDBD211324A02B530069CF26 /* UITableView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBD211224A02B530069CF26 /* UITableView+Common.swift */; };
 		BDBD211524A070290069CF26 /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBD211424A070290069CF26 /* CategoryListViewModel.swift */; };
 		BDCEE6C3249F926A00CA200B /* ErrorDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEE6C2249F926A00CA200B /* ErrorDescriptor.swift */; };
@@ -239,6 +240,7 @@
 		BDB9BA4A249F1C2100B0E5F2 /* FactListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemTableViewCell.swift; sourceTree = "<group>"; };
 		BDB9BA4D249F1C8300B0E5F2 /* FactListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemViewModel.swift; sourceTree = "<group>"; };
 		BDBB1DE624A3FDCC00B491DC /* SearchHistoryViewModelIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewModelIntegrationTests.swift; sourceTree = "<group>"; };
+		BDBB1DE824A4162900B491DC /* CategoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFactory.swift; sourceTree = "<group>"; };
 		BDBD211224A02B530069CF26 /* UITableView+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Common.swift"; sourceTree = "<group>"; };
 		BDBD211424A070290069CF26 /* CategoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
 		BDCEE6C2249F926A00CA200B /* ErrorDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptor.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				BDFC71BA24A07F8200D3A723 /* APIFakeableTests.swift */,
+				BDBB1DE824A4162900B491DC /* CategoryFactory.swift */,
 				BDE0400D24A3BEC0008B2CCC /* FactFactory.swift */,
 				BD2D659924A3D05D0021EDF4 /* QueryFactory.swift */,
 				BD4D9A9E24A3F68C0025B34D /* RealmConfigurableTests.swift */,
@@ -969,6 +972,7 @@
 				BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */,
 				BDDD6E2324A0876B001EAE80 /* MockCategoryStore.swift in Sources */,
 				BD0AFD6A24A1C03300EBAE2B /* MockQueryStore.swift in Sources */,
+				BDBB1DE924A4162900B491DC /* CategoryFactory.swift in Sources */,
 				BDF8888324A39A760046F7AF /* MockFactStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

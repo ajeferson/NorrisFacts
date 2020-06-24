@@ -85,7 +85,6 @@ final class QueryStoreIntegrationTests: QuickSpec, RealmConfigurableTests {
 
             describe("save") {
                 it("saves properly") {
-
                     let query = QueryFactory.makeQueryWithFacts()
                     _ = try! queryStore.save(query: query, with: Array(query.facts)).toBlocking().first()
 
