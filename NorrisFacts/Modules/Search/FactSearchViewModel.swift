@@ -130,10 +130,8 @@ final class FactSearchViewModel {
             .filter { !$0.isEmpty }
             .debounce(Constants.searchDebounceTime, scheduler: scheduler)
 
-        let persistableQuery = Observable.merge(textQuery, queryTapSubject)
-
         let query = Observable
-            .merge(persistableQuery, categoryTapSubject)
+            .merge(textQuery, categoryTapSubject, queryTapSubject)
             .share()
 
         let searchResult = makeObservableSearhResult(from: query)

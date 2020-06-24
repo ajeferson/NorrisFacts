@@ -66,6 +66,7 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
     private func bindCategoryTap(_ input: CategoryListViewModelInput) -> Disposable {
         input
             .categoryTap
+            .map { $0.capitalized }
             .bind(to: categoryTapSubject)
     }
 

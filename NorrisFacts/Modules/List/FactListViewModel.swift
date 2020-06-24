@@ -64,6 +64,7 @@ final class FactListViewModel: FactListViewModelProtocol {
             // Initial random facts
             factStore
                 .sample(maxAmount: Constants.maxRandomFacts)
+                .filter { !$0.isEmpty }
                 .subscribe(onSuccess: { [weak self] facts in
                     self?.update(facts: facts)
                 }),
