@@ -26,3 +26,12 @@ extension PrimitiveSequence where Trait == SingleTrait {
         }
     }
 }
+
+extension PrimitiveSequence where Trait == CompletableTrait {
+    func toObservable() -> Observable<Void> {
+        asObservable()
+            .materialize()
+            .take(1)
+            .map { _ in }
+    }
+}

@@ -93,6 +93,7 @@
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
 		BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */; };
 		BDF8887D24A2F2340046F7AF /* PrimitiveSequence+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8887C24A2F2340046F7AF /* PrimitiveSequence+Common.swift */; };
+		BDF8888124A30A3F0046F7AF /* FactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8888024A30A3F0046F7AF /* FactStore.swift */; };
 		BDFC71B724A07A9B00D3A723 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71B624A07A9B00D3A723 /* TitleHeaderView.swift */; };
 		BDFC71B924A07F0200D3A723 /* CategoryProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */; };
 		BDFC71BB24A07F8200D3A723 /* ProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */; };
@@ -231,6 +232,7 @@
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+API.swift"; sourceTree = "<group>"; };
 		BDF8887C24A2F2340046F7AF /* PrimitiveSequence+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+Common.swift"; sourceTree = "<group>"; };
+		BDF8888024A30A3F0046F7AF /* FactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactStore.swift; sourceTree = "<group>"; };
 		BDFC71B624A07A9B00D3A723 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProviderTests.swift; sourceTree = "<group>"; };
 		BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTests.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				BD822FBC249FDC6400164C0B /* CategoryStore.swift */,
 				BD6C561824A184E30030D098 /* QueryStore.swift */,
 				BD822FC0249FDCAA00164C0B /* RealmStore.swift */,
+				BDF8888024A30A3F0046F7AF /* FactStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				BD7BBBAB249EA19E00F1F2D8 /* String+Common.swift in Sources */,
 				BD05AC96249DB45A000F453B /* Fact.swift in Sources */,
 				BDB9BA3C249EDAFE00B0E5F2 /* FactSearchCoordinator.swift in Sources */,
+				BDF8888124A30A3F0046F7AF /* FactStore.swift in Sources */,
 				BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */,
 				BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */,
 				BDB9BA36249EDA0300B0E5F2 /* UIWindow.swift in Sources */,

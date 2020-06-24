@@ -33,9 +33,11 @@ final class FactListViewModel: FactListViewModelProtocol {
     private enum Constants {
         static let searchHint = "Tap search to start"
         static let emptySearchResult = "No results"
+        static let maxRandomFacts = 10
     }
 
     weak var coordinator: FactListCoordinatorProtocol?
+    private let factStore: FactStoreProtocol
 
     private let itemsSubject = BehaviorRelay<[FactListItemViewModel]>(value: [])
     private let shareItemsSubject = PublishSubject<[Any]>()
@@ -52,12 +54,20 @@ final class FactListViewModel: FactListViewModelProtocol {
         )
     }
 
-    init(coordinator: FactListCoordinatorProtocol) {
+    init(coordinator: FactListCoordinatorProtocol, factStore: FactStoreProtocol) {
         self.coordinator = coordinator
+        self.factStore = factStore
     }
 
     func bind(input: FactListViewModelInput) -> Disposable {
         Disposables.create(
+            // Initial random facts
+            factStore
+                .sample(maxAmount: Constants.maxRandomFacts)
+                .subscribe(onSuccess: { [weak self] facts in
+                    self?.update(facts: facts)
+                }),
+
             // Search button tapped
             input
                 .searchBarButtonTap
@@ -83,7 +93,10 @@ final class FactListViewModel: FactListViewModelProtocol {
         guard case .success(let facts) = searchResult else {
             return
         }
+        update(facts: facts)
+    }
 
+    private func update(facts: [Fact]) {
         message.accept(facts.isEmpty ? Constants.emptySearchResult : nil)
 
         let itemViewModels = facts.map { fact in
