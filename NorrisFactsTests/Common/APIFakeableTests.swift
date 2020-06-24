@@ -1,5 +1,5 @@
 //
-//  ProviderTests.swift
+//  APIFakeableTests.swift
 //  NorrisFactsTests
 //
 //  Created by Alan Paiva on 6/22/20.
@@ -10,9 +10,9 @@ import Foundation
 import OHHTTPStubs
 @testable import NorrisFacts
 
-protocol ProviderTests {}
+protocol APIFakeableTests {}
 
-extension ProviderTests {
+extension APIFakeableTests {
     func condition(for api: ChuckNorrisAPI) -> HTTPStubsTestBlock {
         let url = api.baseURL.appendingPathComponent(api.path)
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
@@ -24,7 +24,7 @@ extension ProviderTests {
             switch response {
             case .some(let response):
                 return HTTPStubsResponse(
-                    fileAtPath: OHPathForFile(response.filename, CategoryProviderTests.self)!,
+                    fileAtPath: OHPathForFile(response.filename, CategoryProviderIntegrationTests.self)!,
                     statusCode: Int32(statusCode),
                     headers: [:]
                 )

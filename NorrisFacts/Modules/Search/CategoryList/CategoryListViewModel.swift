@@ -44,14 +44,6 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
         )
     }
 
-    var title: String {
-        Constants.title
-    }
-
-    var numberOfItems: Int {
-        1
-    }
-
     init(categoryStore: CategoryStoreProtocol) {
         self.categoryStore = categoryStore
     }
@@ -81,7 +73,19 @@ final class CategoryListViewModel: CategoryListViewModelProtocol {
             }
             .map { $0.map { $0.name.uppercased() } }
             .map { $0.shuffled() }
-            .map { Array($0[..<Constants.numberOfCategories]) }
+            .map { Array($0.prefix(Constants.numberOfCategories)) }
             .bind(to: categoriesSubject)
+    }
+}
+
+// MARK: - TableViewSectionViewModelProtocol
+
+extension CategoryListViewModel {
+    var title: String {
+        Constants.title
+    }
+
+    var numberOfItems: Int {
+        1
     }
 }
