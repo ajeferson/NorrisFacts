@@ -1,5 +1,5 @@
 //
-//  CategoryProviderTests.swift
+//  CategoryProviderIntegrationTests.swift
 //  NorrisFactsTests
 //
 //  Created by Alan Paiva on 6/22/20.
@@ -12,7 +12,7 @@ import OHHTTPStubs
 import RxSwift
 @testable import NorrisFacts
 
-final class CategoryProviderTests: QuickSpec, APIFakeableTests {
+final class CategoryProviderIntegrationTests: QuickSpec, APIFakeableTests {
     override func spec() {
         describe("CategoryProvider") {
             afterEach {

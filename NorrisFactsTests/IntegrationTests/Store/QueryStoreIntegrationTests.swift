@@ -1,5 +1,5 @@
 //
-//  QueryStoreTests.swift
+//  QueryStoreIntegrationTests.swift
 //  NorrisFactsTests
 //
 //  Created by Alan Paiva on 6/24/20.
@@ -12,7 +12,7 @@ import RealmSwift
 import RxBlocking
 @testable import NorrisFacts
 
-final class QueryStoreTests: QuickSpec, RealmConfigurableTests {
+final class QueryStoreIntegrationTests: QuickSpec, RealmConfigurableTests {
     override func spec() {
         describe("QueryStore") {
             var queryStore: QueryStore!

@@ -13,7 +13,7 @@ import RxBlocking
 import RxSwift
 @testable import NorrisFacts
 
-final class FactProviderTests: QuickSpec, APIFakeableTests {
+final class FactProviderIntegrationTests: QuickSpec, APIFakeableTests {
     override func spec() {
         describe("FactProvider") {
             afterEach {

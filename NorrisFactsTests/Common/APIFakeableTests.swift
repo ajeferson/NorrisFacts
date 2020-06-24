@@ -24,7 +24,7 @@ extension APIFakeableTests {
             switch response {
             case .some(let response):
                 return HTTPStubsResponse(
-                    fileAtPath: OHPathForFile(response.filename, CategoryProviderTests.self)!,
+                    fileAtPath: OHPathForFile(response.filename, CategoryProviderIntegrationTests.self)!,
                     statusCode: Int32(statusCode),
                     headers: [:]
                 )
