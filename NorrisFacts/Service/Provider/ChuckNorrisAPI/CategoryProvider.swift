@@ -11,6 +11,7 @@ import Moya
 import RxMoya
 import RxSwift
 
+// TODO: Use enum for retryOnError
 protocol CategoryProviderProtocol {
     func fetchCategories(scheduler: SchedulerType, retryOnError: Bool) -> Single<[Category]>
 }

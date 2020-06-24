@@ -18,7 +18,7 @@ final class CategoryManager: CategoryManagerProtocol {
     let store: CategoryStoreProtocol
     let scheduler: SchedulerType
 
-    init(provider: CategoryProviderProtocol, store: CategoryStoreProtocol, scheduler: ConcurrentDispatchQueueScheduler) {
+    init(provider: CategoryProviderProtocol, store: CategoryStoreProtocol, scheduler: SchedulerType) {
         self.provider = provider
         self.store = store
         self.scheduler = scheduler
