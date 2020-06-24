@@ -13,11 +13,7 @@ import RxSwift
 final class MockFactProvider: FactProviderProtocol {
     var searchResults = [Fact]()
 
-    func search(query: String) -> Single<[Fact]> {
+    func search(query: String, scheduler: SchedulerType, retryOnError: Bool) -> Single<[Fact]> {
         .just(searchResults)
-    }
-
-    func fetchCategories() -> Single<[String]> {
-        .just([])
     }
 }

@@ -16,15 +16,18 @@ final class FactListViewModelTests: QuickSpec {
     override func spec() {
         describe("FactListViewModel") {
             var coordinator: MockFactListCoordinator!
+            var factStore: MockFactStore!
             var viewModel: FactListViewModel!
 
             beforeEach {
                 coordinator = MockFactListCoordinator()
-                viewModel = FactListViewModel(coordinator: coordinator)
+                factStore = MockFactStore()
+                viewModel = FactListViewModel(coordinator: coordinator, factStore: factStore)
             }
 
             afterEach {
                 coordinator = nil
+                factStore = nil
                 viewModel = nil
             }
 

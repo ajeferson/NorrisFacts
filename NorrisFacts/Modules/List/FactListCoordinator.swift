@@ -33,7 +33,8 @@ final class FactListCoordinator: FactListCoordinatorProtocol {
         let navigationController = UINavigationController(rootViewController: viewController)
         self.navigationController = navigationController
 
-        let viewModel = FactListViewModel(coordinator: self)
+        let factStore = FactStore()
+        let viewModel = FactListViewModel(coordinator: self, factStore: factStore)
         viewController.viewModel = viewModel
         self.viewModel = viewModel
 

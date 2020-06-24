@@ -16,10 +16,12 @@ protocol CategoryManagerProtocol {
 final class CategoryManager: CategoryManagerProtocol {
     let provider: CategoryProviderProtocol
     let store: CategoryStoreProtocol
+    let scheduler: SchedulerType
 
-    init(provider: CategoryProviderProtocol, store: CategoryStoreProtocol) {
+    init(provider: CategoryProviderProtocol, store: CategoryStoreProtocol, scheduler: ConcurrentDispatchQueueScheduler) {
         self.provider = provider
         self.store = store
+        self.scheduler = scheduler
     }
 
     func cacheCategoriesIfNeeded() -> Completable {
@@ -32,7 +34,7 @@ final class CategoryManager: CategoryManagerProtocol {
                 }
 
                 return self.provider
-                    .fetchCategories()
+                    .fetchCategories(scheduler: self.scheduler, retryOnError: true)
                     .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .flatMapCompletable { [weak self] categories -> Completable in
                         guard let self = self else {
