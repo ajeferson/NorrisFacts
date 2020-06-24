@@ -11,11 +11,24 @@ import RxSwift
 @testable import NorrisFacts
 
 final class MockCategoryStore: CategoryStoreProtocol {
+    var allCalls = 0
+    var allCategories = [NorrisFacts.Category]()
+
+    var saveCalls = 0
+    var savedCategories = [NorrisFacts.Category]()
+
     func all() -> Single<[NorrisFacts.Category]> {
-        Single.just([])
+        allCalls += 1
+        return .just(allCategories)
     }
 
     func save(categories: [NorrisFacts.Category]) -> Completable {
-        .empty()
+        saveCalls += 1
+        return Completable.create { [unowned self] completable -> Disposable in
+            self.savedCategories.removeAll()
+            self.savedCategories.append(contentsOf: categories)
+            completable(.completed)
+            return Disposables.create()
+        }
     }
 }

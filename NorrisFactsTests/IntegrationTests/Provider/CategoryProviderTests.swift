@@ -12,7 +12,7 @@ import OHHTTPStubs
 import RxSwift
 @testable import NorrisFacts
 
-final class CategoryProviderTests: QuickSpec {
+final class CategoryProviderTests: QuickSpec, APIFakeableTests {
     override func spec() {
         describe("CategoryProvider") {
             afterEach {
@@ -85,9 +85,30 @@ final class CategoryProviderTests: QuickSpec {
                         }
                     }
                 }
+
+                context("request suceeds") {
+                    it("parses and returns objects properly") {
+                        self.fake(api: .categories, response: .fetchCategoriesSuccess)
+
+                        let provider = CategoryProvider()
+                        let result = provider
+                            .fetchCategories(scheduler: MainScheduler.instance, retryOnError: false)
+                            .toBlocking()
+                            .materialize()
+
+                        guard case .completed(let events) = result else {
+                            fail("Search request didn't succeed")
+                            return
+                        }
+
+                        expect(events).to(haveCount(1))
+
+                        let returnedCategories = events[0].map { $0.name }
+                        let expectedCategories = CategoryFactory.makeAllStringCategories()
+                        expect(returnedCategories).to(equal(expectedCategories))
+                    }
+                }
             }
         }
     }
 }
-
-extension CategoryProviderTests: ProviderTests {}

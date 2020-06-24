@@ -27,7 +27,7 @@ final class CategoryManager: CategoryManagerProtocol {
     func cacheCategoriesIfNeeded() -> Completable {
         store
             .all()
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribeOn(scheduler)
             .flatMapCompletable { [weak self] categories -> Completable in
                 guard let self = self, categories.isEmpty else {
                     return .empty()
@@ -35,7 +35,7 @@ final class CategoryManager: CategoryManagerProtocol {
 
                 return self.provider
                     .fetchCategories(scheduler: self.scheduler, retryOnError: true)
-                    .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                    .observeOn(self.scheduler)
                     .flatMapCompletable { [weak self] categories -> Completable in
                         guard let self = self else {
                             return .empty()

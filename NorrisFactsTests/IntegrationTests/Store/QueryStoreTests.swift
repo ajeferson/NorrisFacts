@@ -12,14 +12,14 @@ import RealmSwift
 import RxBlocking
 @testable import NorrisFacts
 
-final class QueryStoreTests: QuickSpec {
+final class QueryStoreTests: QuickSpec, RealmConfigurableTests {
     override func spec() {
         describe("QueryStore") {
             var queryStore: QueryStore!
 
             beforeEach {
+                self.configureInMemoryTestableRealmInstance()
                 queryStore = QueryStore()
-                Realm.Configuration.defaultConfiguration = Realm.Configuration(inMemoryIdentifier: "IntegrationTestsRealm")
             }
 
             afterEach {

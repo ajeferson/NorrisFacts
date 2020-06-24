@@ -10,6 +10,7 @@ import Foundation
 @testable import NorrisFacts
 
 enum StubResponse: String {
+    case fetchCategoriesSuccess
     case searchSuccess
 
     var filename: String {
