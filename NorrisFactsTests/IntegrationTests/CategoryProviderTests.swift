@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import OHHTTPStubs
+import RxSwift
 @testable import NorrisFacts
 
 final class CategoryProviderTests: QuickSpec {
@@ -25,7 +26,7 @@ final class CategoryProviderTests: QuickSpec {
 
                         let provider = CategoryProvider()
                         let result = provider
-                            .fetchCategories()
+                            .fetchCategories(scheduler: MainScheduler.instance, retryOnError: false)
                             .toBlocking()
                             .materialize()
 
@@ -66,7 +67,7 @@ final class CategoryProviderTests: QuickSpec {
 
                             let provider = CategoryProvider()
                             let result = provider
-                                .fetchCategories()
+                                .fetchCategories(scheduler: MainScheduler.instance, retryOnError: false)
                                 .toBlocking()
                                 .materialize()
 

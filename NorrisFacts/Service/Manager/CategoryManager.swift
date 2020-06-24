@@ -34,7 +34,7 @@ final class CategoryManager: CategoryManagerProtocol {
                 }
 
                 return self.provider
-                    .fetchCategories(scheduler: self.scheduler)
+                    .fetchCategories(scheduler: self.scheduler, retryOnError: true)
                     .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .flatMapCompletable { [weak self] categories -> Completable in
                         guard let self = self else {

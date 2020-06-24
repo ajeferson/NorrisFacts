@@ -28,7 +28,7 @@ final class FactProviderTests: QuickSpec {
 
                         let provider = FactProvider()
                         let result = provider
-                            .search(query: query)
+                            .search(query: query, scheduler: MainScheduler.instance, retryOnError: false)
                             .toBlocking()
                             .materialize()
 
@@ -46,7 +46,8 @@ final class FactProviderTests: QuickSpec {
                         expect(facts[0].id).to(equal("dwxnerd8qamdgrzsl9aakq"))
                         expect(facts[0].iconUrl).to(equal("https://assets.chucknorris.host/img/avatar/chuck-norris.png"))
                         expect(facts[0].url).to(equal("https://api.chucknorris.io/jokes/dwxnerd8qamdgrzsl9aakq"))
-                        expect(facts[0].categories).to(equal(["history", "career"]))
+                        expect(facts[0].categories[0]).to(equal("history"))
+                        expect(facts[0].categories[1]).to(equal("career"))
                         expect(facts[0].value).to(equal(
                             #"The term "Cleveland Steamer" got its name from Chuck Norris, "# +
                             "when he took a dump while visiting the Rock and Roll Hall of " +
@@ -57,7 +58,7 @@ final class FactProviderTests: QuickSpec {
                         expect(facts[1].id).to(equal("lr9litcitfmul3qjx_3mmw"))
                         expect(facts[1].iconUrl).to(equal("https://assets.chucknorris.host/img/avatar/chuck-norris.png"))
                         expect(facts[1].url).to(equal("https://api.chucknorris.io/jokes/lr9litcitfmul3qjx_3mmw"))
-                        expect(facts[1].categories).to(equal(["political"]))
+                        expect(facts[1].categories[0]).to(equal("political"))
                         expect(facts[1].value).to(equal(
                             "Thousands of years ago Chuck Norris came across a bear. " +
                             "It was so terrified that it fled north into the arctic. " +

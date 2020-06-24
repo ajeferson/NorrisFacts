@@ -94,6 +94,7 @@
 		BDE90512249E521800B2AF28 /* PrimitiveSequence+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */; };
 		BDF8887D24A2F2340046F7AF /* PrimitiveSequence+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8887C24A2F2340046F7AF /* PrimitiveSequence+Common.swift */; };
 		BDF8888124A30A3F0046F7AF /* FactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8888024A30A3F0046F7AF /* FactStore.swift */; };
+		BDF8888324A39A760046F7AF /* MockFactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8888224A39A760046F7AF /* MockFactStore.swift */; };
 		BDFC71B724A07A9B00D3A723 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71B624A07A9B00D3A723 /* TitleHeaderView.swift */; };
 		BDFC71B924A07F0200D3A723 /* CategoryProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */; };
 		BDFC71BB24A07F8200D3A723 /* ProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */; };
@@ -233,6 +234,7 @@
 		BDE90511249E521800B2AF28 /* PrimitiveSequence+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+API.swift"; sourceTree = "<group>"; };
 		BDF8887C24A2F2340046F7AF /* PrimitiveSequence+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+Common.swift"; sourceTree = "<group>"; };
 		BDF8888024A30A3F0046F7AF /* FactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactStore.swift; sourceTree = "<group>"; };
+		BDF8888224A39A760046F7AF /* MockFactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactStore.swift; sourceTree = "<group>"; };
 		BDFC71B624A07A9B00D3A723 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		BDFC71B824A07F0200D3A723 /* CategoryProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProviderTests.swift; sourceTree = "<group>"; };
 		BDFC71BA24A07F8200D3A723 /* ProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTests.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				BDB9BA48249F067300B0E5F2 /* MockFactListCoordinator.swift */,
 				BDCEE6CA249FD1AF00CA200B /* MockFactProvider.swift */,
 				BDB9BA44249F046300B0E5F2 /* MockFactSearchCoordinator.swift */,
+				BDF8888224A39A760046F7AF /* MockFactStore.swift */,
 				BD0AFD6924A1C03300EBAE2B /* MockQueryStore.swift */,
 			);
 			path = TestDoubles;
@@ -862,6 +865,7 @@
 				BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */,
 				BDDD6E2324A0876B001EAE80 /* MockCategoryStore.swift in Sources */,
 				BD0AFD6A24A1C03300EBAE2B /* MockQueryStore.swift in Sources */,
+				BDF8888324A39A760046F7AF /* MockFactStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

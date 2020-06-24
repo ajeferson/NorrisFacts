@@ -12,21 +12,25 @@ import RxMoya
 import RxSwift
 
 protocol FactProviderProtocol {
-    func search(query: String, scheduler: SchedulerType) -> Single<[Fact]>
+    func search(query: String, scheduler: SchedulerType, retryOnError: Bool) -> Single<[Fact]>
 }
 
 struct FactProvider: FactProviderProtocol {
     private let provider = MoyaProvider<ChuckNorrisAPI>()
 
-    func search(query: String, scheduler: SchedulerType) -> Single<[Fact]> {
-        provider
+    func search(query: String, scheduler: SchedulerType, retryOnError: Bool) -> Single<[Fact]> {
+        let result = provider
             .rx
             .request(.search(query: query))
             .filterSuccessfulStatusCodes()
             .map(FactListResult.self, using: .default, failsOnEmptyData: true)
             .map { $0.result }
             .catchErrorReturnAPIError()
-            .retryWhenNetworkOrServerError(scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+
+        if retryOnError {
+            return result.retryWhenNetworkOrServerError(scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+        }
+        return result
     }
 }
 

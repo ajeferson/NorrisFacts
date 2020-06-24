@@ -32,6 +32,14 @@ final class Fact: Object, Decodable {
         super.init()
     }
 
+    init(id: String, url: String, value: String, iconUrl: String, categories: [String]) {
+        self.id = id
+        self.url = url
+        self.value = value
+        self.iconUrl = iconUrl
+        self.categories.append(objectsIn: categories)
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)

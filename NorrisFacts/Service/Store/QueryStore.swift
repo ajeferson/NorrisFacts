@@ -13,7 +13,7 @@ import RxSwift
 protocol QueryStoreProtocol: RealmStore {
     func all(limit: Int) -> Single<[Query]>
     func getBy(name: String) -> Single<Query?>
-    func save(query: Query, with fact: [Fact]) -> Completable
+    func save(query: Query, with facts: [Fact]) -> Completable
 }
 
 final class QueryStore: QueryStoreProtocol {
@@ -34,12 +34,12 @@ final class QueryStore: QueryStoreProtocol {
             }
     }
 
-    func save(query: Query, with fact: [Fact]) -> Completable {
+    func save(query: Query, with facts: [Fact]) -> Completable {
         realm()
             .flatMapCompletable { realm -> Completable in
                 realm.writeCompletable {
-                    realm.add(fact, update: .modified)
-                    query.facts.append(objectsIn: fact)
+                    realm.add(facts, update: .modified)
+                    query.facts.append(objectsIn: facts)
                     realm.add(query, update: .modified)
                 }
             }
