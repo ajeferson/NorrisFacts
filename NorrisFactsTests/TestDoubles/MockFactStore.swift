@@ -11,7 +11,9 @@ import RxSwift
 @testable import NorrisFacts
 
 final class MockFactStore: FactStoreProtocol {
+    var sampleFacts = [Fact]()
+
     func sample(maxAmount: Int) -> Single<[Fact]> {
-        .just([])
+        .just(sampleFacts)
     }
 }

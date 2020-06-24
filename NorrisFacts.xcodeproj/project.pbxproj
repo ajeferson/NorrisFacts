@@ -89,6 +89,7 @@
 		BDCF80BE24A01BD3001110A5 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF80BD24A01BD3001110A5 /* TagView.swift */; };
 		BDDD6E2324A0876B001EAE80 /* MockCategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDD6E2224A0876B001EAE80 /* MockCategoryStore.swift */; };
 		BDE0400C24A3A488008B2CCC /* FactListItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE0400B24A3A488008B2CCC /* FactListItemViewModelTests.swift */; };
+		BDE0400E24A3BEC0008B2CCC /* FactFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE0400D24A3BEC0008B2CCC /* FactFactory.swift */; };
 		BDE90509249DBF4E00B2AF28 /* URL+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE90508249DBF4E00B2AF28 /* URL+Common.swift */; };
 		BDE9050B249DCC3200B2AF28 /* Error+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050A249DCC3200B2AF28 /* Error+Common.swift */; };
 		BDE9050D249E4FE600B2AF28 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE9050C249E4FE600B2AF28 /* APIError.swift */; };
@@ -230,6 +231,7 @@
 		BDCF80BD24A01BD3001110A5 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		BDDD6E2224A0876B001EAE80 /* MockCategoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryStore.swift; sourceTree = "<group>"; };
 		BDE0400B24A3A488008B2CCC /* FactListItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListItemViewModelTests.swift; sourceTree = "<group>"; };
+		BDE0400D24A3BEC0008B2CCC /* FactFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactFactory.swift; sourceTree = "<group>"; };
 		BDE90508249DBF4E00B2AF28 /* URL+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Common.swift"; sourceTree = "<group>"; };
 		BDE9050A249DCC3200B2AF28 /* Error+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Common.swift"; sourceTree = "<group>"; };
 		BDE9050C249E4FE600B2AF28 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				BD7BBBA8249EA18200F1F2D8 /* StubResponse.swift */,
+				BDE0400D24A3BEC0008B2CCC /* FactFactory.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				BDCEE6CB249FD1AF00CA200B /* MockFactProvider.swift in Sources */,
 				BDE0400C24A3A488008B2CCC /* FactListItemViewModelTests.swift in Sources */,
 				BDFC71BB24A07F8200D3A723 /* ProviderTests.swift in Sources */,
+				BDE0400E24A3BEC0008B2CCC /* FactFactory.swift in Sources */,
 				BD7BBBA0249E5D6F00F1F2D8 /* FactProviderTests.swift in Sources */,
 				BDB9BA47249F04D000B0E5F2 /* FactListViewModelTests.swift in Sources */,
 				BDDD6E2324A0876B001EAE80 /* MockCategoryStore.swift in Sources */,
