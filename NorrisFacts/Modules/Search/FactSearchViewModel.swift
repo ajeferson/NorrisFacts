@@ -141,7 +141,7 @@ final class FactSearchViewModel {
                     return .empty()
                 }
                 return self.factProvider
-                    .search(query: query)
+                    .search(query: query, scheduler: self.scheduler)
                     .asObservable()
                     .mapToResult()
             }

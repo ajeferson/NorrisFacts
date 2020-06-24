@@ -19,7 +19,8 @@ final class CategoryCachingWorkflow: Workflow {
 
     init() {
         manager = CategoryManager(provider: CategoryProvider(),
-                                  store: CategoryStore())
+                                  store: CategoryStore(),
+                                  scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
     }
     func start() {
         manager

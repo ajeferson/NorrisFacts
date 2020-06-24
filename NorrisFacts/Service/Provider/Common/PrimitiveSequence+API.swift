@@ -41,4 +41,16 @@ extension PrimitiveSequence where Trait == SingleTrait {
             return .error(APIError.underlying(afError))
         }
     }
+
+    func retryWhenNetworkOrServerError(scheduler: SchedulerType) -> PrimitiveSequence<Trait, Element> {
+        delayRetry(scheduler: scheduler) { index, error -> Int in
+            guard index < 2, let apiError = error as? APIError else { return -1 }
+            switch apiError {
+            case .network, .serverError:
+                return (index + 1) * 4
+            default:
+                return -1
+            }
+        }
+    }
 }

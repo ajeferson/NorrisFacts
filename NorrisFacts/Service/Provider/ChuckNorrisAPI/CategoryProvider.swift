@@ -12,13 +12,13 @@ import RxMoya
 import RxSwift
 
 protocol CategoryProviderProtocol {
-    func fetchCategories() -> Single<[Category]>
+    func fetchCategories(scheduler: SchedulerType) -> Single<[Category]>
 }
 
 struct CategoryProvider: CategoryProviderProtocol {
     private let provider = MoyaProvider<ChuckNorrisAPI>()
 
-    func fetchCategories() -> Single<[Category]> {
+    func fetchCategories(scheduler: SchedulerType) -> Single<[Category]> {
         provider
             .rx
             .request(.categories)
@@ -26,5 +26,6 @@ struct CategoryProvider: CategoryProviderProtocol {
             .map([String].self)
             .map { $0.map { Category(name: $0) } }
             .catchErrorReturnAPIError()
+            .retryWhenNetworkOrServerError(scheduler: scheduler)
     }
 }

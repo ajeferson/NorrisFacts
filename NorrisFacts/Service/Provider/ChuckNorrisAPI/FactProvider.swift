@@ -12,13 +12,13 @@ import RxMoya
 import RxSwift
 
 protocol FactProviderProtocol {
-    func search(query: String) -> Single<[Fact]>
+    func search(query: String, scheduler: SchedulerType) -> Single<[Fact]>
 }
 
 struct FactProvider: FactProviderProtocol {
     private let provider = MoyaProvider<ChuckNorrisAPI>()
 
-    func search(query: String) -> Single<[Fact]> {
+    func search(query: String, scheduler: SchedulerType) -> Single<[Fact]> {
         provider
             .rx
             .request(.search(query: query))
@@ -26,6 +26,7 @@ struct FactProvider: FactProviderProtocol {
             .map(FactListResult.self, using: .default, failsOnEmptyData: true)
             .map { $0.result }
             .catchErrorReturnAPIError()
+            .retryWhenNetworkOrServerError(scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
     }
 }
 
