@@ -53,6 +53,7 @@ final class FactSearchViewModel {
     }
 
     weak var coordinator: FactSearchCoordinatorProtocol?
+
     private let factProvider: FactProviderProtocol
     private let categoryStore: CategoryStoreProtocol
     private let queryStore: QueryStoreProtocol
@@ -135,17 +136,7 @@ final class FactSearchViewModel {
             .merge(persistableQuery, categoryTapSubject)
             .share()
 
-        let searchResult = query
-            .flatMapLatest { [weak self] query -> Observable<Result<[Fact], Error>> in
-                guard let self = self else {
-                    return .empty()
-                }
-                return self.factProvider
-                    .search(query: query, scheduler: self.scheduler)
-                    .asObservable()
-                    .mapToResult()
-            }
-            .share()
+        let searchResult = makeObservableSearhResult(from: query)
 
         return Disposables.create(
             // Loading state
@@ -166,21 +157,64 @@ final class FactSearchViewModel {
             searchResult
                 .compactMap { $0.getError() }
                 .map(map(error:))
-                .bind(to: errorSubject),
-
-            // Save query
-            searchResult
-                .withLatestFrom(persistableQuery)
-                .flatMap { [weak self] query -> Completable in
-                    guard let self = self else {
-                        return .empty()
-                    }
-
-                    let queryObject = Query(name: query)
-                    return self.queryStore.save(query: queryObject)
-                }
-                .subscribe()
+                .bind(to: errorSubject)
         )
+    }
+
+    //swiftlint:disable:next function_body_length
+    private func makeObservableSearhResult(from query: Observable<String>) -> Observable<Result<[Fact], Error>> {
+        let networkResult = query
+            .flatMapLatest { [weak self] query -> Observable<Result<[Fact], Error>> in
+                guard let self = self else {
+                    return .empty()
+                }
+                return self.factProvider
+                    .search(query: query, scheduler: self.scheduler)
+                    .asObservable()
+                    .mapToResult()
+            }
+            .share()
+
+        let networkCacheResult = networkResult
+            .withLatestFrom(query) { ($1, $0) }
+            .flatMap { [weak self] query, result -> Observable<Result<Void, Error>> in
+                guard let self = self else {
+                    return .empty()
+                }
+                switch result {
+                case .failure(let error):
+                    return .just(.failure(error))
+                case .success(let facts):
+                    let queryObject = Query(name: query)
+                    return self.queryStore
+                        .save(query: queryObject, with: facts).toObservable()
+                        .mapToResult()
+                }
+            }
+            .share()
+
+        return networkCacheResult
+            .withLatestFrom(query) { ($1, $0) }
+            .flatMap { [weak self] queryName, result -> Observable<(Query?, Error?)> in
+                guard let self = self else {
+                    return .empty()
+                }
+                return self.queryStore
+                    .getBy(name: queryName)
+                    .asObservable()
+                    .map { ($0, result.getError()) }
+            }
+            .map { query, networkError -> Result<[Fact], Error> in
+                switch (query, networkError) {
+                case let (.some(unwrappedQuery), _):
+                    return .success(Array(unwrappedQuery.facts))
+                case let (_, .some(error)):
+                    return .failure(error)
+                default:
+                    return .success([])
+                }
+            }
+            .share()
     }
 
     private func map(error: Error) -> ErrorDescriptor {

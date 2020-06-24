@@ -12,6 +12,7 @@ import RealmSwift
 final class Query: Object {
     @objc dynamic var name = ""
     @objc dynamic var updatedAt = Date()
+    let facts = List<Fact>()
 
     enum Keys {
         static let name = "name"

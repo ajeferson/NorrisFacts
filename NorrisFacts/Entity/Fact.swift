@@ -16,6 +16,10 @@ final class Fact: Object, Decodable {
     @objc dynamic var iconUrl = ""
     let categories = List<String>()
 
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
     enum CodingKeys: CodingKey {
         case id
         case url

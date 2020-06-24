@@ -12,7 +12,8 @@ import RxSwift
 
 protocol QueryStoreProtocol: RealmStore {
     func all(limit: Int) -> Single<[Query]>
-    func save(query: Query) -> Completable
+    func getBy(name: String) -> Single<Query?>
+    func save(query: Query, with fact: [Fact]) -> Completable
 }
 
 final class QueryStore: QueryStoreProtocol {
@@ -26,10 +27,19 @@ final class QueryStore: QueryStoreProtocol {
             .map { Array($0.prefix(limit)) }
     }
 
-    func save(query: Query) -> Completable {
+    func getBy(name: String) -> Single<Query?> {
+        realm()
+            .map { realm in
+                realm.object(ofType: Query.self, forPrimaryKey: name)
+            }
+    }
+
+    func save(query: Query, with fact: [Fact]) -> Completable {
         realm()
             .flatMapCompletable { realm -> Completable in
                 realm.writeCompletable {
+                    realm.add(fact, update: .modified)
+                    query.facts.append(objectsIn: fact)
                     realm.add(query, update: .modified)
                 }
             }
