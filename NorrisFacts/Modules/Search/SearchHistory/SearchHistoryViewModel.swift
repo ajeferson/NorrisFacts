@@ -16,6 +16,7 @@ struct SearchHistoryViewModelInput {
 
 struct SearchHistoryViewModelOutput {
     let queryTap: Driver<String>
+    let queries: Driver<[String]>
 }
 
 protocol SearchHistoryViewModelProtocol: TableViewSectionViewModelProtocol {
@@ -36,7 +37,11 @@ final class SearchHistoryViewModel: SearchHistoryViewModelProtocol {
     private let queryTapSubject = PublishSubject<String>()
 
     var output: SearchHistoryViewModelOutput {
-        .init(queryTap: queryTapSubject.asDriver(onErrorJustReturn: ""))
+        .init(queryTap: queryTapSubject.asDriver(onErrorJustReturn: ""),
+              queries: queriesSubject
+                .map { $0.map { $0.name } }
+                .asDriver(onErrorJustReturn: [])
+        )
     }
 
     init(queryStore: QueryStoreProtocol) {
