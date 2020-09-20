@@ -8,6 +8,14 @@
 
 import UIKit
 
+// Adding some
+// fairly
+// unnecessary
+//
+//
+//
+// comments
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     private let categoryCachingWorkflow = CategoryCachingWorkflow()
